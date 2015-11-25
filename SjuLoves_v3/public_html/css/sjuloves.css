@@ -1,0 +1,198 @@
+
+.navbar {
+    display: none; }
+#about-section {
+    background: #333;
+    color: #E1E1E1;
+    }
+#footer {/* This is for some reason needed bc of skeleton I think... */
+    padding-bottom: 60px;
+    background: #333;
+    }
+.gallery-container {
+    width: 98%; 
+    margin: 0 auto; }
+
+#wrapper {
+    padding-top: 0;
+}
+    
+/* small phone */
+@media only screen and (min-width: 200px) {
+    .navbar {
+        display: block;
+        width: 100%;
+        height: 6.5rem;
+        background: #fcfcfc;
+        z-index: 99;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        position: fixed;
+        top: 0;
+        left: 0; }
+    .navbar-list {
+        list-style: none;
+        margin-bottom: 0; }
+    .navbar-heading span {
+        text-transform: uppercase;
+        line-height: 6.5rem;
+        font-size: 1.5rem;
+        font-weight: 100; }
+}
+    
+/* large phone */
+@media only screen and (min-width: 500px) {
+    .navbar {
+        display: block;
+        width: 100%;
+        height: 6.5rem;
+        background: #fcfcfc;
+        z-index: 99;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        position: fixed;
+        top: 0;
+        left: 0; }
+    .navbar-list {
+        list-style: none;
+        margin-bottom: 0; }
+    .navbar-heading span {
+        text-transform: uppercase;
+        line-height: 6.5rem;
+        font-size: 1.5rem;
+        font-weight: 100;
+        }
+}
+    
+/* Big screen */
+@media (min-width: 850px) {
+    #wrapper {
+        padding-top: 6.7rem;
+        background: rgb(245,245,245);
+    }
+    section {
+    }
+    /* Navbar */
+    .navbar + .docs-section {
+        border-top-width: 0; }
+    .navbar {
+        display: block;
+        width: 100%;
+        height: 6.5rem;
+        background: #fcfcfc;
+        z-index: 99;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        position: fixed;
+        top: 0;
+        left: 0;
+        float: left;
+        }
+
+    .navbar > .container {
+        width: 100%;
+        background: #fcfcfc;
+        }
+    .navbar-list {
+        list-style: none;
+        margin-bottom: 0; }
+    .navbar-item {
+        position: relative;
+        float: right;
+        margin-bottom: 0; }
+    .navbar-link {
+        text-transform: uppercase;
+        /*font-size: 11px;
+        font-weight: 600;*/
+        letter-spacing: .2rem;
+        margin-right: 35px;
+        text-decoration: none;
+        line-height: 6.5rem;
+        color: #222; }
+    .navbar-link.active {
+        color: #33C3F0; }
+
+    .navbar-heading {
+        position: relative;
+        float: left;
+        margin-bottom: 0;
+        }
+    .navbar-heading span {
+        text-transform: uppercase;
+        line-height: 6.5rem;
+        font-size: 3.0rem;
+        font-weight: 100;
+        }
+
+    .navbar-heading a {
+        color: #222;
+        text-decoration: none;
+        padding-left: 0.8rem;
+        }
+
+    .navbar-heading a:hover {
+        color: #33C3F0; }
+}
+        
+.mean-container .mean-nav {
+    margin-top: 1.5rem;
+    background: white;
+}
+
+.mean-container a.meanmenu-reveal {
+    font-family: Raleway, HelveticaNeue, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    width: 25px;
+    height: 30px;
+    padding: 20px 20px 11px 20px;
+    z-index: 9999;
+}
+
+.mean-container .mean-bar {
+    background-color: white;
+    min-height: 60px;
+}
+
+.mean-container .mean-nav ul li a {
+    padding: 1rem 0 0 0;
+    color: #222;
+    border-top: 1px solid #383838;
+    border-top: 1px solid rgba(240,240,240,1);
+}
+
+.mean-container .mean-nav ul li a:hover {
+    color: #0FA0CE
+}
+
+.mean-container .mean-nav ul li span a {
+    width: auto;
+    padding: 0 10px;
+    border-top: 0;
+}
+
+.mean-container .mean-bar .mean-bar-heading {
+    /* float: left; */
+    text-transform: uppercase;
+    line-height: 3.0rem;
+    font-size: 2.0rem;
+    font-weight: 100;
+    padding-left: 1.5rem;
+    padding-top: 1.5rem;
+    /* display:  none; */
+}
+
+.mean-container .mean-nav .navbar-heading {
+    display: none;
+}
+
+/* to make the menu-sliding work correctly for narrow screens */
+section {
+    float: left;
+    width: 100%;
+    /* margin-top: 62px; */
+}
+
+.mean-container .mean-bar .mean-bar-heading a {
+    text-decoration: none;
+    color: #222;
+}
+

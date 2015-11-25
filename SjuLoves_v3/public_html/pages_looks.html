@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Sju loves / Gallery / Looks</title>
+  <meta name="description" content="A blog about all the things I love. Beauty, fashion, art, photography and more!">
+  <meta name="author" content="Zuzana Janosova">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="img/favicon.png">
+
+  <!-- JavaScript
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
+  <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+  
+  <!-- Justified.js
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/jquery.justified.images.css">
+  <script src="js/jquery.justified.images.js"></script>
+  
+  <!-- photoswipe
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <!-- Core CSS file -->
+  <link rel="stylesheet" href="css/photoswipe.css">
+  <!-- Skin CSS file (optional) In folder of skin CSS file there are also: - .png and .svg icons sprite, - preloader.gif (for browsers that do not support CSS animations) -->
+  <link rel="stylesheet" href="css/photoswipe.skin.css">
+  <!-- Core JS file -->
+  <script src="js/photoswipe.js" type="text/javascript"></script>
+  <!-- UI JS file -->
+  <script src="js/photoswipe.ui.js" type="text/javascript"></script>
+
+<!-- responsive menu -- MeanMenu
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/meanmenu.css">
+  <script src="js/jquery.meanmenu.js" type="text/javascript"></script>
+  
+  
+  <link rel="stylesheet" href="css/sjuloves.css">
+  
+</head>
+<body>
+    <header>
+  <nav class="navbar">
+      <div class="container">
+        <ul class="navbar-list">
+            <li class="navbar-heading"><span><a href="index.html">Sju loves</a> / Looks</span></li>
+          
+          <li class="navbar-item"><a class="navbar-link" href="pages_misc.html">Misc</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="pages_looks.html">Looks</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="pages_design.html">Design</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="pages_travel.html">Travel</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="pages_fashion.html">Fashion</a></li>
+          
+        </ul>
+      </div>
+    </nav>
+    </header>
+    <section>
+    <div id="wrapper">
+    <div class="gallery-container">
+        <div class="image-container" id="gallery" itemscope="" itemtype="http://schema.org/ImageGallery" data-pswp-uid="2"></div>
+          <script type="text/javascript">
+
+	$(document).ready(function(){
+		//prepareFlickrAlbum("72157641414241043", "gallery", 20);
+		prepareFlickrAlbum("72157660636761280", "gallery", 25, 300);
+jQuery('header nav').meanmenu({
+                    meanScreenWidth: "850"
+	});
+});
+        </script>
+    </div>  
+    <div id="about-section">
+            <div class="container" id="footer">
+                <h2>Sju loves</h2>
+                
+                    <a href="http://instagram.com/peackapples/">@peackapples</a>
+                    <!-- INSTANSIVE WIDGET --><script src="//instansive.com/widget/js/instansive.js"></script><iframe src="//instansive.com/widgets/a90e40eb834c58223fab4160e9d69ec2b6f73afa.html" id="instansive_a90e40eb83" name="instansive_a90e40eb83"  scrolling="no" allowtransparency="true" class="instansive-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
+                    <script>
+                        // instansive steals the resize event, needs to be fixed
+                        var d = setInterval(function() {
+                            window.onresize = artificialResponsiveness;
+                        }
+                        , 1000);
+                    </script>
+                    
+                
+                <div class="row">
+                    <div class="one-third column">Fotka</div>
+                    <div class="one-third column">Instagram</div>
+                    <div class="one-third column">Facebook</div>
+                </div>
+            </div>
+    </div>
+    
+    
+    
+    </div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  <!-- end of photoswipe elements -->
+  <script src="js/flickr.fetch.js" type="text/javascript"></script>
+  <script src="js/photoswipe.after.html.js" type="text/javascript"></script>
+  </section>
+</body>
+</html>
