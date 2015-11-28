@@ -116,18 +116,12 @@ var showPhotos = function(photos, destination_id, row_height){
         
         template: function(photo){
             getFlickrPhotoDescription(photo.id);
-            view_width = $(window).width();
+            // get one of the existing large images for the detailed view link
+            var view_width = $(window).width();
             var size_index = "o";
-            if (photo.url_k && view_width < photo.width_k){
-                size_index = "k";
-            }
-            if (photo.url_h && view_width < photo.width_h){
-                size_index = "h";
-            }
-            if (photo.url_l && view_width < photo.width_l){
-                size_index = "l";
-            }
-            var photo_url = photo["url_" + size_index];
+            if (photo.url_k && view_width < photo.width_k) size_index = "k";
+            if (photo.url_h && view_width < photo.width_h) size_index = "h";
+            if (photo.url_l && view_width < photo.width_l) size_index = "l";
             var htmlString = "";
             htmlString += '  <div class="photo-container" style="height:' + photo.displayHeight + 'px;margin-right:' + photo.marginRight + 'px;">';
             htmlString += '<figure itemscope itemtype="http://schema.org/ImageObject" style="margin: 0;">';
