@@ -146,12 +146,13 @@
     width: 25px;
     height: 30px;
     padding: 20px 20px 11px 20px;
-    z-index: 9999;
+    /*z-index: 9999;*/
 }
 
 .mean-container .mean-bar {
     background-color: white;
     min-height: 60px;
+    z-index: auto;
 }
 
 .mean-container .mean-nav ul li a {
@@ -197,4 +198,3 @@ section {
     text-decoration: none;
     color: #222;
 }
-
