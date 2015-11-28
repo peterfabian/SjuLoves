@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://rawgit.com/peterfabian/SjuLoves/master/SjuLoves_v3/public_html/css/skeleton.css" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="icon" type="image/png" href="https://rawgit.com/peterfabian/SjuLoves/master/SjuLoves_v3/public_html/img/favicon.png" />
 
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
@@ -31,10 +31,10 @@
     <!-- hack to remove default blogger css -->
     &lt;style type=&quot;text/css&quot;&gt;&lt;!-- /*<b:skin>*/</b:skin>
     
-    <b:if cond='data:blog.url == data:blog.homepageUrl'>
+    <b:if cond='data:blog.canonicalUrl == data:blog.canonicalHomepageUrl + &quot;p/splash.html&quot;'>
     <!--Houmpaaz-->
     <!-- full page scroll js and css -->
-    <link rel="stylesheet" href="https://rawgit.com/peterfabian/SjuLoves/master/SjuLoves_v3/public_html/css/jquery.fullPage.css" />
+    <link rel="stylesheet" href="https://rawgit.com/peterfabian/SjuLoves/master/SjuLoves_v3/public_html/css/jquery.fullPage.css"/>
     <link rel="stylesheet" href="https://rawgit.com/peterfabian/SjuLoves/master/SjuLoves_v3/public_html/css/sjuloves.css" />
     <script src="https://rawgit.com/peterfabian/SjuLoves/master/SjuLoves_v3/public_html/js/jquery.fullPage.js" type="text/javascript"></script>
 
@@ -340,8 +340,8 @@
 </head>
 
 <body>
-    
-    <b:if cond='data:blog.url == data:blog.homepageUrl'>
+    <!-- quasi home page - splash screen for the blog -->
+    <b:if cond='data:blog.canonicalUrl == data:blog.canonicalHomepageUrl + &quot;p/splash.html&quot;'>
     <div class="navbar">
         <!--span id="data:blog.url"><b:include data='blog' name='url'/></span>
         <span id="data:blog.homepageUrl"><b:include data='blog' name='homepageUrl'/></span-->
@@ -382,133 +382,129 @@
             </div>
         </div>
     </div>
-    </b:if>
     
-    <b:if cond='data:blog.pageType == "static_page"'>
-        <header>
-            <nav class="navbar">
-                <div class="container">
-                  <ul class="navbar-list">
-                      <li class="navbar-heading"><span><a href="/">Sju loves</a> / Gallery</span></li>
+    <b:else/>
+        <!-- Gallery pages -->
 
-                    <li class="navbar-item"><a class="navbar-link" href="/p/gallery-misc.html">Misc</a></li>
-                    <li class="navbar-item"><a class="navbar-link" href="/p/gallery-looks.html">Looks</a></li>
-                    <li class="navbar-item"><a class="navbar-link" href="/p/gallery-design.html">Design</a></li>
-                    <li class="navbar-item"><a class="navbar-link" href="/p/gallery-travel.html">Travel</a></li>
-                    <li class="navbar-item"><a class="navbar-link" href="/p/gallery-fashion.html">Fashion</a></li>
+        <b:if cond='data:blog.pageType == "static_page"'>
+            <header>
+                <nav class="navbar">
+                    <div class="container">
+                      <ul class="navbar-list">
+                          <li class="navbar-heading"><span><a href="/">Sju loves</a> / Gallery</span></li>
 
-                  </ul>
-                </div>
-            </nav>
-        </header>
-        <section>
-            <div id="wrapper">
-                <div class="gallery-container">
-                    <div class="image-container" id="gallery" itemscope="" itemtype="http://schema.org/ImageGallery" data-pswp-uid="2"></div>
-                      <script type="text/javascript">
+                        <li class="navbar-item"><a class="navbar-link" href="/p/gallery-misc.html">Misc</a></li>
+                        <li class="navbar-item"><a class="navbar-link" href="/p/gallery-looks.html">Looks</a></li>
+                        <li class="navbar-item"><a class="navbar-link" href="/p/gallery-design.html">Design</a></li>
+                        <li class="navbar-item"><a class="navbar-link" href="/p/gallery-travel.html">Travel</a></li>
+                        <li class="navbar-item"><a class="navbar-link" href="/p/gallery-fashion.html">Fashion</a></li>
 
-                    $(document).ready(function(){
-                            jQuery('header nav').meanmenu({
-                                meanScreenWidth: "850"
-                            });
-                            prepareFlickrAlbum("72157661130036921", "gallery", 25, 250);
-                    });
-                    </script>
-                </div>
-                <div id="about-section">
-                    <div class="container" id="footer">
-                        <h2>Sju loves</h2>
-
-                            <a href="http://instagram.com/peackapples/">@peackapples</a>
-                            <!-- INSTANSIVE WIDGET --><script src="//instansive.com/widget/js/instansive.js"></script><iframe src="//instansive.com/widgets/a90e40eb834c58223fab4160e9d69ec2b6f73afa.html" id="instansive_a90e40eb83" name="instansive_a90e40eb83"  scrolling="no" allowtransparency="true" class="instansive-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
-                            <script>
-                                // instansive steals the resize event, needs to be fixed
-                                // this is pretty ugly :D
-                                var d = setInterval(function() {
-                                    window.onresize = artificialResponsiveness;
-                                }
-                                , 1000);
-                            </script>
-                        <div class="row">
-                            <div class="one-third column">Fotka</div>
-                            <div class="one-third column">Instagram</div>
-                            <div class="one-third column">Facebook</div>
+                      </ul>
+                    </div>
+                </nav>
+            </header>
+            <section>
+                <div id="wrapper">
+                    <div class="gallery-container">
+                        <div class="image-container" id="gallery" itemscope="" itemtype="http://schema.org/ImageGallery" data-pswp-uid="2">
                         </div>
+                        <data:post.body/>
+
                     </div>
-                </div>
-            </div>
-            <!-- Root element of PhotoSwipe. Must have class pswp. -->
-            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div id="about-section">
+                        <div class="container" id="footer">
+                            <h2>Sju loves</h2>
 
-                <!-- Background of PhotoSwipe. 
-                     It's a separate element as animating opacity is faster than rgba(). -->
-                <div class="pswp__bg"></div>
-
-                <!-- Slides wrapper with overflow:hidden. -->
-                <div class="pswp__scroll-wrap">
-
-                    <!-- Container that holds slides. 
-                        PhotoSwipe keeps only 3 of them in the DOM to save memory.
-                        Don't modify these 3 pswp__item elements, data is added later on. -->
-                    <div class="pswp__container">
-                        <div class="pswp__item"></div>
-                        <div class="pswp__item"></div>
-                        <div class="pswp__item"></div>
-                    </div>
-
-                    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-                    <div class="pswp__ui pswp__ui--hidden">
-
-                        <div class="pswp__top-bar">
-
-                            <!--  Controls are self-explanatory. Order can be changed. -->
-
-                            <div class="pswp__counter"></div>
-
-                            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                            <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                            <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                            <!-- element will get class pswp__preloader-active when preloader is running -->
-                            <div class="pswp__preloader">
-                                <div class="pswp__preloader__icn">
-                                  <div class="pswp__preloader__cut">
-                                    <div class="pswp__preloader__donut"></div>
-                                  </div>
-                                </div>
+                                <a href="http://instagram.com/peackapples/">@peackapples</a>
+                                <!-- INSTANSIVE WIDGET --><script src="//instansive.com/widget/js/instansive.js"></script><iframe src="//instansive.com/widgets/a90e40eb834c58223fab4160e9d69ec2b6f73afa.html" id="instansive_a90e40eb83" name="instansive_a90e40eb83"  scrolling="no" allowtransparency="true" class="instansive-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
+                                <script>
+                                    // instansive steals the resize event, needs to be fixed
+                                    // this is pretty ugly :D
+                                    var d = setInterval(function() {
+                                        window.onresize = artificialResponsiveness;
+                                    }
+                                    , 1000);
+                                </script>
+                            <div class="row">
+                                <div class="one-third column">Fotka</div>
+                                <div class="one-third column">Instagram</div>
+                                <div class="one-third column">Facebook</div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <!-- Root element of PhotoSwipe. Must have class pswp. -->
+                <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
-                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                            <div class="pswp__share-tooltip"></div> 
+                    <!-- Background of PhotoSwipe. 
+                         It's a separate element as animating opacity is faster than rgba(). -->
+                    <div class="pswp__bg"></div>
+
+                    <!-- Slides wrapper with overflow:hidden. -->
+                    <div class="pswp__scroll-wrap">
+
+                        <!-- Container that holds slides. 
+                            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                            Don't modify these 3 pswp__item elements, data is added later on. -->
+                        <div class="pswp__container">
+                            <div class="pswp__item"></div>
+                            <div class="pswp__item"></div>
+                            <div class="pswp__item"></div>
                         </div>
 
-                        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-                        </button>
+                        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+                        <div class="pswp__ui pswp__ui--hidden">
 
-                        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-                        </button>
+                            <div class="pswp__top-bar">
 
-                        <div class="pswp__caption">
-                            <div class="pswp__caption__center"></div>
+                                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                                <div class="pswp__counter"></div>
+
+                                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                                <!-- element will get class pswp__preloader-active when preloader is running -->
+                                <div class="pswp__preloader">
+                                    <div class="pswp__preloader__icn">
+                                      <div class="pswp__preloader__cut">
+                                        <div class="pswp__preloader__donut"></div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                                <div class="pswp__share-tooltip"></div> 
+                            </div>
+
+                            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                            </button>
+
+                            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                            </button>
+
+                            <div class="pswp__caption">
+                                <div class="pswp__caption__center"></div>
+                            </div>
+
                         </div>
 
                     </div>
 
                 </div>
-
-            </div>
-            <!-- end of photoswipe elements -->
-            <script src="https://rawgit.com/peterfabian/SjuLoves/master/SjuLoves_v3/public_html/js/flickr.fetch.js" type="text/javascript"></script>
-            <script src="https://rawgit.com/peterfabian/SjuLoves/master/SjuLoves_v3/public_html/js/photoswipe.after.html.js" type="text/javascript"></script>
-        </section>
-    </b:if>
-        
+                <!-- end of photoswipe elements -->
+                <script src="https://rawgit.com/peterfabian/SjuLoves/master/SjuLoves_v3/public_html/js/flickr.fetch.js" type="text/javascript"></script>
+                <script src="https://rawgit.com/peterfabian/SjuLoves/master/SjuLoves_v3/public_html/js/photoswipe.after.html.js" type="text/javascript"></script>
+            </section>
+        </b:if>
+    </b:if>  
     <div style="display: none;">
     <!-- here we put everything we don't need -->
     <b:section id='blog-header' class='blog-header' maxwidgets='' showaddelement='yes'>

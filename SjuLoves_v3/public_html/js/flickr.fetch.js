@@ -50,7 +50,7 @@ var prepareFlickrAlbum = function(album_id, destination_id, max_pictures, row_he
                 api_key : '92da12e7f9430472a8ce2276d8bfb3e5',
                 format : 'json',
                 photoset_id: album_id,
-                extras: "o_dims, url_k, url_s, url_m, url_o, url_t,url_q,url_n,url_z,url_c,url_l",
+                extras: "o_dims,url_k,url_s,url_m,url_o,url_t,url_q,url_n,url_z,url_c,url_l,url_h",
                 per_page : max_pictures
             },
             dataType: 'json',
@@ -116,10 +116,22 @@ var showPhotos = function(photos, destination_id, row_height){
         
         template: function(photo){
             getFlickrPhotoDescription(photo.id);
+            view_width = $(window).width();
+            var size_index = "o";
+            if (photo.url_k && view_width < photo.width_k){
+                size_index = "k";
+            }
+            if (photo.url_h && view_width < photo.width_h){
+                size_index = "h";
+            }
+            if (photo.url_l && view_width < photo.width_l){
+                size_index = "l";
+            }
+            var photo_url = photo["url_" + size_index];
             var htmlString = "";
             htmlString += '  <div class="photo-container" style="height:' + photo.displayHeight + 'px;margin-right:' + photo.marginRight + 'px;">';
             htmlString += '<figure itemscope itemtype="http://schema.org/ImageObject" style="margin: 0;">';
-            htmlString += '    <a href="' + photo.url_k + '" itemprop="contentUrl" data-size="' + photo.width_k + 'x' + photo.height_k + '">';
+            htmlString += '    <a href="' + photo["url_" + size_index] + '" itemprop="contentUrl" data-size="' + photo["width_" + size_index] + 'x' + photo["height_" + size_index] + '">';
             
             htmlString += '     <img class="image-thumb" src="' + photo.src + '" style="width:' + photo.displayWidth + 'px;height:' + photo.displayHeight + 'px;" >';
             
