@@ -326,6 +326,9 @@
             <!-- UI JS file -->
             <script src="https://rawgit.com/peterfabian/SjuLoves/master/SjuLoves_v3/public_html/js/photoswipe.ui.js" type="text/javascript"></script>
             
+            <!-- flickr fetch -->
+            <script src="https://rawgit.com/peterfabian/SjuLoves/master/SjuLoves_v3/public_html/js/flickr.fetch.js" type="text/javascript"></script>
+            
             <!-- responsive menu - MeanMenu -->
             <link rel="stylesheet" href="https://rawgit.com/peterfabian/SjuLoves/master/SjuLoves_v3/public_html/css/meanmenu.css"/>
             <script src="https://rawgit.com/peterfabian/SjuLoves/master/SjuLoves_v3/public_html/js/jquery.meanmenu.js" type="text/javascript"></script>
@@ -350,14 +353,14 @@
         <div id="menu-1">
             <ul class="navbar-list">
               <li class="navbar-item"><a class="navbar-link" href="/p/gallery.html">Gallery</a></li>
-              <li class="navbar-item"><a class="navbar-link" href="pages_blog_index.html">Blog</a></li>
+              <li class="navbar-item"><a class="navbar-link" href="/index.html">Blog</a></li>
             </ul>
         </div>
     </div>
     <div id="fullpage">
-        <div class="section-fp" id="looks-section"><a href="/pages/art"><div class="page-anchor"></div></a></div>
-        <div class="section-fp" id="fashion-section"><a href="/pages/fashion.html"><div class="page-anchor"></div></a></div>
-        <div class="section-fp" id="travelling-section"><a href="/pages/travel"><div class="page-anchor"></div></a></div>
+        <div class="section-fp" id="looks-section"><a href="/p/gallery-looks.html"><div class="page-anchor"></div></a></div>
+        <div class="section-fp" id="fashion-section"><a href="/p/gallery-fashion.html"><div class="page-anchor"></div></a></div>
+        <div class="section-fp" id="travelling-section"><a href="/p/gallery-travel.html"><div class="page-anchor"></div></a></div>
         <div class="section-fp fp-auto-height" id="about-section">
             <div class="container" id="footer">
                 <h2>Sju loves</h2>
@@ -366,12 +369,11 @@
                     <!-- INSTANSIVE WIDGET --><script src="//instansive.com/widget/js/instansive.js"></script><iframe src="//instansive.com/widgets/a90e40eb834c58223fab4160e9d69ec2b6f73afa.html" id="instansive_a90e40eb83" name="instansive_a90e40eb83"  scrolling="no" allowtransparency="true" class="instansive-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
                     <script>
                         // instansive steals the resize event, needs to be fixed
-                        instasize_fn = window.resize;
-                        window.resize = function() {
-                            artificialResponsiveness();
-                            instasize_fn();
-
-                        };
+                        // this is pretty ugly :D
+                        var d = setInterval(function() {
+                            window.onresize = artificialResponsiveness;
+                        }
+                        , 1000);
                     </script>
                 </div>
                 <div class="row">
@@ -500,7 +502,6 @@
 
                 </div>
                 <!-- end of photoswipe elements -->
-                <script src="https://rawgit.com/peterfabian/SjuLoves/master/SjuLoves_v3/public_html/js/flickr.fetch.js" type="text/javascript"></script>
                 <script src="https://rawgit.com/peterfabian/SjuLoves/master/SjuLoves_v3/public_html/js/photoswipe.after.html.js" type="text/javascript"></script>
             </section>
         </b:if>
