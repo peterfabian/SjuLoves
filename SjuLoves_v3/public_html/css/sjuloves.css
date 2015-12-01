@@ -71,7 +71,7 @@ body {
 }
     
 /* Big screen */
-@media (min-width: 850px) {
+@media (min-width: 851px) {
     #wrapper {
         padding-top: 6.7rem;
         background: rgb(245,245,245);
@@ -142,7 +142,7 @@ body {
     .navbar-heading a:hover {
         color: #33C3F0; }
     
-    .navbar-link:first-of-type {
+    .navbar-link-1 {
         margin-right: 16px;
     }
 }
