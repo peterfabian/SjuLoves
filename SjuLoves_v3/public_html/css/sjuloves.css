@@ -215,10 +215,10 @@ section {
     color: #222;
 }
 
-.widget Header {
+.widget.Header {
     display: none;
 }
 
-.widget Attribution {
+.widget.Attribution {
     display: none;
 }
