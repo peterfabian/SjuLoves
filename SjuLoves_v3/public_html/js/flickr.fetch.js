@@ -22,6 +22,8 @@ var artificialResponsiveness = function(e){
             // when resizing after the init, the scrollbar is already excluded
             new_width = Math.ceil(album_div.parentNode.clientWidth );
         }
+        // hm, that is strange, now the scrollbar subtraction is not needed?
+        new_width = Math.ceil(album_div.parentNode.clientWidth );
         var flickr_data = album_element_mapping[key].data_st;
         if (new_width !== album_element_mapping[key].last_width) {
             $(destination_id).css("width", new_width);

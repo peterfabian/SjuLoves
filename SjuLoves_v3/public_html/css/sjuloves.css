@@ -14,8 +14,8 @@ body {
     background: #333;
     }
 .gallery-container {
-    width: 98%; 
-    margin: 0 auto; 
+    /* width: 98%; */
+    margin: 0 16px;
     min-height: 100vh;
 }
 
@@ -135,12 +135,16 @@ body {
     .navbar-heading a {
         color: #222;
         text-decoration: none;
-        padding-left: 0.8rem;
+        padding-left: 16px;
         font-size: 3.0rem;
         }
 
     .navbar-heading a:hover {
         color: #33C3F0; }
+    
+    .navbar-link:first-of-type {
+        margin-right: 16px;
+    }
 }
         
 .mean-container .mean-nav {
@@ -193,6 +197,10 @@ body {
 
 .mean-container .mean-nav .navbar-heading {
     display: none;
+}
+
+.mean-container .mean-nav ul {
+    margin-left: 30px;
 }
 
 /* to make the menu-sliding work correctly for narrow screens */

@@ -53,7 +53,7 @@
 <body>
     <header>
   <nav class="navbar">
-      <div class="container">
+      
         <ul class="navbar-list">
             <li class="navbar-heading"><span><a href="index.html">Sju loves</a> / Gallery</span></li>
           
@@ -64,7 +64,7 @@
           <li class="navbar-item"><a class="navbar-link" href="pages_fashion.html">Fashion</a></li>
           
         </ul>
-      </div>
+
     </nav>
     </header>
     <section>
@@ -75,6 +75,9 @@
 
             $(document).ready(function(){
                     prepareFlickrAlbum("72157661130036921", "gallery", 25, 250);
+                    jQuery('header nav').meanmenu({
+                        meanScreenWidth: "850"
+                    });
             });
             </script>
         </div>
