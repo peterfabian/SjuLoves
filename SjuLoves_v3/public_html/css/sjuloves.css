@@ -116,6 +116,7 @@ body {
         line-height: 6.5rem;
         color: #222;
         font-weight: 200;
+        font-size: 2.0rem;
         }
     .navbar-link.active {
         color: #33C3F0; }
@@ -137,6 +138,7 @@ body {
         text-decoration: none;
         padding-left: 16px;
         font-size: 3.0rem;
+        font-weight: normal;
         }
 
     .navbar-heading a:hover {
@@ -221,4 +223,18 @@ section {
 
 .widget.Attribution {
     display: none;
+}
+
+.image-thumb:hover {
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+}
+
+.article-preview h3 {
+    font-size: 1.6rem;
+    letter-spacing: normal;
+    text-align: center;
 }
