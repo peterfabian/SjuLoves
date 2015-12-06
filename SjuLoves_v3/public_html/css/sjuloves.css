@@ -141,6 +141,7 @@ body {
         color: #222;
         text-decoration: none;
         padding-left: 16px;
+        font-weight: 400;
         }
 
     .navbar-heading a:hover {
@@ -154,8 +155,12 @@ body {
 .navbar-heading a.no-padding-sublink {
     font-size: 3.0rem;
     font-weight: normal;
-    padding: 0;
+    padding-left: 0;
     font-weight: 200;
+}
+
+.navbar-link.navbar-link-2 {
+    margin-right: 60px;
 }
 
 .mean-container .mean-nav {
@@ -242,4 +247,9 @@ section {
     font-size: 1.6rem;
     letter-spacing: normal;
     text-align: center;
+}
+
+.narrow {
+    letter-spacing: -7px;
+    margin-right: 4px;
 }
