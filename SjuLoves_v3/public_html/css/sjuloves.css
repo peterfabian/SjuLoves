@@ -22,7 +22,12 @@ body {
 #wrapper {
     padding-top: 0;
 }
-    
+
+.no-padding-sublink {
+    padding: 0;
+    font-weight: 200;
+}
+
 /* small phone */
 @media only screen and (min-width: 200px) {
     .navbar {
@@ -44,6 +49,7 @@ body {
         line-height: 6.5rem;
         font-size: 1.5rem;
         font-weight: 100; }
+    
 }
     
 /* large phone */
@@ -68,6 +74,7 @@ body {
         font-size: 1.5rem;
         font-weight: 100;
         }
+    
 }
     
 /* Big screen */
@@ -140,11 +147,6 @@ body {
         font-size: 3.0rem;
         font-weight: normal;
         }
-    
-    .no-padding-sublink {
-        padding: 0;
-        font-weight: 200;
-    }
 
     .navbar-heading a:hover {
         color: #33C3F0; }
