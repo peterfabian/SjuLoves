@@ -469,7 +469,7 @@
 										  <a href="#" onclick="switch_lang('en')">EN</a>/<a href="#" onclick="switch_lang('sk')">SK</a>
 										  </div>
 										<ul class="navbar-list">
-										  <li class="navbar-heading"><span><a href="/">Sju loves</a> // <a href="/index.html">Blog</a></span></li>
+										  <li class="navbar-heading"><span><a href="/">Sju loves</a> // <a href="/index.html" class="no-padding-sublink">Blog</a></span></li>
 										  <li class="navbar-item"><a class="navbar-link" href="/search/label/misc">Misc</a></li>
 										  <li class="navbar-item"><a class="navbar-link" href="/search/label/design">Design</a></li>
 										  <li class="navbar-item"><a class="navbar-link" href="/search/label/travel">Travel</a></li>

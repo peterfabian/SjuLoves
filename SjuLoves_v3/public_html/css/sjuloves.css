@@ -140,6 +140,11 @@ body {
         font-size: 3.0rem;
         font-weight: normal;
         }
+    
+    .no-padding-sublink {
+        padding: 0;
+        font-weight: 200;
+    }
 
     .navbar-heading a:hover {
         color: #33C3F0; }
