@@ -253,3 +253,66 @@ section {
     letter-spacing: -7px;
     margin-right: 4px;
 }
+
+/* Labels page style... */
+
+.mod-entry {
+    width: 260px;
+    float: left;
+    padding: 0px;
+    margin: 10px;
+    background: white;
+    height: 200px;
+    
+}
+
+.mod-entry a {
+display: block;
+height: 200px;
+}
+
+.mod-entry a:hover {
+  text-decoration: none;
+}
+
+.post-imgs {
+	height: 200px;
+}
+ 
+span.text-content span {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 18px;
+	text-decoration: none;
+	padding: 5px;
+} 
+ 
+div.mod-entry a:hover span.text-content {
+	opacity: 1;
+} 
+
+span.text-content {
+background: rgba(0,0,0,0.5);
+color: white;
+cursor: pointer;
+display: table;
+height: 100%;
+left: 0;
+position: relative;
+width: 100%;
+opacity: 0;
+-webkit-transition: opacity 500ms;
+-moz-transition: opacity 500ms;
+-o-transition: opacity 500ms;
+transition: opacity 500ms;
+} 
+
+
+.date-header {
+	display: none;
+}
+
+.gdlr-related-post-widget {
+	margin-top: 50px;
+}
