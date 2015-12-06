@@ -21,6 +21,7 @@ body {
 
 #wrapper {
     padding-top: 0;
+    background: rgb(245,245,245);
 }
 
 
@@ -77,7 +78,7 @@ body {
 @media (min-width: 851px) {
     #wrapper {
         padding-top: 6.7rem;
-        background: rgb(245,245,245);
+        
     }
     section {
     }
@@ -140,8 +141,6 @@ body {
         color: #222;
         text-decoration: none;
         padding-left: 16px;
-        font-size: 3.0rem;
-        font-weight: normal;
         }
 
     .navbar-heading a:hover {
@@ -152,7 +151,9 @@ body {
     }
 }
 
-.no-padding-sublink {
+.navbar-heading a.no-padding-sublink {
+    font-size: 3.0rem;
+    font-weight: normal;
     padding: 0;
     font-weight: 200;
 }
