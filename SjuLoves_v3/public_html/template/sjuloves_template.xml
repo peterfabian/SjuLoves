@@ -490,50 +490,50 @@
 			<b:widget id='Blog1' locked='true' title='Příspěvky na blogu' type='Blog'>
 				<b:includable id='main' var='top'>
 					<b:if cond='data:blog.canonicalUrl == data:blog.canonicalHomepageUrl + &quot;p/splash.html&quot;'>
-						<!-- quasi home page - splash screen for the blog -->
-						<div id="fullpage">
-							<div class="section-fp" id="looks-section"><a href="/p/gallery-looks.html"><div class="page-anchor"></div></a></div>
-							<div class="section-fp" id="fashion-section"><a href="/p/gallery-fashion.html"><div class="page-anchor"></div></a></div>
-							<div class="section-fp" id="travelling-section"><a href="/p/gallery-travel.html"><div class="page-anchor"></div></a></div>
-							<div class="section-fp fp-auto-height" id="about-section">
-								<div class="container" id="footer">
-									<h2>Sju loves</h2>
-									<div class="row">
-										<a href="http://instagram.com/peackapples/">@peackapples</a>
-										<!-- INSTANSIVE WIDGET --><script src="//instansive.com/widget/js/instansive.js"></script><iframe src="//instansive.com/widgets/a90e40eb834c58223fab4160e9d69ec2b6f73afa.html" id="instansive_a90e40eb83" name="instansive_a90e40eb83"  scrolling="no" allowtransparency="true" class="instansive-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
-										<script>
-											// instansive steals the resize event, needs to be fixed
-											// this is pretty ugly :D
-											var d = setInterval(function() {
-												window.onresize = artificialResponsiveness;
-											}
-											, 1000);
-										</script>
-									</div>
-									<div class="row">
-										<div class="one-third column">Fotka</div>
-										<div class="one-third column">Instagram</div>
-										<div class="one-third column">Facebook</div>
-									</div>
-								</div>
-							</div>
-						</div>
+                                            <!-- quasi home page - splash screen for the blog -->
+                                            <div id="fullpage">
+                                                <div class="section-fp" id="looks-section"><a href="/p/gallery-looks.html"><div class="page-anchor"></div></a></div>
+                                                <div class="section-fp" id="fashion-section"><a href="/p/gallery-fashion.html"><div class="page-anchor"></div></a></div>
+                                                <div class="section-fp" id="travelling-section"><a href="/p/gallery-travel.html"><div class="page-anchor"></div></a></div>
+                                                <div class="section-fp fp-auto-height" id="about-section">
+                                                    <div class="container" id="footer">
+                                                        <h2>Sju loves</h2>
+                                                        <div class="row">
+                                                                <a href="http://instagram.com/peackapples/">@peackapples</a>
+                                                                <!-- INSTANSIVE WIDGET --><script src="//instansive.com/widget/js/instansive.js"></script><iframe src="//instansive.com/widgets/a90e40eb834c58223fab4160e9d69ec2b6f73afa.html" id="instansive_a90e40eb83" name="instansive_a90e40eb83"  scrolling="no" allowtransparency="true" class="instansive-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
+                                                                <script>
+                                                                        // instansive steals the resize event, needs to be fixed
+                                                                        // this is pretty ugly :D
+                                                                        var d = setInterval(function() {
+                                                                                window.onresize = artificialResponsiveness;
+                                                                        }
+                                                                        , 1000);
+                                                                </script>
+                                                        </div>
+                                                        <div class="row">
+                                                                <div class="one-third column">Fotka</div>
+                                                                <div class="one-third column">Instagram</div>
+                                                                <div class="one-third column">Facebook</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 					<b:else/>
 
 						<b:if cond='data:blog.pageType == &quot;static_page&quot;'>
-							<!-- Gallery pages -->
-							<section>
-								<div id="wrapper">
-									<div class="gallery-container">
-										<div class="image-container" id="gallery" itemscope="" itemtype="http://schema.org/ImageGallery" data-pswp-uid="2">
-										</div>
-										<b:loop values='data:posts' var='post'>
-											<data:post.body/>
-										</b:loop>
-									</div>
-								</div>
-								<b:include name='sjuloves_footer' var='post'/>
-							</section>
+                                                    <!-- Gallery pages -->
+                                                    <section>
+                                                        <div id="wrapper">
+                                                            <div class="gallery-container">
+                                                                <div class="image-container" id="gallery" itemscope="" itemtype="http://schema.org/ImageGallery" data-pswp-uid="2">
+                                                                </div>
+                                                                <b:loop values='data:posts' var='post'>
+                                                                        <data:post.body/>
+                                                                </b:loop>
+                                                            </div>
+                                                        </div>
+                                                        <b:include name='sjuloves_footer' var='post'/>
+                                                    </section>
 						<b:else/>
                                                     
                                                     <b:if cond='data:navMessage'>
@@ -549,7 +549,31 @@
                                                                         </a>
                                                                     </div>
                                                                 </b:loop>
+                                                                <div class="row" />
+                                                                <div class='blog-pager' id='blog-pager'>
+                                                                        <b:if cond='data:newerPageUrl'>
+                                                                          <span id='blog-pager-newer-link'>
+                                                                          <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'><data:newerPageTitle/></a>
+                                                                          </span>
+                                                                        </b:if>
+
+                                                                        <b:if cond='data:olderPageUrl'>
+                                                                          <span id='blog-pager-older-link'>
+                                                                          <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'><data:olderPageTitle/></a>
+                                                                          </span>
+                                                                        </b:if>
+                                                                </div>
+
+
+                                                                <script type="text/javascript">
+                                                                        $(document).ready(function(){
+                                                                                jQuery('header nav').meanmenu({
+                                                                                                        meanScreenWidth: "850"
+                                                                                });
+                                                                        });
+                                                                </script>
                                                             </div>
+                                                            <div class="row" />
                                                             <b:include name='sjuloves_footer' var='post'/>
                                                         </section>
                                                     <b:else/>

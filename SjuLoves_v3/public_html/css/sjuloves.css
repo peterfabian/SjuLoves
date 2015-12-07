@@ -257,18 +257,20 @@ section {
 /* Labels page style... */
 
 .mod-entry {
-    width: 260px;
+    width: 500px;
     float: left;
     padding: 0px;
     margin: 10px;
     background: white;
-    height: 200px;
+    height: 400px;
     
 }
 
 .mod-entry a {
 display: block;
 height: 200px;
+color: white;
+text-decoration: none;
 }
 
 .mod-entry a:hover {
@@ -276,7 +278,7 @@ height: 200px;
 }
 
 .post-imgs {
-	height: 200px;
+    height: 400px;
 }
  
 span.text-content span {
