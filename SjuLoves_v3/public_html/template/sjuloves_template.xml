@@ -341,7 +341,7 @@
 			
 				<link rel="stylesheet" href="https://rawgit.com/peterfabian/SjuLoves/master/SjuLoves_v3/public_html/css/sjuloves.css" />
 			
-			<b:if cond='data:blog.url == data:blog.homepageUrl or data:blog.pageType == "index"'>
+			<b:if cond='data:blog.url == data:blog.homepageUrl or data:blog.pageType == "index" or data:blog.pageType == "item"'>
 				<!-- blog index -->
 				<style type="text/css">
 
@@ -360,7 +360,7 @@
 					.article-preview h1 {
 						text-align: center;
 						text-transform: uppercase;
-						font-size: 2.1rem;
+						font-size: 1.9rem;
 						line-height: 4rem;
 						letter-spacing: 3px;
                                                 margin-bottom: 0;
@@ -416,7 +416,17 @@
 					  }
 
 				  </style>
-				  
+				  <script>
+                                    var switch_lang = function(lang_code) {
+                                        if (lang_code === 'sk') {
+                                            $(':lang(en)').css('display', 'none');
+                                        }
+                                        else {
+                                            $(':lang(sk)').css('display', 'none');
+                                        }
+                                        $(':lang(' + lang_code + ')').css('display', 'block');
+                                    };
+                                </script>
 			</b:if>
 		</b:if>
 	</head>
@@ -460,8 +470,8 @@
 								</nav>
 							<b:else/>
 						
-								<!-- blog index -->
-								<b:if cond='data:blog.url == data:blog.homepageUrl or data:blog.pageType == "index"'>
+								<!-- blog index or article -->
+								<b:if cond='data:blog.url == data:blog.homepageUrl or data:blog.pageType == "index" or data:blog.pageType == "item"'>
 									<nav class="navbar">
 										  <div class="lang-switch">
 										  <a href="#" onclick="switch_lang('en')">EN</a>/<a href="#" onclick="switch_lang('sk')">SK</a>
@@ -561,17 +571,9 @@
                                                                           </span>
                                                                         </b:if>
                                                                 </div>
-
-
-                                                                <script type="text/javascript">
-                                                                        $(document).ready(function(){
-                                                                                jQuery('header nav').meanmenu({
-                                                                                                        meanScreenWidth: "990"
-                                                                                });
-                                                                        });
-                                                                </script>
                                                             </div>
                                                             <div class="row" />
+                                                            <b:include name='sjuloves_mobile_menu' var='post'/>
                                                             <b:include name='sjuloves_footer' var='post'/>
                                                         </section>
                                                     <b:else/>
@@ -645,19 +647,56 @@
 												  </span>
 												</b:if>
 											</div>
-													
-											
-											<script type="text/javascript">
-												$(document).ready(function(){
-													jQuery('header nav').meanmenu({
-																meanScreenWidth: "990"
-													});
-												});
-											</script>
 										</div>
 									</div>
+                                                                        <b:include name='sjuloves_mobile_menu' var='post'/>
 									<b:include name='sjuloves_footer' var='post'/>
 								</section>
+                                                        <b:else/>
+                                                            <!-- it must be the individual post I guess -->
+                                                            <style>
+                                                                .blog-post {
+                                                                    background: #fff;
+                                                                    font-family: 'EB Garamond', serif;
+                                                                    padding: 2rem 0.5rem;
+                                                                    margin-top: 2rem;
+                                                                    margin-bottom: 2rem;
+                                                                    
+                                                                }
+                                                                
+                                                                
+                                                                .blog-post h3 {
+                                                                    letter-spacing: 1.5px;
+                                                                    text-align: center;
+                                                                    font-size: 1.9rem;
+                                                                }
+                                                                
+                                                                .blog-post h1 {
+                                                                    letter-spacing: 2px;
+                                                                    text-align: center;
+                                                                    font-size: 2.3rem;
+                                                                }
+                                                                
+                                                                .blog-post img {
+                                                                    width: 95%;
+                                                                }
+                                                            </style>
+                                                            <section>
+                                                                <div id="wrapper">
+                                                                    <b:loop values='data:posts' var='post'>
+                                                                        <div class='blog-post container'>
+                                                                            <h1><data:post.title/></h1>
+                                                                            <h3><data:post.dateHeader/></h3>
+                                                                            
+                                                                            
+                                                                            <data:post.body/>
+                                                                        </div>
+                                                                    </b:loop>
+                                                                    
+                                                                </div>
+                                                                <b:include name='sjuloves_mobile_menu' var='post'/>
+                                                                <b:include name='sjuloves_footer' var='post'/>
+                                                            </section>
 							</b:if>
                                                     </b:if>
 						</b:if>
@@ -799,6 +838,17 @@
 				<b:includable id='threaded_comments' var='post'>
 																threaded-comments
 				</b:includable>
+                                
+                                <b:includable id='sjuloves_mobile_menu'>
+                                    <script type="text/javascript">
+                                            $(document).ready(function(){
+                                                    jQuery('header nav').meanmenu({
+                                                                            meanScreenWidth: "990"
+                                                    });
+                                            });
+                                    </script>
+                                </b:includable>
+                            
 				<b:includable id='sjuloves_footer' var='post'>
 
                                     <div id="about-section">
