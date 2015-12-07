@@ -568,7 +568,7 @@
                                                                 <script type="text/javascript">
                                                                         $(document).ready(function(){
                                                                                 jQuery('header nav').meanmenu({
-                                                                                                        meanScreenWidth: "850"
+                                                                                                        meanScreenWidth: "990"
                                                                                 });
                                                                         });
                                                                 </script>
@@ -585,7 +585,7 @@
 										<div class="container">
 											<b:loop values='data:posts' var='post'>
 												<div class="article-preview">
-													<h1 class='date-header'><data:post.title/></h1>
+                                                                                                        <h1><a expr:href="data:post.url"><data:post.title/></a></h1>
 													<h3><data:post.dateHeader/></h3>
 													
 													<img expr:id='data:post.url + &quot;-top-image&quot;' src="" alt="Iceland" />
@@ -652,7 +652,7 @@
 											<script type="text/javascript">
 												$(document).ready(function(){
 													jQuery('header nav').meanmenu({
-																meanScreenWidth: "850"
+																meanScreenWidth: "990"
 													});
 												});
 											</script>
