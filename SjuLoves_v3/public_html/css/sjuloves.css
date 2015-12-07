@@ -319,7 +319,17 @@ transition: opacity 500ms;
 }
 /* EOF Labels page style... */
 
-.article-preview h1 a {
-    color: #222;
+.article-preview a {
+    color: #333;
     text-decoration: none;
+    -webkit-transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+    -ms-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
 }
+
+.article-preview a:hover {
+    color: #bbb;
+}
+
