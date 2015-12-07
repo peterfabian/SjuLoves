@@ -318,7 +318,7 @@ transition: opacity 500ms;
 }
 /* EOF Labels page style... */
 
-.article-preview a {
+.article-preview h1 a {
     color: #222;
     text-decoration: none;
 }
