@@ -350,7 +350,7 @@
 					}
 
 					:lang(sk) {
-						display: block;
+						display: initial;
 					}
 
 					.lang-switch {
@@ -424,7 +424,7 @@
                                         else {
                                             $(':lang(sk)').css('display', 'none');
                                         }
-                                        $(':lang(' + lang_code + ')').css('display', 'block');
+                                        $(':lang(' + lang_code + ')').css('display', 'initial');
                                     };
                                 </script>
 			</b:if>
