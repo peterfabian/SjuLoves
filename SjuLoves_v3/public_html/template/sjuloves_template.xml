@@ -358,7 +358,7 @@
                                         }
 
                                         .lang-switch {
-                                            float: left;
+                                            /*float: left;*/
                                         }
 
                                         .article .text {
@@ -425,7 +425,7 @@
 						  margin: 10px;
 						  margin-top: 20px;
 					  }
-					  #before-readmore {
+					  .before-readmore {
 						  clear: both;
 					  }
 
@@ -489,9 +489,6 @@
 								<!-- blog index or article -->
 								<b:if cond='data:blog.url == data:blog.homepageUrl or data:blog.pageType == "index" or data:blog.pageType == "item"'>
 									<nav class="navbar">
-										  <div class="lang-switch">
-										  <span class='lang_switch_button' onclick="switch_lang('en')">EN</span>/<span class='lang_switch_button' onclick="switch_lang('sk')">SK</span>
-										  </div>
 										<ul class="navbar-list">
 										  <li class="navbar-heading"><span><a href="/">Sju loves</a> <span class="narrow">//</span> <a href="/index.html" class="no-padding-sublink">Blog</a></span></li>
 										  <li class="navbar-item"><a class="navbar-link navbar-link-1" href="/p/gallery.html">Gallery</a></li>
@@ -644,7 +641,7 @@
 													</script>
 													
 													<br class="row" />
-													<div id="before-readmore"></div>
+													<div class="before-readmore"></div>
 													<!--div class="read-more" lang="sk"><a expr:href='data:post.url'>VIAC...</a></div-->
 													<div class="read-more"><a expr:href='data:post.url'>READ MORE</a></div>
 													<div id="after-readmore"></div>
@@ -873,7 +870,15 @@
 
                                     <div id="about-section">
                                             <div class="container" id="footer">
-                                                    <h2>Sju loves</h2>
+                                                    <div class="lang-switch">
+                                                        <span class='lang_switch_button' onclick="switch_lang('en')">English</span> / <span class='lang_switch_button' onclick="switch_lang('sk')">Slovensky</span>
+                                                    </div>
+                                                <div class='clear'></div>
+                                                <div class='row'>
+                                                    <div class='one-third column'>About</div>
+                                                    <div class='one-third column'>PR</div>
+                                                    <div class='one-third column'>Contact</div>
+                                                </div>
 
                                                             <a href="http://instagram.com/peackapples/">@peackapples</a>
                                                             <!-- INSTANSIVE WIDGET --><script src="//instansive.com/widget/js/instansive.js"></script><iframe src="//instansive.com/widgets/a90e40eb834c58223fab4160e9d69ec2b6f73afa.html" id="instansive_a90e40eb83" name="instansive_a90e40eb83"  scrolling="no" allowtransparency="true" class="instansive-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
