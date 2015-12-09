@@ -52,11 +52,11 @@
   <link rel="stylesheet" href="css/sjuloves.css">
   <style type="text/css">
 
-:lang(en) {
+.lang_en {
     display: none;
 }
 
-:lang(sk) {
+.lang_sk {
     display: block;
 }
 
@@ -68,19 +68,22 @@
     -webkit-column-count: 2; /* Chrome, Safari, Opera */
     -moz-column-count: 2; /* Firefox */
     column-count: 2;
+    text-align: justify;
   }
-
+  .lang_switch_button:hover {
+      cursor: pointer;
+  }
   </style>
   <script>
       var switch_lang = function(lang_code) {
-          if (lang_code === 'sk') {
-              $(':lang(en)').css('display', 'none');
-          }
-          else {
-              $(':lang(sk)').css('display', 'none');
-          }
-          $(':lang(' + lang_code + ')').css('display', 'block');
-      };
+                                        if (lang_code === 'sk') {
+                                            $('.lang_en').css('display', 'none');
+                                        }
+                                        else {
+                                            $('.lang_sk').css('display', 'none');
+                                        }
+                                        $('.lang_' + lang_code ).css('display', 'block');
+                                    };
   </script>
 </head>
 <body>
@@ -88,7 +91,7 @@
   <nav class="navbar">
       <div class="container">
           <div class="lang-switch">
-          <a href="#" onclick="switch_lang('en')">EN</a>/<a href="#" onclick="switch_lang('sk')">SK</a>
+          <span class='lang_switch_button' onclick="switch_lang('en')">EN</span>/<span class='lang_switch_button' onclick="switch_lang('sk')">SK</span>
           </div>
         <ul class="navbar-list">
             
@@ -109,7 +112,8 @@
         <div class="article">
             <h1 lang="en">Hi, this is my article</h1>
             <h1 lang="sk">Nazdar, toto je môj člnoček.</h1>
-            <p class="text" lang="sk">Zdravím, v tento krásny jesenný deň! Včera sa netom prehnala smršť menom Socialne média sú klam a vy ste to už museli čítať asi 100-krát, áno, i ja sa k tomu idem práve vyjadriť.
+            <div class='lang_sk' lang='sk'>
+            <p class="text">Zdravím, v tento krásny jesenný deň! Včera sa netom prehnala smršť menom Socialne média sú klam a vy ste to už museli čítať asi 100-krát, áno, i ja sa k tomu idem práve vyjadriť.
 <br />
 <br />
 V prvom rade sa Vás pýtam - Myslíte si, že profily na Insta s desiatkami tisícov followerov sú vždy autentické? Že ich majitelia sú šťastní a bezstarostní ľudia, užívajúci si svoj nádherný život?
@@ -124,7 +128,9 @@ Teraz sa však re-edituje svoje posty a popisuje ich skutočné pozadie.
 "Prispievanie na Insta ma pohltilo. Nedokážem popísať, aký krásny je živoe bez mobilu, bez sociálnych sietí, bez porovnávania, alebo lajkov alebo followerov. Nie sme followeri, sme jedinečné bytosti plné lásky (ok, lepšie to preložiť neviem). Nikdy som sa necítila tak slobodne." hovorí vo svojom videu, na YT kanáli, ktorý už žial zmazala (rovnako ako Insta).
 Búrlivo roní slzy a vysvetľuje, ako so soaciálnymi siaťami začala v 12tich, v snahe dokázať sebe i svetu, že na to má a tež má a i ona môže byť tými modelkami a mediálne známymi bytosťami, ktoré toľko obdivovala.
             </p>
-            <p class="text" lang="en">
+            </div>
+            <div class='lang_en' lang='en'>
+            <p class="text">
                 Hey guys, even though you probably couldn't miss this story on the internet, I want to dedicate this article to the very hot topic - Social Media Is Not The Real Life.
 
 First of all, let me ask you a question - Do you think instagram posts from people with hundreds of thousands followers are all authentic? Do you think, that these people are happy, self confident, with a laid-back approach to life?
@@ -142,8 +148,10 @@ She was literally crying, and explaing us how she started with social media at t
 But then she realized, she was just consumed and overhelmed by it, doing only what paying companies wanted from her, and stopped being herself.
 That video has became extremely viral. And almost everyone says she's rigth, she's the one who managed to open her eyes and see how the world and social media really are (and aren't).
             </p>
+            </div>
             <div class="image-container" id="gallery" itemscope="" itemtype="http://schema.org/ImageGallery" data-pswp-uid="2"></div>
-            <p class="text" lang="sk">
+            <div class='lang_sk' lang='sk'>
+            <p class="text">
 Čo si o tom myslíte?
 No..ja by som povedala, že je to veľmi zaujímave, no viac než inšpiratívne to pokladám za ...patetické.
 V prvom rade je strašne smutné, keď niekto začne svoje pôsobenie na sociálnych sieťach pocitom, že musí nejak sebe i iným dokázať svoju vlastnú hodnotu.
@@ -158,7 +166,10 @@ Stále mám pocit, že takéto okázalé verejné manifestácie sily a odvahy s�
             <br />
 Pre viac info, prečítaje si viac na jej stránkach -- TU
             </p>
-            <p class="text" lang="en">
+            </div>
+            
+            <div class='lang_en' lang='en'>
+            <p class="text">
                 What do you think about that?
 Well.. I find it very interesting, but maybe more pathetic then inspiring.
 At first I need to say that starting an Insta/YouTube/Whatever-Social-Media-Channel with the intention to prove your value is just really sad.
@@ -167,6 +178,12 @@ I just cannot see the difference between being obssessed by posting how perfect 
 And, strangely enough, she's asking for donations in a Youtube video, because she lost her sponsors and stopped posting the paid content, thus losing her source of income..
 For more, click on her page -- here
             </p>      
+            
+            <div> some more text </div>
+            
+            </div>
+            
+            
         </div>
         
         

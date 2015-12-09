@@ -317,6 +317,9 @@
 				}
 			</style>
 		<b:else/>
+                                <script>
+                                    cookieChoices = {};
+                                </script>
 			
 				<!-- Justified.js -->
 				<link rel="stylesheet" href="https://rawgit.com/peterfabian/SjuLoves/master/SjuLoves_v3/public_html/css/jquery.justified.images.css"/>
@@ -345,17 +348,28 @@
 				<!-- blog index -->
 				<style type="text/css">
 
-					:lang(en) {
-						display: none;
-					}
+					
+                                        .lang_en {
+                                            display: none;
+                                        }
 
-					:lang(sk) {
-						display: initial;
-					}
+                                        .lang_sk {
+                                            display: block;
+                                        }
 
-					.lang-switch {
-						float: left;
-					}
+                                        .lang-switch {
+                                            float: left;
+                                        }
+
+                                        .article .text {
+                                          -webkit-column-count: 2; /* Chrome, Safari, Opera */
+                                          -moz-column-count: 2; /* Firefox */
+                                          column-count: 2;
+                                          text-align: justify;
+                                        }
+                                        .lang_switch_button:hover {
+                                            cursor: pointer;
+                                        }
 
 					.article-preview h1 {
 						text-align: center;
@@ -417,14 +431,16 @@
 
 				  </style>
 				  <script>
+                                    cookieChoices = {};
+                                    
                                     var switch_lang = function(lang_code) {
                                         if (lang_code === 'sk') {
-                                            $(':lang(en)').css('display', 'none');
+                                            $('.lang_en').css('display', 'none');
                                         }
                                         else {
-                                            $(':lang(sk)').css('display', 'none');
+                                            $('.lang_sk').css('display', 'none');
                                         }
-                                        $(':lang(' + lang_code + ')').css('display', 'initial');
+                                        $('.lang_' + lang_code ).css('display', 'block');
                                     };
                                 </script>
 			</b:if>
@@ -474,16 +490,16 @@
 								<b:if cond='data:blog.url == data:blog.homepageUrl or data:blog.pageType == "index" or data:blog.pageType == "item"'>
 									<nav class="navbar">
 										  <div class="lang-switch">
-										  <a href="#" onclick="switch_lang('en')">EN</a>/<a href="#" onclick="switch_lang('sk')">SK</a>
+										  <span class='lang_switch_button' onclick="switch_lang('en')">EN</span>/<span class='lang_switch_button' onclick="switch_lang('sk')">SK</span>
 										  </div>
 										<ul class="navbar-list">
 										  <li class="navbar-heading"><span><a href="/">Sju loves</a> <span class="narrow">//</span> <a href="/index.html" class="no-padding-sublink">Blog</a></span></li>
 										  <li class="navbar-item"><a class="navbar-link navbar-link-1" href="/p/gallery.html">Gallery</a></li>
-                                                                                  <li class="navbar-item"><a class="navbar-link navbar-link-2" href="/search/label/misc">Misc</a></li>
+                                                                                  <li class="navbar-item"><a class="navbar-link navbar-link-2" href="/search/label/Misc">Misc</a></li>
 										  <li class="navbar-item"><a class="navbar-link" href="/search/label/design">Design</a></li>
 										  <li class="navbar-item"><a class="navbar-link" href="/search/label/travel">Travel</a></li>
 										  <li class="navbar-item"><a class="navbar-link" href="/search/label/fashion">Fashion</a></li>
-										  <li class="navbar-item"><a class="navbar-link" href="/search/label/Siu%20nosí">Looks</a></li>
+										  <li class="navbar-item"><a class="navbar-link" href="search/label/Looks">Looks</a></li>
 										</ul>
 									</nav>
 								</b:if>
@@ -653,46 +669,50 @@
 									<b:include name='sjuloves_footer' var='post'/>
 								</section>
                                                         <b:else/>
-                                                            <!-- it must be the individual post I guess -->
+                                                            <!-- it must be the individual post, I guess... -->
                                                             <style>
                                                                 .blog-post {
                                                                     background: #fff;
                                                                     font-family: 'EB Garamond', serif;
                                                                     padding: 2rem 0.5rem;
-                                                                    margin-top: 2rem;
-                                                                    margin-bottom: 2rem;
-                                                                    
+                                                                    margin: 4rem 0px;
+                                                                    -webkit-font-smoothing: antialiased;
+                                                                    font-size: 1.6rem;
                                                                 }
                                                                 
                                                                 
                                                                 .blog-post h3 {
-                                                                    letter-spacing: 1.5px;
+                                                                    font-size: 1.6rem;
+                                                                    letter-spacing: 1.6px;
                                                                     text-align: center;
-                                                                    font-size: 1.9rem;
+                                                                    margin-bottom: 3rem;
                                                                 }
                                                                 
                                                                 .blog-post h1 {
-                                                                    letter-spacing: 2px;
                                                                     text-align: center;
-                                                                    font-size: 2.3rem;
+                                                                    text-transform: uppercase;
+                                                                    font-size: 1.9rem;
+                                                                    line-height: 4rem;
+                                                                    letter-spacing: 3px;
                                                                 }
                                                                 
                                                                 .blog-post img {
-                                                                    width: 95%;
+                                                                    width: 100%;
                                                                 }
                                                             </style>
                                                             <section>
                                                                 <div id="wrapper">
-                                                                    <b:loop values='data:posts' var='post'>
-                                                                        <div class='blog-post container'>
-                                                                            <h1><data:post.title/></h1>
-                                                                            <h3><data:post.dateHeader/></h3>
-                                                                            
-                                                                            
-                                                                            <data:post.body/>
-                                                                        </div>
-                                                                    </b:loop>
-                                                                    
+                                                                    <div class='container'>
+                                                                        <b:loop values='data:posts' var='post'>
+                                                                            <div class='article-preview'>
+                                                                                <h1><data:post.title/></h1>
+                                                                                <h3><data:post.dateHeader/></h3>
+
+
+                                                                                <data:post.body/>
+                                                                            </div>
+                                                                        </b:loop>
+                                                                    </div>
                                                                 </div>
                                                                 <b:include name='sjuloves_mobile_menu' var='post'/>
                                                                 <b:include name='sjuloves_footer' var='post'/>
