@@ -496,7 +496,7 @@
 										  <li class="navbar-item"><a class="navbar-link" href="/search/label/design">Design</a></li>
 										  <li class="navbar-item"><a class="navbar-link" href="/search/label/travel">Travel</a></li>
 										  <li class="navbar-item"><a class="navbar-link" href="/search/label/fashion">Fashion</a></li>
-										  <li class="navbar-item"><a class="navbar-link" href="search/label/Looks">Looks</a></li>
+										  <li class="navbar-item"><a class="navbar-link" href="/search/label/Looks">Looks</a></li>
 										</ul>
 									</nav>
 								</b:if>
@@ -631,8 +631,12 @@
 														} else {
 															if (perex_images.length > 0) {
 																article_img_top.src = perex_images[0].src;
+                                                                                                                                article_img_left.style.display='none';
+                                                                                                                                article_img_right.style.display='none';
 															} else {
-																//
+																article_img_top.style.display='none';
+                                                                                                                                article_img_left.style.display='none';
+                                                                                                                                article_img_right.style.display='none';
 															}
 														}
 														
