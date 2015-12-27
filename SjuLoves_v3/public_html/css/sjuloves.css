@@ -291,19 +291,21 @@ text-decoration: none;
 .mod-entry a:hover {
   text-decoration: none;
 }
-#related-posts.mod-entry {
+
+.post-imgs {
+    height: 400px;
+}
+
+#related-posts .mod-entry {
     width: 296px;
     height: 200px;
 }
 
-#related-posts.post-imgs {
+#related-posts .post-imgs {
     height: 200px;
     width: 296px;
 }
-.post-imgs {
-    height: 400px;
-}
- 
+
 span.text-content span {
 	display: table-cell;
 	text-align: center;
