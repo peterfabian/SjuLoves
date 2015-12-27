@@ -700,7 +700,187 @@
                                                                 .blog-post img {
                                                                     width: 100%;
                                                                 }
+                                                                
+                                                                #comments img {
+                                                                    width: auto;
+                                                                }
+                                                                
+                                                                .comment-reply-title {
+                                                                    text-align: left;
+                                                                }
+                                                                
+                                                                .datetime.secondary-text {
+                                                                    float: right;
+                                                                    margin-right: 5rem;
+                                                                }
+                                                                
+                                                                .item-control.blog-admin {
+                                                                    float: right;
+                                                                }
+                                                                
+                                                                .comment li {
+                                                                    margin-bottom: 20px;
+                                                                }
+                                                                
+                                                                .avatar-image-container {
+                                                                    float: left;
+                                                                    margin: 10px;
+                                                                }
+                                                                
+                                                                .comment-block {
+                                                                    float: left;
+                                                                    width: 92%;
+                                                                }
+                                                                li.comment {
+                                                                    margin-bottom: 3rem;
+                                                                }
+                                                                .comment-replybox-single:after,
+                                                                .comment-header:after,
+                                                                #related-posts:after{
+                                                                  content: "";
+                                                                  display: table;
+                                                                  clear: both; 
+                                                                }
+                                                                
+                                                                
+                                                                #postCommentSubmit {
+                                                                    background-color: #BEBEBE;
+                                                                    border: 1px solid #585858;
+                                                                    color: #fff;
+                                                                    font-weight: bold;
+                                                                    margin: 0 8px 6px 0;
+                                                                }
+                                                                #postCommentSubmit:hover {
+                                                                    background-color: #E3E3E3;
+                                                                    background-image: -webkit-gradient(linear,left top,left bottom,from(#CFCFCF),to(#DFDFDF));
+                                                                    background-image: -webkit-linear-gradient(top,#CFCFCF,#DFDFDF);
+                                                                    background-image: -moz-linear-gradient(top,#CFCFCF,#DFDFDF);
+                                                                    background-image: -ms-linear-gradient(top,#CFCFCF,#DFDFDF);
+                                                                    background-image: -o-linear-gradient(top,#CFCFCF,#DFDFDF);
+                                                                    background-image: linear-gradient(top,#CFCFCF,#DFDFDF);
+                                                                    border-color: #A2A2A2;
+                                                                }
                                                             </style>
+
+                                                            <script type='text/javascript'>
+                                                                        //<![CDATA[
+                                                                function stripTags(s, n) {
+                                                                    return s.replace(/<.*?>/ig, '').split(/\s+/).slice(0, n - 1).join(' ')
+                                                                }
+
+                                                                function readmore(a) {
+                                                                    var b = 42;
+                                                                    var p = document.getElementById(a);
+                                                                    imgtag = "";
+                                                                    ifrtag = "";
+                                                                    img = p.getElementsByTagName("img");
+                                                                    ifr = "" // p.getElementsByTagName("iframe") // video looks funny, just look for pics;
+                                                                    // if (ifr.length >= 1) ifrtag = '<div class="blog-content-wrapper" ><div class="gdlr-blog-thumbnail gdlr-video"><iframe width="750px" height="330px" src="' + ifr[0].src + '" frameborder="0" allowfullscreen style="display:block;"></iframe></div>';
+                                                                    //else 
+                                                                        if (img.length >= 1) imgtag = '<div class="blog-content-wrapper" ><div class="gdlr-blog-thumbnail"><a href="' + post_url + '"> <img src="' + img[0].src + '" width="750px" height="330px" /></a><div class="gdlr-sticky-banner">' + time + '</div></div>';
+                                                                    else imgtag = '<div class="blog-content-wrapper" >';
+                                                                    p.innerHTML = ifrtag + imgtag + '<div class="blog-content-inner-wrapper"><header class="post-header"><h3 class="gdlr-blog-title"><a href="' + post_url + '">' + post_title + '</a></h3><div class="gdlr-blog-info gdlr-title-font gdlr-info"><div class="blog-info blog-tag"><i class="icon-tags"></i> ' + label + '</div><div class="blog-info blog-author"><i class="icon-user"></i><a href="' + author_url + '" title="Posts by ' + author_name + '" rel="author">' + author_name + '</a></div><span class="gdlr-seperator">/</span><div class="blog-info blog-comments"><i class="icon-comments-alt"></i><a href="' + post_url + '" >' + comment + ' Comments</a></div><div class="clear"></div></div></header><!-- entry-header --><div class="gdlr-blog-content"><p>' + stripTags(p.innerHTML, b) + '</p><p> <a href="' + post_url + '" class="more-link"><span class="gdlr-button with-border excerpt-read-more">Read More</span></a></p></div></div> </div>'
+                                                                }
+                                                                rn = "<h5>No related post available</h5>";
+                                                                rcomment = "comments";
+                                                                rdisable = "disable comments";
+                                                                commentYN = "no";
+                                                                var dw = "";
+                                                                titles = new Array;
+                                                                titlesNum = 0;
+                                                                urls = new Array;
+                                                                timeR = new Array;
+                                                                thumb = new Array;
+                                                                commentsNum = new Array;
+                                                                comments = new Array;
+
+                                                                function related_results_labels(c) {
+                                                                    for (var b = 0; b < c.feed.entry.length; b++) {
+                                                                        var d = c.feed.entry[b];
+                                                                        titles[titlesNum] = d.title.$t;
+                                                                        for (var a = 0; a < d.link.length; a++) {
+                                                                            if ("thr$total" in d) commentsNum[titlesNum] = d.thr$total.$t + " " + rcomment;
+                                                                            else commentsNum[titlesNum] = rdisable;
+                                                                            if (d.link[a].rel == "alternate") {
+                                                                                urls[titlesNum] = d.link[a].href;
+                                                                                timeR[titlesNum] = d.published.$t;
+                                                                                                // if postText starts with <img>, find can't find it...
+                                                                                var postText = "<div>" + d.content.$t + "</div>";
+                                                                                var imgUrl = $(postText).find("img:first").attr("src")
+                                                                                if (imgUrl) thumb[titlesNum] = imgUrl;
+                                                                                else thumb[titlesNum] = "http://lh3.ggpht.com/--Z8SVBQZ4X8/TdDxPVMl_sI/AAAAAAAAAAA/jhAgjCpZtRQ/no-image.png";
+                                                                                titlesNum++;
+                                                                                break
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+
+                                                                function removeRelatedDuplicates() {
+                                                                    var b = new Array(0);
+                                                                    c = new Array(0);
+                                                                    e = new Array(0);
+                                                                    f = new Array(0);
+                                                                    g = new Array(0);
+                                                                    for (var a = 0; a < urls.length; a++)
+                                                                        if (!contains(b, urls[a])) {
+                                                                            b.length += 1;
+                                                                            b[b.length - 1] = urls[a];
+                                                                            c.length += 1;
+                                                                            c[c.length - 1] = titles[a];
+                                                                            e.length += 1;
+                                                                            e[e.length - 1] = timeR[a];
+                                                                            f.length += 1;
+                                                                            f[f.length - 1] = thumb[a];
+                                                                            g.length += 1;
+                                                                            g[g.length - 1] = commentsNum[a]
+                                                                        }
+                                                                    urls = b;
+                                                                    titles = c;
+                                                                    timeR = e;
+                                                                    thumb = f;
+                                                                    commentsNum = g
+                                                                }
+
+                                                                function contains(b, d) {
+                                                                    for (var c = 0; c < b.length; c++)
+                                                                        if (b[c] == d) return true;
+                                                                    return false
+                                                                }
+
+                                                                function printRelatedLabels(a) {
+                                                                    var y = a.indexOf("?m=0");
+                                                                    if (y != -1) a = a.replace(/\?m=0/g, "");
+                                                                    for (var b = 0; b < urls.length; b++)
+                                                                        if (urls[b].replace(/\.com\//, "").replace(/\.cz\//, "") == a.replace(/\.com\//, "").replace(/\.cz\//, "")) {
+                                                                            urls.splice(b, 1);
+                                                                            titles.splice(b, 1);
+                                                                            timeR.splice(b, 1);
+                                                                            thumb.splice(b, 1);
+                                                                            commentsNum.splice(b, 1)
+                                                                        }
+                                                                    var c = Math.floor((titles.length - 1) * Math.random());
+                                                                    var b = 0;
+                                                                    if (titles.length == 0) dw += rn;
+                                                                    else {
+                                                                        while (b < titles.length && b < 20 && b < 4) {
+                                                                            if (y != -1) urls[c] = urls[c] + "?m=0";
+                                                                            if (commentYN == "yes") comments[c] = " - " + commentsNum[c];
+                                                                            else comments[c] = "";
+                                                                            dw += '<div class="related-post-widget six columns"><div class="related-post-widget-thumbnail"><a href="' + urls[c] + '" ><img src="' + thumb[c].replace(/\/s72\-c/, "/s" + 250 + "") + '" alt="" width="180" height="180" /></a></div><div class="related-post-widget-content"><div class="related-post-widget-title"><a href="' + urls[c] + '" >' + titles[c] + '</a></div></div><div class="clear"></div></div>';
+                                                                            if (c < titles.length - 1) c++;
+                                                                            else c = 0;
+                                                                            b++
+                                                                        }
+                                                                    }
+                                                                    urls.splice(0, urls.length);
+                                                                    titles.splice(0, titles.length);
+                                                                    document.getElementById("related-posts").innerHTML = dw
+                                                                };
+                                                                
+                                                                //]]>
+                                                            </script>
+
                                                             <section>
                                                                 <div id="wrapper">
                                                                     <div class='container'>
@@ -711,7 +891,27 @@
 
 
                                                                                 <data:post.body/>
+                                                                                
+                                                                                <div id='related-posts'>
+                                                                                    <b:loop values='data:post.labels' var='label'>
+                                                                                    <script expr:src='&quot;/feeds/posts/default/-/&quot; + data:label.name + &quot;?alt=json-in-script&amp;callback=related_results_labels&quot;' type='text/javascript'/>
+                                                                                    </b:loop>
+                                                                                    <script type='text/javascript'>
+                                                                                    removeRelatedDuplicates();printRelatedLabels(&#39;<data:post.url/>&#39;);
+                                                                                    </script>
+                                                                                </div>
+                                                                                
+                                                                                
+                                                                                <!-- comments -->
+                                                                                <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+                                                                                    <b:include data='post' name='comment_picker'/>
+                                                                                </b:if>
+                                                                                <b:if cond='data:blog.pageType == &quot;item&quot;'>
+                                                                                    <b:include data='post' name='comment_picker'/>
+                                                                                </b:if>
+                                                                                <!-- end of comments -->
                                                                             </div>
+                                                                            
                                                                         </b:loop>
                                                                     </div>
                                                                 </div>
@@ -738,28 +938,182 @@
 						<data:post.backlinksLabel/>
 					</h4>
 				</b:includable>
-				<b:includable id='comment-form' var='post'>
-					<div class='comment-form'>
-						<a name='comment-form'/>
-																	Comment form
+				
+                                <b:includable id='comment-form' var='post'>
+                                    <div class='comment-form'><div class='comment-respond' id='respond'>
+                                      <a name='comment-form'/>
+                                      <b:if cond='data:mobile'>
 
-					</div>
-				</b:includable>
-				<b:includable id='commentDeleteIcon' var='comment'>
-																Comment delete icon
-				</b:includable>
-				<b:includable id='comment_count_picker' var='post'>
-																comment_count_picker
-				</b:includable>
-				<b:includable id='comment_picker' var='post'>
-																comment_picker
-				</b:includable>
-				<b:includable id='comments' var='post'>
-					<div class='comments' id='comments'>
-						<a name='comments'/>
-																	comments
-					</div>
-				</b:includable>
+                                        <p><data:blogCommentMessage/></p>
+                                        <data:blogTeamBlogMessage/>
+                                        <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
+                                        <iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' frameborder='0' height='410' id='comment-editor' name='comment-editor' src='' style='display: none' width='100%'/>
+                                      <b:else/>
+
+                                        <p><data:blogCommentMessage/></p>
+                                        <data:blogTeamBlogMessage/>
+                                        <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
+                                        <iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' frameborder='0' height='410' id='comment-editor' name='comment-editor' src='' width='100%'/>
+                                      </b:if>
+                                      <data:post.friendConnectJs/>
+                                      <data:post.cmtfpIframe/>
+                                      <script type='text/javascript'>
+                                        BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;, &#39;<data:post.communityId/>&#39;);
+                                      </script>
+                                      </div></div>
+                                  </b:includable>
+                                  <b:includable id='commentDeleteIcon' var='comment'>
+                                    <span expr:class='&quot;item-control &quot; + data:comment.adminClass'>
+                                      <b:if cond='data:showCmtPopup'>
+                                        <div class='goog-toggle-button'>
+                                          <div class='goog-inline-block comment-action-icon'/>
+                                        </div>
+                                      <b:else/>
+                                        <a class='comment-delete' expr:href='data:comment.deleteUrl' expr:title='data:top.deleteCommentMsg'>
+                                          <img src='//www.blogger.com/img/icon_delete13.gif'/>
+                                        </a>
+                                      </b:if>
+                                    </span>
+                                  </b:includable>
+                                  <b:includable id='comment_count_picker' var='post'>
+                                    <b:if cond='data:post.commentSource == 1'>
+                                      <span class='cmt_count_iframe_holder' expr:data-count='data:post.numComments' expr:data-onclick='data:post.addCommentOnclick' expr:data-post-url='data:post.url' expr:data-url='data:post.canonicalUrl'>
+                                      </span>
+                                    <b:else/>
+                                      <a class='comment-link' expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'>
+                                        <data:post.commentLabelFull/>:
+                                      </a>
+                                    </b:if>
+                                  </b:includable>
+                                  <b:includable id='comment_picker' var='post'>
+                                    <b:if cond='data:post.commentSource == 1'>
+                                      <b:include data='post' name='iframe_comments'/>
+                                    <b:else/>
+                                      <b:if cond='data:post.showThreadedComments'>
+                                        <b:include data='post' name='threaded_comments'/>
+                                      <b:else/>
+                                        <b:include data='post' name='comments'/>
+                                      </b:if>
+                                    </b:if>
+                                  </b:includable>
+                                  <b:includable id='comments' var='post'>
+                                    <div class='comments' id='comments'><div class='comment-respond' id='respond'>
+                                      <a name='comments'/>
+                                      <b:if cond='data:post.allowComments'>
+                                        <h3 class='comment-reply-title'><data:post.commentLabelFull/>:</h3>
+
+                                        <b:if cond='data:post.commentPagingRequired'>
+                                          <span class='paging-control-container'>
+                                            <b:if cond='data:post.hasOlderLinks'>
+                                              <a expr:class='data:post.oldLinkClass' expr:href='data:post.oldestLinkUrl'><data:post.oldestLinkText/></a>
+                                                &#160;
+                                              <a expr:class='data:post.oldLinkClass' expr:href='data:post.olderLinkUrl'><data:post.olderLinkText/></a>
+                                                &#160;
+                                            </b:if>
+
+                                            <data:post.commentRangeText/>
+
+                                            <b:if cond='data:post.hasNewerLinks'>
+                                              &#160;
+                                              <a expr:class='data:post.newLinkClass' expr:href='data:post.newerLinkUrl'><data:post.newerLinkText/></a>
+                                              &#160;
+                                              <a expr:class='data:post.newLinkClass' expr:href='data:post.newestLinkUrl'><data:post.newestLinkText/></a>
+                                            </b:if>
+                                          </span>
+                                        </b:if>
+
+                                        <div expr:id='data:widget.instanceId + &quot;_comments-block-wrapper&quot;'>
+                                          <dl expr:class='data:post.avatarIndentClass' id='comments-block'>
+                                            <b:loop values='data:post.comments' var='comment'>
+                                              <dt expr:class='&quot;comment-author &quot; + data:comment.authorClass' expr:id='data:comment.anchorName'>
+                                                <b:if cond='data:comment.favicon'>
+                                                  <img expr:src='data:comment.favicon' height='16px' style='margin-bottom:-2px;' width='16px'/>
+                                                </b:if>
+                                                <a expr:name='data:comment.anchorName'/>
+                                                <b:if cond='data:blog.enabledCommentProfileImages'>
+                                                  <data:comment.authorAvatarImage/>
+                                                </b:if>
+                                                <b:if cond='data:comment.authorUrl'>
+                                                  <a expr:href='data:comment.authorUrl' rel='nofollow'><data:comment.author/></a>
+                                                <b:else/>
+                                                  <data:comment.author/>
+                                                </b:if>
+                                                <data:commentPostedByMsg/>
+                                              </dt>
+                                              <dd class='comment-body' expr:id='data:widget.instanceId + data:comment.cmtBodyIdPostfix'>
+                                                <b:if cond='data:comment.isDeleted'>
+                                                  <span class='deleted-comment'><data:comment.body/></span>
+                                                <b:else/>
+                                                  <p>
+                                                    <data:comment.body/>
+                                                  </p>
+                                                </b:if>
+                                              </dd>
+                                              <dd class='comment-footer'>
+                                                <span class='comment-timestamp'>
+                                                  <a expr:href='data:comment.url' title='comment permalink'>
+                                                    <data:comment.timestamp/>
+                                                  </a>
+                                                  <b:include data='comment' name='commentDeleteIcon'/>
+                                                </span>
+                                              </dd>
+                                            </b:loop>
+                                          </dl>
+                                        </div>
+
+                                        <b:if cond='data:post.commentPagingRequired'>
+                                          <span class='paging-control-container'>
+                                            <a expr:class='data:post.oldLinkClass' expr:href='data:post.oldestLinkUrl'>
+                                              <data:post.oldestLinkText/>
+                                            </a>
+                                            <a expr:class='data:post.oldLinkClass' expr:href='data:post.olderLinkUrl'>
+                                              <data:post.olderLinkText/>
+                                            </a>
+                                            &#160;
+                                            <data:post.commentRangeText/>
+                                            &#160;
+                                            <a expr:class='data:post.newLinkClass' expr:href='data:post.newerLinkUrl'>
+                                              <data:post.newerLinkText/>
+                                            </a>
+                                            <a expr:class='data:post.newLinkClass' expr:href='data:post.newestLinkUrl'>
+                                              <data:post.newestLinkText/>
+                                            </a>
+                                          </span>
+                                        </b:if>
+
+                                        <p class='comment-footer'>
+                                          <b:if cond='data:post.embedCommentForm'>
+                                            <b:if cond='data:post.allowNewComments'>
+                                              <b:include data='post' name='comment-form'/>
+                                            <b:else/>
+                                              <data:post.noNewCommentsText/>
+                                            </b:if>
+                                          <b:else/>
+                                            <b:if cond='data:post.allowComments'>
+                                              <a expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'><data:postCommentMsg/></a>
+                                            </b:if>
+                                          </b:if>
+
+                                        </p>
+                                      </b:if>
+                                      <b:if cond='data:showCmtPopup'>
+                                        <div id='comment-popup'>
+                                          <iframe allowtransparency='true' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+                                          </iframe>
+                                        </div>
+                                      </b:if>
+
+                                      <div id='backlinks-container'>
+                                      <div expr:id='data:widget.instanceId + &quot;_backlinks-container&quot;'>
+                                         <b:if cond='data:post.showBacklinks'>
+                                           <b:include data='post' name='backlinks'/>
+                                         </b:if>
+                                      </div>
+                                      </div>
+                                      </div></div>
+                                  </b:includable>
+ 
+                            
 				<b:includable id='feedLinks'>
 																Feed links
 				</b:includable>
@@ -767,8 +1121,16 @@
 																feedLinksBody
 				</b:includable>
 				<b:includable id='iframe_comments' var='post'>
-																iframe_comments
-				</b:includable>
+                                    <b:if cond='data:post.allowIframeComments'>
+                                      <script expr:src='data:post.iframeCommentSrc' type='text/javascript'/>
+                                      <div class='cmt_iframe_holder' expr:data-href='data:post.canonicalUrl' expr:data-viewtype='data:post.viewType'/>
+
+                                      <b:if cond='data:post.embedCommentForm == &quot;false&quot;'>
+                                        <a expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'><data:postCommentMsg/></a>
+                                      </b:if>
+                                    </b:if>
+                                </b:includable>
+
 				<b:includable id='mobile-index-post' var='post'>
 																mobile-index-post
 				</b:includable>
@@ -850,15 +1212,246 @@
 					</b:if>
 				</b:includable>
 				<b:includable id='threaded-comment-form' var='post'>
-																threaded-comment-form:
+                                    <div class='comment-form'>
+                                      <a name='comment-form'/>
+                                      <b:if cond='data:mobile'>
+                                        <p><data:blogCommentMessage/></p>
+                                        <data:blogTeamBlogMessage/>
+                                        <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
+                                        <iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' frameborder='0' height='410' id='comment-editor' name='comment-editor' src='' style='display: none' width='100%'/>
+                                      <b:else/>
+                                        <p><data:blogCommentMessage/></p>
+                                        <data:blogTeamBlogMessage/>
+                                        <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
+                                        <iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' frameborder='0' height='410' id='comment-editor' name='comment-editor' src='' width='100%'/>
+                                      </b:if>
+                                      <data:post.friendConnectJs/>
+                                      <data:post.cmtfpIframe/>
+                                      <script type='text/javascript'>
+                                        BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
+                                      </script>
+                                    </div>
+                                  </b:includable>
+                                      <b:includable id='threaded_comment_js' var='post'>
+                                    <script async='async' expr:src='data:post.commentSrc' type='text/javascript'/>
 
-				</b:includable>
-				<b:includable id='threaded_comment_js' var='post'>
-																threaded-comment-js
-				</b:includable>
-				<b:includable id='threaded_comments' var='post'>
-																threaded-comments
-				</b:includable>
+                                    <script type='text/javascript'>
+                                      (function() {
+                                        var items = <data:post.commentJso/>;
+                                        var msgs = <data:post.commentMsgs/>;
+                                        var config = <data:post.commentConfig/>;
+
+                                  // <![CDATA[
+                                        var cursor = null;
+                                        if (items && items.length > 0) {
+                                          cursor = parseInt(items[items.length - 1].timestamp) + 1;
+                                        }
+
+                                        var bodyFromEntry = function(entry) {
+                                          if (entry.gd$extendedProperty) {
+                                            for (var k in entry.gd$extendedProperty) {
+                                              if (entry.gd$extendedProperty[k].name == 'blogger.contentRemoved') {
+                                                return '<span class="deleted-comment">' + entry.content.$t + '</span>';
+                                              }
+                                            }
+                                          }
+                                          return entry.content.$t;
+                                        }
+
+                                        var parse = function(data) {
+                                          cursor = null;
+                                          var comments = [];
+                                          if (data && data.feed && data.feed.entry) {
+                                            for (var i = 0, entry; entry = data.feed.entry[i]; i++) {
+                                              var comment = {};
+                                              // comment ID, parsed out of the original id format
+                                              var id = /blog-(\d+).post-(\d+)/.exec(entry.id.$t);
+                                              comment.id = id ? id[2] : null;
+                                              comment.body = bodyFromEntry(entry);
+                                              comment.timestamp = Date.parse(entry.published.$t) + '';
+                                              if (entry.author && entry.author.constructor === Array) {
+                                                var auth = entry.author[0];
+                                                if (auth) {
+                                                  comment.author = {
+                                                    name: (auth.name ? auth.name.$t : undefined),
+                                                    profileUrl: (auth.uri ? auth.uri.$t : undefined),
+                                                    avatarUrl: (auth.gd$image ? auth.gd$image.src : undefined)
+                                                  };
+                                                }
+                                              }
+                                              if (entry.link) {
+                                                if (entry.link[2]) {
+                                                  comment.link = comment.permalink = entry.link[2].href;
+                                                }
+                                                if (entry.link[3]) {
+                                                  var pid = /.*comments\/default\/(\d+)\?.*/.exec(entry.link[3].href);
+                                                  if (pid && pid[1]) {
+                                                    comment.parentId = pid[1];
+                                                  }
+                                                }
+                                              }
+                                              comment.deleteclass = 'item-control blog-admin';
+                                              if (entry.gd$extendedProperty) {
+                                                for (var k in entry.gd$extendedProperty) {
+                                                  if (entry.gd$extendedProperty[k].name == 'blogger.itemClass') {
+                                                    comment.deleteclass += ' ' + entry.gd$extendedProperty[k].value;
+                                                  } else if (entry.gd$extendedProperty[k].name == 'blogger.displayTime') {
+                                                    comment.displayTime = entry.gd$extendedProperty[k].value;
+                                                  }
+                                                }
+                                              }
+                                              comments.push(comment);
+                                            }
+                                          }
+                                          return comments;
+                                        };
+
+                                        var paginator = function(callback) {
+                                          if (hasMore()) {
+                                            var url = config.feed + '?alt=json&v=2&orderby=published&reverse=false&max-results=50';
+                                            if (cursor) {
+                                              url += '&published-min=' + new Date(cursor).toISOString();
+                                            }
+                                            window.bloggercomments = function(data) {
+                                              var parsed = parse(data);
+                                              cursor = parsed.length < 50 ? null
+                                                  : parseInt(parsed[parsed.length - 1].timestamp) + 1
+                                              callback(parsed);
+                                              window.bloggercomments = null;
+                                            }
+                                            url += '&callback=bloggercomments';
+                                            var script = document.createElement('script');
+                                            script.type = 'text/javascript';
+                                            script.src = url;
+                                            document.getElementsByTagName('head')[0].appendChild(script);
+                                          }
+                                        };
+                                        var hasMore = function() {
+                                          return !!cursor;
+                                        };
+                                        var getMeta = function(key, comment) {
+                                          if ('iswriter' == key) {
+                                            var matches = !!comment.author
+                                                && comment.author.name == config.authorName
+                                                && comment.author.profileUrl == config.authorUrl;
+                                            return matches ? 'true' : '';
+                                          } else if ('deletelink' == key) {
+                                            return config.baseUri + '/delete-comment.g?blogID='
+                                                 + config.blogId + '&postID=' + comment.id;
+                                          } else if ('deleteclass' == key) {
+                                            return comment.deleteclass;
+                                          }
+                                          return '';
+                                        };
+
+                                        var replybox = null;
+                                        var replyUrlParts = null;
+                                        var replyParent = undefined;
+
+                                        var onReply = function(commentId, domId) {
+                                          if (replybox == null) {
+                                            // lazily cache replybox, and adjust to suit this style:
+                                            replybox = document.getElementById('comment-editor');
+                                            if (replybox != null) {
+                                              replybox.height = '250px';
+                                              replybox.style.display = 'block';
+                                              replyUrlParts = replybox.src.split('#');
+                                            }
+                                          }
+                                          if (replybox && (commentId !== replyParent)) {
+                                            document.getElementById(domId).insertBefore(replybox, null);
+                                            replybox.src = replyUrlParts[0]
+                                                + (commentId ? '&parentID=' + commentId : '')
+                                                + '#' + replyUrlParts[1];
+                                            replyParent = commentId;
+                                          }
+                                        };
+
+                                        var hash = (window.location.hash || '#').substring(1);
+                                        var startThread, targetComment;
+                                        if (/^comment-form_/.test(hash)) {
+                                          startThread = hash.substring('comment-form_'.length);
+                                        } else if (/^c[0-9]+$/.test(hash)) {
+                                          targetComment = hash.substring(1);
+                                        }
+
+                                        // Configure commenting API:
+                                        var configJso = {
+                                          'maxDepth': config.maxThreadDepth
+                                        };
+                                        var provider = {
+                                          'id': config.postId,
+                                          'data': items,
+                                          'loadNext': paginator,
+                                          'hasMore': hasMore,
+                                          'getMeta': getMeta,
+                                          'onReply': onReply,
+                                          'rendered': true,
+                                          'initComment': targetComment,
+                                          'initReplyThread': startThread,
+                                          'config': configJso,
+                                          'messages': msgs
+                                        };
+
+                                        var render = function() {
+                                          if (window.goog && window.goog.comments) {
+                                            var holder = document.getElementById('comment-holder');
+                                            window.goog.comments.render(holder, provider);
+                                          }
+                                        };
+
+                                        // render now, or queue to render when library loads:
+                                        if (window.goog && window.goog.comments) {
+                                          render();
+                                        } else {
+                                          window.goog = window.goog || {};
+                                          window.goog.comments = window.goog.comments || {};
+                                          window.goog.comments.loadQueue = window.goog.comments.loadQueue || [];
+                                          window.goog.comments.loadQueue.push(render);
+                                        }
+                                      })();
+                                  // ]]>
+                                    </script>
+                                  </b:includable>
+                                      <b:includable id='threaded_comments' var='post'>
+                                    <div class='comments' id='comments'><div class='comment-respond' id='respond'>
+                                      <a name='comments'/>
+                                      <h3 class='comment-reply-title'><data:post.commentLabelFull/>:</h3>
+
+                                      <div class='comments-content'>
+                                        <b:if cond='data:post.embedCommentForm'>
+                                          <b:include data='post' name='threaded_comment_js'/>
+                                        </b:if>
+                                        <div id='comment-holder'>
+                                           <data:post.commentHtml/>
+                                        </div>
+                                      </div>
+
+                                      <p class='comment-footer'>
+                                        <b:if cond='data:post.allowNewComments'>
+                                          <b:include data='post' name='threaded-comment-form'/>
+                                        <b:else/>
+                                          <data:post.noNewCommentsText/>
+                                        </b:if>
+                                      </p>
+
+                                      <b:if cond='data:showCmtPopup'>
+                                        <div id='comment-popup'>
+                                          <iframe allowtransparency='true' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+                                          </iframe>
+                                        </div>
+                                      </b:if>
+
+                                      <div id='backlinks-container'>
+                                      <div expr:id='data:widget.instanceId + &quot;_backlinks-container&quot;'>
+                                         <b:if cond='data:post.showBacklinks'>
+                                           <b:include data='post' name='backlinks'/>
+                                         </b:if>
+                                      </div>
+                                      </div>
+                                    </div></div>
+                                  </b:includable>
+ 
                                 
                                 <b:includable id='sjuloves_mobile_menu'>
                                     <script type="text/javascript">

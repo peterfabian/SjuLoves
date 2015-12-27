@@ -24,6 +24,22 @@ body {
     background: rgb(245,245,245);
 }
 
+.blog-pager-older-link {
+    float: right;
+}
+
+.blog-pager {
+    font-weight: 200;
+    margin-bottom: 3.5rem;
+}
+
+.blog-pager a {
+    color: #222;
+}
+
+a:hover {
+    color: #BBB;
+}
 
 /* small phone */
 @media only screen and (min-width: 200px) {
