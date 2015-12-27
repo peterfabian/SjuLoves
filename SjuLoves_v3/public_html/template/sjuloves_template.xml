@@ -359,6 +359,29 @@
 
                                         .lang-switch {
                                             /*float: left;*/
+                                            text-transform: uppercase;
+                                            letter-spacing: .2rem;
+                                            margin-right: 35px;
+                                            text-decoration: none;
+                                            line-height: 6.5rem;
+                                            color: #222;
+                                            font-weight: 200;
+                                            font-size: 2.0rem;
+                                        }
+                                        
+                                        #about-section a {
+                                            text-transform: uppercase;
+                                            letter-spacing: .2rem;
+                                            margin-right: 35px;
+                                            text-decoration: none;
+                                            line-height: 6.5rem;
+                                            color: #222;
+                                            font-weight: 200;
+                                            font-size: 2.0rem;
+                                        }
+                                        
+                                        #about-section a:hover {
+                                            color: #BBB;
                                         }
 
                                         .article .text {
@@ -428,6 +451,13 @@
 					  .before-readmore {
 						  clear: both;
 					  }
+                                          
+                                          .blog-pager-inner:after {
+                                              content: "";
+                                              display: table;
+                                              clear: both; 
+                                          }
+
 
 				  </style>
 				  <script>
@@ -652,17 +682,19 @@
 												</div>
 											</b:loop>
 											<div class='blog-pager' id='blog-pager'>
-												<b:if cond='data:newerPageUrl'>
-												  <span id='blog-pager-newer-link'>
-												  <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'><data:newerPageTitle/></a>
-												  </span>
-												</b:if>
+                                                                                            <div class="blog-pager-inner">
+                                                                                                <b:if cond='data:newerPageUrl'>
+                                                                                                  <span id='blog-pager-newer-link'>
+                                                                                                  <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'><data:newerPageTitle/></a>
+                                                                                                  </span>
+                                                                                                </b:if>
 
-												<b:if cond='data:olderPageUrl'>
-												  <span id='blog-pager-older-link'>
-												  <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'><data:olderPageTitle/></a>
-												  </span>
-												</b:if>
+                                                                                                <b:if cond='data:olderPageUrl'>
+                                                                                                  <span id='blog-pager-older-link'>
+                                                                                                  <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'><data:olderPageTitle/></a>
+                                                                                                  </span>
+                                                                                                </b:if>
+                                                                                            </div>
 											</div>
 										</div>
 									</div>
@@ -710,12 +742,14 @@
                                                                 }
                                                                 
                                                                 .datetime.secondary-text {
-                                                                    float: right;
-                                                                    margin-right: 5rem;
+                                                                    /*float: right;
+                                                                    margin-right: 5rem;*/
+                                                                    display: none;
                                                                 }
                                                                 
                                                                 .item-control.blog-admin {
-                                                                    float: right;
+                                                                    /*float: right;*/
+                                                                    display: none;
                                                                 }
                                                                 
                                                                 .comment li {
@@ -734,6 +768,15 @@
                                                                 li.comment {
                                                                     margin-bottom: 3rem;
                                                                 }
+                                                                
+                                                                #comments ol {
+                                                                    list-style-type: none;
+                                                                }
+                                                                
+                                                                .comment-respond {
+                                                                    margin-top: 20px;
+                                                                }
+                                                                
                                                                 .comment-replybox-single:after,
                                                                 .comment-header:after,
                                                                 #related-posts:after{
@@ -768,24 +811,11 @@
                                                                     return s.replace(/<.*?>/ig, '').split(/\s+/).slice(0, n - 1).join(' ')
                                                                 }
 
-                                                                function readmore(a) {
-                                                                    var b = 42;
-                                                                    var p = document.getElementById(a);
-                                                                    imgtag = "";
-                                                                    ifrtag = "";
-                                                                    img = p.getElementsByTagName("img");
-                                                                    ifr = "" // p.getElementsByTagName("iframe") // video looks funny, just look for pics;
-                                                                    // if (ifr.length >= 1) ifrtag = '<div class="blog-content-wrapper" ><div class="gdlr-blog-thumbnail gdlr-video"><iframe width="750px" height="330px" src="' + ifr[0].src + '" frameborder="0" allowfullscreen style="display:block;"></iframe></div>';
-                                                                    //else 
-                                                                        if (img.length >= 1) imgtag = '<div class="blog-content-wrapper" ><div class="gdlr-blog-thumbnail"><a href="' + post_url + '"> <img src="' + img[0].src + '" width="750px" height="330px" /></a><div class="gdlr-sticky-banner">' + time + '</div></div>';
-                                                                    else imgtag = '<div class="blog-content-wrapper" >';
-                                                                    p.innerHTML = ifrtag + imgtag + '<div class="blog-content-inner-wrapper"><header class="post-header"><h3 class="gdlr-blog-title"><a href="' + post_url + '">' + post_title + '</a></h3><div class="gdlr-blog-info gdlr-title-font gdlr-info"><div class="blog-info blog-tag"><i class="icon-tags"></i> ' + label + '</div><div class="blog-info blog-author"><i class="icon-user"></i><a href="' + author_url + '" title="Posts by ' + author_name + '" rel="author">' + author_name + '</a></div><span class="gdlr-seperator">/</span><div class="blog-info blog-comments"><i class="icon-comments-alt"></i><a href="' + post_url + '" >' + comment + ' Comments</a></div><div class="clear"></div></div></header><!-- entry-header --><div class="gdlr-blog-content"><p>' + stripTags(p.innerHTML, b) + '</p><p> <a href="' + post_url + '" class="more-link"><span class="gdlr-button with-border excerpt-read-more">Read More</span></a></p></div></div> </div>'
-                                                                }
                                                                 rn = "<h5>No related post available</h5>";
                                                                 rcomment = "comments";
                                                                 rdisable = "disable comments";
                                                                 commentYN = "no";
-                                                                var dw = "";
+                                                                var dw = "<h3 class='related-post-title'>Čekni aj toto:</h3>";
                                                                 titles = new Array;
                                                                 titlesNum = 0;
                                                                 urls = new Array;
@@ -793,6 +823,17 @@
                                                                 thumb = new Array;
                                                                 commentsNum = new Array;
                                                                 comments = new Array;
+                                                                ignoreThis = new Array;
+
+                                                                function currently_displayed_article() {
+                                                                        // Return one displayed article's URL from its title
+                                                                        try {
+                                                                         return document.getElementsByClassName('timestamp-link')[0].getAttribute('name');
+                                                                        } catch(err) {
+                                                                            return "";
+                                                                        }
+                                                                        
+                                                                }
 
                                                                 function related_results_labels(c) {
                                                                     for (var b = 0; b < c.feed.entry.length; b++) {
@@ -802,15 +843,30 @@
                                                                             if ("thr$total" in d) commentsNum[titlesNum] = d.thr$total.$t + " " + rcomment;
                                                                             else commentsNum[titlesNum] = rdisable;
                                                                             if (d.link[a].rel == "alternate") {
+                                                                                                if (d.link[a].href == currently_displayed_article()){
+                                                                                                        ignoreThis[titlesNum] = true;
+                                                                                                } else {
+                                                                                                        ignoreThis[titlesNum] = false;
+                                                                                                }
+
                                                                                 urls[titlesNum] = d.link[a].href;
                                                                                 timeR[titlesNum] = d.published.$t;
                                                                                                 // if postText starts with <img>, find can't find it...
-                                                                                var postText = "<div>" + d.content.$t + "</div>";
-                                                                                var imgUrl = $(postText).find("img:first").attr("src")
-                                                                                if (imgUrl) thumb[titlesNum] = imgUrl;
+                                                                                var postText = d.content.$t;
+
+                                                                                                var imgUrlPos = postText.indexOf("<img "); //$(postText).find("img:first").attr("src") // -- this loads all the large images from the other blog, so just use str and regex
+                                                                                                console.log(imgUrlPos);
+                                                                                                var imgUrl;
+                                                                                                if (imgUrlPos > -1) {
+                                                                                                        // get the first href after the position of the img src
+                                                                                                        var postSubText = postText.substring(imgUrlPos);
+                                                                                                        imgUrl = postSubText.match(/http[s]?:\/\/[^"]*\.[jpegnif]{3,4}" /i);
+                                                                                                }
+
+                                                                                if (imgUrl) thumb[titlesNum] = imgUrl[0].substring(0, imgUrl[0].length-2);
                                                                                 else thumb[titlesNum] = "http://lh3.ggpht.com/--Z8SVBQZ4X8/TdDxPVMl_sI/AAAAAAAAAAA/jhAgjCpZtRQ/no-image.png";
                                                                                 titlesNum++;
-                                                                                break
+                                                                                break;
                                                                             }
                                                                         }
                                                                     }
@@ -823,7 +879,8 @@
                                                                     f = new Array(0);
                                                                     g = new Array(0);
                                                                     for (var a = 0; a < urls.length; a++)
-                                                                        if (!contains(b, urls[a])) {
+                                                                        if (!contains(b, urls[a])
+                                                                                        && !ignoreThis[a]) {
                                                                             b.length += 1;
                                                                             b[b.length - 1] = urls[a];
                                                                             c.length += 1;
@@ -833,13 +890,13 @@
                                                                             f.length += 1;
                                                                             f[f.length - 1] = thumb[a];
                                                                             g.length += 1;
-                                                                            g[g.length - 1] = commentsNum[a]
+                                                                            g[g.length - 1] = commentsNum[a];
                                                                         }
                                                                     urls = b;
                                                                     titles = c;
                                                                     timeR = e;
                                                                     thumb = f;
-                                                                    commentsNum = g
+                                                                    commentsNum = g;
                                                                 }
 
                                                                 function contains(b, d) {
@@ -848,36 +905,41 @@
                                                                     return false
                                                                 }
 
+                                                                related_displayed = false;
+
                                                                 function printRelatedLabels(a) {
-                                                                    var y = a.indexOf("?m=0");
-                                                                    if (y != -1) a = a.replace(/\?m=0/g, "");
-                                                                    for (var b = 0; b < urls.length; b++)
-                                                                        if (urls[b].replace(/\.com\//, "").replace(/\.cz\//, "") == a.replace(/\.com\//, "").replace(/\.cz\//, "")) {
-                                                                            urls.splice(b, 1);
-                                                                            titles.splice(b, 1);
-                                                                            timeR.splice(b, 1);
-                                                                            thumb.splice(b, 1);
-                                                                            commentsNum.splice(b, 1)
-                                                                        }
-                                                                    var c = Math.floor((titles.length - 1) * Math.random());
-                                                                    var b = 0;
-                                                                    if (titles.length == 0) dw += rn;
-                                                                    else {
-                                                                        while (b < titles.length && b < 20 && b < 4) {
-                                                                            if (y != -1) urls[c] = urls[c] + "?m=0";
-                                                                            if (commentYN == "yes") comments[c] = " - " + commentsNum[c];
-                                                                            else comments[c] = "";
-                                                                            dw += '<div class="related-post-widget six columns"><div class="related-post-widget-thumbnail"><a href="' + urls[c] + '" ><img src="' + thumb[c].replace(/\/s72\-c/, "/s" + 250 + "") + '" alt="" width="180" height="180" /></a></div><div class="related-post-widget-content"><div class="related-post-widget-title"><a href="' + urls[c] + '" >' + titles[c] + '</a></div></div><div class="clear"></div></div>';
-                                                                            if (c < titles.length - 1) c++;
-                                                                            else c = 0;
-                                                                            b++
-                                                                        }
-                                                                    }
-                                                                    urls.splice(0, urls.length);
-                                                                    titles.splice(0, titles.length);
-                                                                    document.getElementById("related-posts").innerHTML = dw
+                                                                        if (!related_displayed){
+                                                                                var y = a.indexOf("?m=0");
+                                                                                if (y != -1) a = a.replace(/\?m=0/g, "");
+                                                                                for (var b = 0; b < urls.length; b++)
+                                                                                        if (urls[b] == a) {
+                                                                                                urls.splice(b, 1);
+                                                                                                titles.splice(b, 1);
+                                                                                                timeR.splice(b, 1);
+                                                                                                thumb.splice(b, 1);
+                                                                                                commentsNum.splice(b, 1)
+                                                                                        }
+
+                                                                                var b = 0;
+                                                                                var no_of_related = 6
+                                                                                if (titles.length == 0) {
+                                                                                        dw += rn;
+                                                                                } else {
+                                                                                        while (b < titles.length && b < no_of_related) {
+                                                                                                if (y != -1) urls[b] = urls[b] + "?m=0";
+                                                                                                if (commentYN == "yes") comments[b] = " - " + commentsNum[b];
+                                                                                                else comments[b] = "";
+                                                                                                dw += '<div class="mod-entry"><a href="' + urls[b] + '"><div class="post-imgs" style="background: url(\'' + thumb[b] + '\'); background-size: cover; background-position: center top"><span class="text-content"><span>' + titles[b] + '</span></span></div></a></div>'
+                                                                                                b++
+                                                                                        }
+                                                                                }
+                                                                                urls.splice(0, urls.length);
+                                                                                titles.splice(0, titles.length);
+                                                                                document.getElementById("related-posts").innerHTML = dw
+                                                                                related_displayed = true;
+                                                                        };
                                                                 };
-                                                                
+
                                                                 //]]>
                                                             </script>
 
@@ -885,6 +947,11 @@
                                                                 <div id="wrapper">
                                                                     <div class='container'>
                                                                         <b:loop values='data:posts' var='post'>
+                                                                            <meta expr:content='data:post.canonicalUrl' itemprop='url'/>
+                                                                            <a class='timestamp-link' expr:name='data:post.url' rel='bookmark' title='permanent link'>
+
+                                                                            </a>
+
                                                                             <div class='article-preview'>
                                                                                 <h1><data:post.title/></h1>
                                                                                 <h3><data:post.dateHeader/></h3>
@@ -892,13 +959,17 @@
 
                                                                                 <data:post.body/>
                                                                                 
-                                                                                <div id='related-posts'>
-                                                                                    <b:loop values='data:post.labels' var='label'>
-                                                                                    <script expr:src='&quot;/feeds/posts/default/-/&quot; + data:label.name + &quot;?alt=json-in-script&amp;callback=related_results_labels&quot;' type='text/javascript'/>
-                                                                                    </b:loop>
-                                                                                    <script type='text/javascript'>
-                                                                                    removeRelatedDuplicates();printRelatedLabels(&#39;<data:post.url/>&#39;);
-                                                                                    </script>
+                                                                                <!--cekni aj toto-->
+                                                                                <div class='gdlr-related-post-widget'>
+                                                                                    <div id='related-posts'>
+                                                                                        <!-- http://www.peackapples.com/feeds/posts/default?alt=json-in-script&max-results=7&callback=related_results_labels -->
+                                                                                        <script expr:src='&quot;/feeds/posts/default/?alt=json-in-script&amp;callback=related_results_labels&amp;max-results=7&quot;' type='text/javascript'/>
+
+                                                                                        <script type='text/javascript'>
+                                                                                                removeRelatedDuplicates();printRelatedLabels(document.URL);
+                                                                                        </script>
+                                                                                    </div>
+                                                                                    <div class='clear'/>
                                                                                 </div>
                                                                                 
                                                                                 

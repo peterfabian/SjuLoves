@@ -6,12 +6,12 @@ body {
 .navbar {
     display: none; }
 #about-section {
-    background: #333;
+    background: #fff;
     color: #E1E1E1;
     }
 #footer {/* This is for some reason needed bc of skeleton I think... */
     padding-bottom: 60px;
-    background: #333;
+    background: #fff;
     }
 .gallery-container {
     /* width: 98%; */
@@ -291,7 +291,15 @@ text-decoration: none;
 .mod-entry a:hover {
   text-decoration: none;
 }
+#related-posts.mod-entry {
+    width: 296px;
+    height: 200px;
+}
 
+#related-posts.post-imgs {
+    height: 200px;
+    width: 296px;
+}
 .post-imgs {
     height: 400px;
 }
