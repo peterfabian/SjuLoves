@@ -1583,6 +1583,24 @@
                                                 
                                                 <div class="one-third column">
                                                     Email newsletter <span class="narrow">//</span>
+                                                    <div class='widget-content'>
+                                                        <div class='follow-by-email-inner'>
+                                                          <form action='https://feedburner.google.com/fb/a/mailverify' expr:onsubmit='&quot;window.open(\&quot;https://feedburner.google.com/fb/a/mailverify?uri=&quot; + data:feedPath + &quot;\&quot;, \&quot;popupwindow\&quot;, \&quot;scrollbars=yes,width=550,height=520\&quot;); return true&quot;' method='post' target='popupwindow'>
+                                                            <table width='100%'>
+                                                              <tr>
+                                                                <td>
+                                                                  <input class='follow-by-email-address' name='email' placeholder='Email address...' type='text'/>
+                                                                </td>
+                                                                <td width='64px'>
+                                                                  <input class='follow-by-email-submit' type='submit' value='Submit'/>
+                                                                </td>
+                                                              </tr>
+                                                            </table>
+                                                            <input expr:value='data:feedPath' name='uri' type='hidden'/>
+                                                            <input name='loc' type='hidden' value='en_US'/>
+                                                          </form>
+                                                        </div>
+                                                    </div>
                                                 </div>
 
                                                 <div class='clear'></div>
@@ -1677,23 +1695,6 @@
 
 				</b:includable>
 			</b:widget>
-                        <!--b:widget id='Followers1' locked='false' title='' type='Followers'>
-                            <b:includable id='main'>
-                          <b:if cond='data:title != &quot;&quot; and data:codeSnippet != &quot;&quot;'>
-                            <h2 class='title'><data:title/></h2>
-                          </b:if>
-                          <div class='widget-content'>
-                            <div expr:id='data:widget.instanceId + &quot;-wrapper&quot;'>
-                              <b:if cond='data:codeSnippet != &quot;&quot;'>
-                                <div style='margin-right:2px;'>
-                                  <data:codeSnippet/>
-                                </div>
-                              </b:if>
-                            </div>
-                            <b:include name='quickedit'/>
-                          </div>
-                        </b:includable>
-                          </b:widget-->
 		</b:section>
 
 	</body>
