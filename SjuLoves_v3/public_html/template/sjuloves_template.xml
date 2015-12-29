@@ -130,8 +130,8 @@
 
 
 				#about-section {
-					background: #333;
-					color: #E1E1E1;
+					background: #fff;
+					color: #222;
 				}
 
 				#footer {
@@ -397,7 +397,7 @@
 					.article-preview h1 {
 						text-align: center;
 						text-transform: uppercase;
-						font-size: 1.9rem;
+						font-size: 2.4rem;
 						line-height: 4rem;
 						letter-spacing: 3px;
                                                 margin-bottom: 0;
@@ -407,7 +407,6 @@
 						-webkit-column-count: 2; /* Chrome, Safari, Opera */
 						-moz-column-count: 2; /* Firefox */
 						column-count: 2;
-
 						font-size: 1.6rem;
 					  }
 
@@ -523,7 +522,8 @@
 										  <li class="navbar-heading"><span><a href="/">Sju loves</a> <span class="narrow">//</span> <a href="/index.html" class="no-padding-sublink">Blog</a></span></li>
 										  <li class="navbar-item"><a class="navbar-link navbar-link-1" href="/p/gallery.html">Gallery</a></li>
                                                                                   <li class="navbar-item"><a class="navbar-link navbar-link-2" href="/search/label/Misc">Misc</a></li>
-										  <li class="navbar-item"><a class="navbar-link" href="/search/label/design">Design</a></li>
+										  <li class="navbar-item"><a class="navbar-link" href="/search/label/Beauty">Beauty</a></li>
+                                                                                  <li class="navbar-item"><a class="navbar-link" href="/search/label/design">Design</a></li>
 										  <li class="navbar-item"><a class="navbar-link" href="/search/label/travel">Travel</a></li>
 										  <li class="navbar-item"><a class="navbar-link" href="/search/label/fashion">Fashion</a></li>
 										  <li class="navbar-item"><a class="navbar-link" href="/search/label/Looks">Looks</a></li>
@@ -622,11 +622,14 @@
                                                     <b:else/>
                                                         <!-- for index page, use regular layout for [nonlabel page] posts -->
 							<b:if cond='data:blog.url == data:blog.homepageUrl or data:blog.pageType == "index"'>
-                                                            <!-- blog index -->
-								<section>
+                                                            <section id="index-blog">
+                                                                    <!-- blog index -->
 									<div id="wrapper">
 										<div class="container">
 											<b:loop values='data:posts' var='post'>
+                                                                                            <meta expr:content='data:post.canonicalUrl' itemprop='url'/>
+                                                                                            <a class='timestamp-link' expr:name='data:post.url' rel='bookmark' title='permanent link'></a>
+
 												<div class="article-preview">
                                                                                                         <h1><a expr:href="data:post.url"><data:post.title/></a></h1>
 													<h3><data:post.dateHeader/></h3>
@@ -644,32 +647,45 @@
 													</div>
 													
 													<script type="text/javascript">
-														var post_body = document.getElementById("<data:post.url/>-hidden-post");
-														var article_img_top = document.getElementById("<data:post.url/>-top-image");
-														var article_img_left = document.getElementById("<data:post.url/>-left-image");
-														var article_img_right = document.getElementById("<data:post.url/>-right-image");
-														
-														var perex_images = post_body.getElementsByClassName("perex-images");
-														if (!(perex_images.length > 2)) {
-															perex_images = post_body.getElementsByTagName('img');
-														}
-														
-														if (perex_images.length > 2) {
-																article_img_left.src = perex_images[1].src;
-																article_img_right.src = perex_images[2].src;
-																article_img_top.src = perex_images[0].src;
-														} else {
-															if (perex_images.length > 0) {
-																article_img_top.src = perex_images[0].src;
-                                                                                                                                article_img_left.style.display='none';
-                                                                                                                                article_img_right.style.display='none';
-															} else {
-																article_img_top.style.display='none';
-                                                                                                                                article_img_left.style.display='none';
-                                                                                                                                article_img_right.style.display='none';
-															}
-														}
-														
+                                                                                                                var preview_position = document.URL.indexOf("post-preview")
+                                                                                                                if (preview_position !== -1){
+                                                                                                                    // this is a preview
+                                                                                                                    var post_body = document.getElementById("<data:post.url/>-hidden-post");
+                                                                                                                    post_body.setAttribute("style", "display: block;")
+                                                                                                                    var article_img_top = document.getElementById("<data:post.url/>-top-image");
+                                                                                                                    var article_img_left = document.getElementById("<data:post.url/>-left-image");
+                                                                                                                    var article_img_right = document.getElementById("<data:post.url/>-right-image");
+                                                                                                                    article_img_top.style.display='none';
+                                                                                                                    article_img_left.style.display='none';
+                                                                                                                    article_img_right.style.display='none';
+                                                                                                                }
+                                                                                                                else {
+                                                                                                                    var post_body = document.getElementById("<data:post.url/>-hidden-post");
+                                                                                                                    var article_img_top = document.getElementById("<data:post.url/>-top-image");
+                                                                                                                    var article_img_left = document.getElementById("<data:post.url/>-left-image");
+                                                                                                                    var article_img_right = document.getElementById("<data:post.url/>-right-image");
+
+                                                                                                                    var perex_images = post_body.getElementsByClassName("perex-images");
+                                                                                                                    if (!(perex_images.length > 2)) {
+                                                                                                                            perex_images = post_body.getElementsByTagName('img');
+                                                                                                                    }
+
+                                                                                                                    if (perex_images.length > 2) {
+                                                                                                                                    article_img_left.src = perex_images[1].src;
+                                                                                                                                    article_img_right.src = perex_images[2].src;
+                                                                                                                                    article_img_top.src = perex_images[0].src;
+                                                                                                                    } else {
+                                                                                                                            if (perex_images.length > 0) {
+                                                                                                                                    article_img_top.src = perex_images[0].src;
+                                                                                                                                    article_img_left.style.display='none';
+                                                                                                                                    article_img_right.style.display='none';
+                                                                                                                            } else {
+                                                                                                                                    article_img_top.style.display='none';
+                                                                                                                                    article_img_left.style.display='none';
+                                                                                                                                    article_img_right.style.display='none';
+                                                                                                                            }
+                                                                                                                    }
+                                                                                                                }
 														//<![CDATA[
 														//]]>
 													</script>
@@ -1538,14 +1554,35 @@
 
                                     <div id="about-section">
                                             <div class="container" id="footer">
-                                                    <div class="lang-switch">
-                                                        <span class='lang_switch_button' onclick="switch_lang('en')">English</span> / <span class='lang_switch_button' onclick="switch_lang('sk')">Slovensky</span>
-                                                    </div>
-                                                <div class='clear'></div>
+                                                
                                                 <div class='row'>
-                                                    <div class='one-third column'>About</div>
-                                                    <div class='one-third column'>PR</div>
-                                                    <div class='one-third column'>Contact</div>
+                                                
+                                                <div class="one-third column">
+                                                    <div class="lang-switch">
+                                                        <ul>
+                                                            Choose language <span class="narrow">//</span>
+                                                        <li><span class='lang_switch_button' onclick="switch_lang('en')">English</span></li>
+                                                        <li><span class='lang_switch_button' onclick="switch_lang('sk')">Slovensky</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="one-third column">
+                                                    <ul>
+                                                        About <span class="narrow">//</span>
+                                                        <li class='about-section'><a href="">About me</a></li>
+                                                        <li class='about-section'><a href="">Press</a></li>
+                                                        <li class='about-section'><a href="">Contact</a></li>
+                                                    </ul>
+                                                </div>
+                                                
+                                                <div class="one-third column">
+                                                    Email newsletter <span class="narrow">//</span>
+                                                </div>
+
+                                                <div class='clear'></div>
+                                                
+                                                    
                                                 </div>
 
                                                             <a href="http://instagram.com/peackapples/">@peackapples</a>
@@ -1558,11 +1595,11 @@
                                                                     , 1000);
                                                             </script>
 
-                                                    <div class="row">
+                                                    <!--div class="row">
                                                             <div class="one-third column">Fotka</div>
                                                             <div class="one-third column">Instagram</div>
                                                             <div class="one-third column">Facebook</div>
-                                                    </div>
+                                                    </div-->
                                             </div>
                                     </div>
 
