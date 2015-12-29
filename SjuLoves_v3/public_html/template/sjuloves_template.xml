@@ -344,7 +344,7 @@
 			
 				<link rel="stylesheet" href="https://rawgit.com/peterfabian/SjuLoves/master/SjuLoves_v3/public_html/css/sjuloves.css" />
 			
-			<b:if cond='data:blog.url == data:blog.homepageUrl or data:blog.pageType == "index" or data:blog.pageType == "item"'>
+			<!--b:if cond='data:blog.url == data:blog.homepageUrl or data:blog.pageType == "index" or data:blog.pageType == "item"'-->
 				<!-- blog index -->
 				<style type="text/css">
 
@@ -472,7 +472,7 @@
                                         $('.lang_' + lang_code ).css('display', 'block');
                                     };
                                 </script>
-			</b:if>
+			<!--/b:if-->
 		</b:if>
 	</head>
 
@@ -497,10 +497,12 @@
 								</div>
 							</div>
 						<b:else/>
-
-							<b:if cond='data:blog.pageType == &quot;static_page&quot;'>
-								<!-- Gallery pages -->
+                                                    <b:if cond='(data:blog.canonicalUrl == data:blog.canonicalHomepageUrl + &quot;p/gallery.html&quot;) 
+                                                          or (data:blog.canonicalUrl == data:blog.canonicalHomepageUrl + &quot;p/gallery-misc.html&quot;)
+                                                          or (data:blog.canonicalUrl == data:blog.canonicalHomepageUrl + &quot;p/gallery-design.html&quot;)
+                                                          or (data:blog.canonicalUrl == data:blog.canonicalHomepageUrl + &quot;p/gallery-travel.html&quot;)'>
 								<nav class="navbar">
+                                                                    <!-- Gallery pages -->
                                                                     <ul class="navbar-list">
                                                                           <li class="navbar-heading"><span><a href="/">Sju loves</a> <span class="narrow">//</span> Gallery</span></li>
 
@@ -513,25 +515,45 @@
 
                                                                     </ul>
 								</nav>
-							<b:else/>
-						
-								<!-- blog index or article -->
-								<b:if cond='data:blog.url == data:blog.homepageUrl or data:blog.pageType == "index" or data:blog.pageType == "item"'>
-									<nav class="navbar">
-										<ul class="navbar-list">
-										  <li class="navbar-heading"><span><a href="/">Sju loves</a> <span class="narrow">//</span> <a href="/index.html" class="no-padding-sublink">Blog</a></span></li>
-										  <li class="navbar-item"><a class="navbar-link navbar-link-1" href="/p/gallery.html">Gallery</a></li>
-                                                                                  <li class="navbar-item"><a class="navbar-link navbar-link-2" href="/search/label/Misc">Misc</a></li>
-										  <li class="navbar-item"><a class="navbar-link" href="/search/label/Beauty">Beauty</a></li>
-                                                                                  <li class="navbar-item"><a class="navbar-link" href="/search/label/design">Design</a></li>
-										  <li class="navbar-item"><a class="navbar-link" href="/search/label/travel">Travel</a></li>
-										  <li class="navbar-item"><a class="navbar-link" href="/search/label/fashion">Fashion</a></li>
-										  <li class="navbar-item"><a class="navbar-link" href="/search/label/Looks">Looks</a></li>
-										</ul>
-									</nav>
-								</b:if>
-							</b:if>
-						</b:if>
+                                                    
+                                                    <b:else/>
+                                                        <!-- it looks like blogger can only handle certain length of condition -->
+                                                        <!-- TODO: include a common menu above and here -->
+                                                        <b:if cond='(data:blog.canonicalUrl == data:blog.canonicalHomepageUrl + &quot;p/gallery-fashion.html&quot;)
+                                                                or (data:blog.canonicalUrl == data:blog.canonicalHomepageUrl + &quot;p/gallery-looks.html&quot;)'>
+                                                            <nav class="navbar">
+                                                                <!-- Gallery pages 2 -->
+                                                                <ul class="navbar-list">
+                                                                      <li class="navbar-heading"><span><a href="/">Sju loves</a> <span class="narrow">//</span> Gallery</span></li>
+
+                                                                      <li class="navbar-item"><a class="navbar-link navbar-link-1" href="/index.html">Blog</a></li>
+                                                                      <li class="navbar-item"><a class="navbar-link navbar-link-2" href="/p/gallery-misc.html">Misc</a></li>
+                                                                      <li class="navbar-item"><a class="navbar-link" href="/p/gallery-design.html">Design</a></li>
+                                                                      <li class="navbar-item"><a class="navbar-link" href="/p/gallery-travel.html">Travel</a></li>
+                                                                      <li class="navbar-item"><a class="navbar-link" href="/p/gallery-fashion.html">Fashion</a></li>
+                                                                      <li class="navbar-item"><a class="navbar-link" href="/p/gallery-looks.html">Looks</a></li>
+
+                                                                </ul>
+                                                            </nav>
+                                                        <b:else/>
+                                                            <!-- blog index or article -->
+                                                            <b:if cond='data:blog.pageType == &quot;static_page&quot; or data:blog.url == data:blog.homepageUrl or data:blog.pageType == "index" or data:blog.pageType == "item"'>
+                                                                    <nav class="navbar">
+                                                                            <ul class="navbar-list">
+                                                                              <li class="navbar-heading"><span><a href="/">Sju loves</a> <span class="narrow">//</span> <a href="/index.html" class="no-padding-sublink">Blog</a></span></li>
+                                                                              <li class="navbar-item"><a class="navbar-link navbar-link-1" href="/p/gallery.html">Gallery</a></li>
+                                                                              <li class="navbar-item"><a class="navbar-link navbar-link-2" href="/search/label/misc">Misc</a></li>
+                                                                              <li class="navbar-item"><a class="navbar-link" href="/search/label/Beauty">Beauty</a></li>
+                                                                              <li class="navbar-item"><a class="navbar-link" href="/search/label/design">Design</a></li>
+                                                                              <li class="navbar-item"><a class="navbar-link" href="/search/label/travel">Travel</a></li>
+                                                                              <li class="navbar-item"><a class="navbar-link" href="/search/label/fashion">Fashion</a></li>
+                                                                              <li class="navbar-item"><a class="navbar-link" href="/search/label/Looks">Looks</a></li>
+                                                                            </ul>
+                                                                    </nav>
+                                                            </b:if>
+                                                        </b:if>
+                                                    </b:if>
+                                                </b:if>
 					</header>
 				</b:includable>
 			</b:widget>
@@ -548,7 +570,12 @@
                                                 <div class="section-fp" id="travelling-section"><a href="/p/gallery-travel.html"><div class="page-anchor"></div></a></div>
                                                 <div class="section-fp fp-auto-height" id="about-section">
                                                     <div class="container" id="footer">
-                                                        <h2>Sju loves</h2>
+                                                        <div class="row">
+                                                            <div class="one-third column"><a href="">About me</a></div>
+                                                            <div class="one-third column"><a href="">Press</a></div>
+                                                            <div class="one-third column"><a href="">Contact</a></div>
+                                                        </div>
+                                                        
                                                         <div class="row">
                                                                 <a href="http://instagram.com/peackapples/">@peackapples</a>
                                                                 <!-- INSTANSIVE WIDGET --><script src="//instansive.com/widget/js/instansive.js"></script><iframe src="//instansive.com/widgets/a90e40eb834c58223fab4160e9d69ec2b6f73afa.html" id="instansive_a90e40eb83" name="instansive_a90e40eb83"  scrolling="no" allowtransparency="true" class="instansive-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
@@ -561,19 +588,34 @@
                                                                         , 1000);
                                                                 </script>
                                                         </div>
-                                                        <div class="row">
-                                                                <div class="one-third column">Fotka</div>
-                                                                <div class="one-third column">Instagram</div>
-                                                                <div class="one-third column">Facebook</div>
-                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
 					<b:else/>
-
-						<b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+                                            <b:if cond='(data:blog.canonicalUrl == data:blog.canonicalHomepageUrl + &quot;p/gallery.html&quot;) 
+                                                          or (data:blog.canonicalUrl == data:blog.canonicalHomepageUrl + &quot;p/gallery-misc.html&quot;)
+                                                          or (data:blog.canonicalUrl == data:blog.canonicalHomepageUrl + &quot;p/gallery-design.html&quot;)
+                                                          or (data:blog.canonicalUrl == data:blog.canonicalHomepageUrl + &quot;p/gallery-travel.html&quot;)'>
+                                                <section>
                                                     <!-- Gallery pages -->
+                                                    <div id="wrapper">
+                                                        <div class="gallery-container">
+                                                            <div class="image-container" id="gallery" itemscope="" itemtype="http://schema.org/ImageGallery" data-pswp-uid="2">
+                                                            </div>
+                                                            <b:loop values='data:posts' var='post'>
+                                                                    <data:post.body/>
+                                                            </b:loop>
+                                                        </div>
+                                                    </div>
+                                                    <b:include name='sjuloves_footer' var='post'/>
+                                                </section>
+                                            <b:else/>
+                                                <!-- it looks like blogger can only handle certain length of condition -->
+                                                <b:if cond='(data:blog.canonicalUrl == data:blog.canonicalHomepageUrl + &quot;p/gallery-fashion.html&quot;)
+                                                      or (data:blog.canonicalUrl == data:blog.canonicalHomepageUrl + &quot;p/gallery-looks.html&quot;)'>
                                                     <section>
+                                                        <!-- Gallery pages 2 -->
                                                         <div id="wrapper">
                                                             <div class="gallery-container">
                                                                 <div class="image-container" id="gallery" itemscope="" itemtype="http://schema.org/ImageGallery" data-pswp-uid="2">
@@ -585,447 +627,240 @@
                                                         </div>
                                                         <b:include name='sjuloves_footer' var='post'/>
                                                     </section>
-						<b:else/>
-                                                    
-                                                    <b:if cond='data:navMessage'>
-                                                        <!-- for labels we want to use the tiles instead of regular post layout, so style  it right here -->
+                                                <b:else/>
+                                                    <!-- static pages which are not gallery pages -->
+                                                    <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+                                                        
+                                                        <!-- static pages -->
+                                                        <b:include var='post' name='postStyle'/>
                                                         <section>
                                                             <div id="wrapper">
-                                                                <b:loop values='data:posts' var='post'>
-                                                                    <div class='mod-entry'>
-                                                                        <a expr:href='data:post.url'>
-                                                                            <div class='post-imgs' expr:id='&quot;mod-post-&quot; + data:post.id' expr:style='&quot;background: url(&quot; + data:post.firstImageUrl + &quot;); background-size: cover; background-position: center top;&quot;'>
-                                                                                <span class='text-content'><span><data:post.title/></span></span>
-                                                                            </div>
-                                                                        </a>
-                                                                    </div>
-                                                                </b:loop>
-                                                                <div class="row" />
-                                                                <div class='blog-pager' id='blog-pager'>
-                                                                        <b:if cond='data:newerPageUrl'>
-                                                                          <span id='blog-pager-newer-link'>
-                                                                          <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'><data:newerPageTitle/></a>
-                                                                          </span>
-                                                                        </b:if>
+                                                                <div class='container'>
+                                                                    <b:loop values='data:posts' var='post'>
+                                                                        <meta expr:content='data:post.canonicalUrl' itemprop='url'/>
+                                                                        <a class='timestamp-link' expr:name='data:post.url' rel='bookmark' title='permanent link'></a>
+                                                                        <div class='article-preview'>
+                                                                            <h1><data:post.title/></h1>
 
-                                                                        <b:if cond='data:olderPageUrl'>
-                                                                          <span id='blog-pager-older-link'>
-                                                                          <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'><data:olderPageTitle/></a>
-                                                                          </span>
-                                                                        </b:if>
+                                                                            <data:post.body/>
+
+                                                                        </div>
+                                                                    </b:loop>
                                                                 </div>
                                                             </div>
-                                                            <div class="row" />
-                                                            <b:include name='sjuloves_mobile_menu' var='post'/>
+                                                        
                                                             <b:include name='sjuloves_footer' var='post'/>
                                                         </section>
                                                     <b:else/>
-                                                        <!-- for index page, use regular layout for [nonlabel page] posts -->
-							<b:if cond='data:blog.url == data:blog.homepageUrl or data:blog.pageType == "index"'>
-                                                            <section id="index-blog">
-                                                                    <!-- blog index -->
-									<div id="wrapper">
-										<div class="container">
-											<b:loop values='data:posts' var='post'>
-                                                                                            <meta expr:content='data:post.canonicalUrl' itemprop='url'/>
-                                                                                            <a class='timestamp-link' expr:name='data:post.url' rel='bookmark' title='permanent link'></a>
 
-												<div class="article-preview">
-                                                                                                        <h1><a expr:href="data:post.url"><data:post.title/></a></h1>
-													<h3><data:post.dateHeader/></h3>
-													
-													<img expr:id='data:post.url + &quot;-top-image&quot;' src="" alt="Iceland" />
-													<div class="portrait-left">
-														<img expr:id='data:post.url + &quot;-left-image&quot;' src="" alt="Island 2" />
-													</div>
-													<div class="portrait-right">
-														<img expr:id='data:post.url + &quot;-right-image&quot;' src="" alt="Island 3" />
-													</div>
-													
-													<div style="display: none;" expr:id='data:post.url + &quot;-hidden-post&quot;'>
-														<data:post.body/>
-													</div>
-													
-                                                                                                        <br class="row" />
-													<div class="before-readmore"></div>
-													<div class="read-more"><a expr:href='data:post.url'>READ MORE</a></div>
-													<div id="after-readmore"></div>
-                                                                                                        
-													<script type="text/javascript">
-                                                                                                                var preview_position = document.URL.indexOf("post-preview")
-                                                                                                                if (preview_position !== -1){
-                                                                                                                    // this is a preview
-                                                                                                                    var post_body = document.getElementById("<data:post.url/>-hidden-post");
-                                                                                                                    post_body.setAttribute("style", "display: block;")
-                                                                                                                    var article_img_top = document.getElementById("<data:post.url/>-top-image");
-                                                                                                                    var article_img_left = document.getElementById("<data:post.url/>-left-image");
-                                                                                                                    var article_img_right = document.getElementById("<data:post.url/>-right-image");
-                                                                                                                    var read_more = document.getElementsByClassName("read-more");
-                                                                                                                    if (read_more.length > 0) {
-                                                                                                                            read_more[0].setAttribute("style", "display: none;")
-                                                                                                                    }
-                                                                                                                    article_img_top.style.display='none';
-                                                                                                                    article_img_left.style.display='none';
-                                                                                                                    article_img_right.style.display='none';
-                                                                                                                }
-                                                                                                                else {
-                                                                                                                    var post_body = document.getElementById("<data:post.url/>-hidden-post");
-                                                                                                                    var article_img_top = document.getElementById("<data:post.url/>-top-image");
-                                                                                                                    var article_img_left = document.getElementById("<data:post.url/>-left-image");
-                                                                                                                    var article_img_right = document.getElementById("<data:post.url/>-right-image");
-
-                                                                                                                    var perex_images = post_body.getElementsByClassName("perex-images");
-                                                                                                                    if (!(perex_images.length > 2)) {
-                                                                                                                            perex_images = post_body.getElementsByTagName('img');
-                                                                                                                    }
-
-                                                                                                                    if (perex_images.length > 2) {
-                                                                                                                                    article_img_left.src = perex_images[1].src;
-                                                                                                                                    article_img_right.src = perex_images[2].src;
-                                                                                                                                    article_img_top.src = perex_images[0].src;
-                                                                                                                    } else {
-                                                                                                                            if (perex_images.length > 0) {
-                                                                                                                                    article_img_top.src = perex_images[0].src;
-                                                                                                                                    article_img_left.style.display='none';
-                                                                                                                                    article_img_right.style.display='none';
-                                                                                                                            } else {
-                                                                                                                                    article_img_top.style.display='none';
-                                                                                                                                    article_img_left.style.display='none';
-                                                                                                                                    article_img_right.style.display='none';
-                                                                                                                            }
-                                                                                                                    }
-                                                                                                                }
-														//<![CDATA[
-														//]]>
-													</script>
-													
-													
-												</div>
-											</b:loop>
-											<div class='blog-pager' id='blog-pager'>
-                                                                                            <div class="blog-pager-inner">
-                                                                                                <b:if cond='data:newerPageUrl'>
-                                                                                                  <span id='blog-pager-newer-link'>
-                                                                                                  <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'><data:newerPageTitle/></a>
-                                                                                                  </span>
-                                                                                                </b:if>
-
-                                                                                                <b:if cond='data:olderPageUrl'>
-                                                                                                  <span id='blog-pager-older-link'>
-                                                                                                  <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'><data:olderPageTitle/></a>
-                                                                                                  </span>
-                                                                                                </b:if>
-                                                                                            </div>
-											</div>
-										</div>
-									</div>
-                                                                        <b:include name='sjuloves_mobile_menu' var='post'/>
-									<b:include name='sjuloves_footer' var='post'/>
-								</section>
-                                                        <b:else/>
-                                                            <!-- it must be the individual post, I guess... -->
-                                                            <style>
-                                                                .blog-post {
-                                                                    background: #fff;
-                                                                    font-family: 'EB Garamond', serif;
-                                                                    padding: 2rem 0.5rem;
-                                                                    margin: 4rem 0px;
-                                                                    -webkit-font-smoothing: antialiased;
-                                                                    font-size: 1.6rem;
-                                                                }
-                                                                
-                                                                
-                                                                .blog-post h3 {
-                                                                    font-size: 1.6rem;
-                                                                    letter-spacing: 1.6px;
-                                                                    text-align: center;
-                                                                    margin-bottom: 3rem;
-                                                                }
-                                                                
-                                                                .blog-post h1 {
-                                                                    text-align: center;
-                                                                    text-transform: uppercase;
-                                                                    font-size: 1.9rem;
-                                                                    line-height: 4rem;
-                                                                    letter-spacing: 3px;
-                                                                }
-                                                                
-                                                                .blog-post img {
-                                                                    width: 100%;
-                                                                }
-                                                                
-                                                                #comments img {
-                                                                    width: auto;
-                                                                }
-                                                                
-                                                                .comment-reply-title {
-                                                                    text-align: left;
-                                                                }
-                                                                
-                                                                .datetime.secondary-text {
-                                                                    /*float: right;
-                                                                    margin-right: 5rem;*/
-                                                                    display: none;
-                                                                }
-                                                                
-                                                                .item-control.blog-admin {
-                                                                    /*float: right;*/
-                                                                    display: none;
-                                                                }
-                                                                
-                                                                .comment li {
-                                                                    margin-bottom: 20px;
-                                                                }
-                                                                
-                                                                .avatar-image-container {
-                                                                    float: left;
-                                                                    margin: 10px;
-                                                                }
-                                                                
-                                                                .comment-block {
-                                                                    float: left;
-                                                                    width: 92%;
-                                                                }
-                                                                li.comment {
-                                                                    margin-bottom: 3rem;
-                                                                }
-                                                                
-                                                                #comments ol {
-                                                                    list-style-type: none;
-                                                                }
-                                                                
-                                                                .comment-respond {
-                                                                    margin-top: 20px;
-                                                                }
-                                                                
-                                                                .comment-replybox-single:after,
-                                                                .comment-header:after,
-                                                                #related-posts:after{
-                                                                  content: "";
-                                                                  display: table;
-                                                                  clear: both; 
-                                                                }
-                                                                
-                                                                
-                                                                #postCommentSubmit {
-                                                                    background-color: #BEBEBE;
-                                                                    border: 1px solid #585858;
-                                                                    color: #fff;
-                                                                    font-weight: bold;
-                                                                    margin: 0 8px 6px 0;
-                                                                }
-                                                                #postCommentSubmit:hover {
-                                                                    background-color: #E3E3E3;
-                                                                    background-image: -webkit-gradient(linear,left top,left bottom,from(#CFCFCF),to(#DFDFDF));
-                                                                    background-image: -webkit-linear-gradient(top,#CFCFCF,#DFDFDF);
-                                                                    background-image: -moz-linear-gradient(top,#CFCFCF,#DFDFDF);
-                                                                    background-image: -ms-linear-gradient(top,#CFCFCF,#DFDFDF);
-                                                                    background-image: -o-linear-gradient(top,#CFCFCF,#DFDFDF);
-                                                                    background-image: linear-gradient(top,#CFCFCF,#DFDFDF);
-                                                                    border-color: #A2A2A2;
-                                                                }
-                                                            </style>
-
-                                                            <script type='text/javascript'>
-                                                                        //<![CDATA[
-                                                                function stripTags(s, n) {
-                                                                    return s.replace(/<.*?>/ig, '').split(/\s+/).slice(0, n - 1).join(' ')
-                                                                }
-
-                                                                rn = "<h5>No related post available</h5>";
-                                                                rcomment = "comments";
-                                                                rdisable = "disable comments";
-                                                                commentYN = "no";
-                                                                var dw = "<h3 class='related-post-title'>Čekni aj toto:</h3>";
-                                                                titles = new Array;
-                                                                titlesNum = 0;
-                                                                urls = new Array;
-                                                                timeR = new Array;
-                                                                thumb = new Array;
-                                                                commentsNum = new Array;
-                                                                comments = new Array;
-                                                                ignoreThis = new Array;
-
-                                                                function currently_displayed_article() {
-                                                                        // Return one displayed article's URL from its title
-                                                                        try {
-                                                                         return document.getElementsByClassName('timestamp-link')[0].getAttribute('name');
-                                                                        } catch(err) {
-                                                                            return "";
-                                                                        }
-                                                                        
-                                                                }
-
-                                                                function related_results_labels(c) {
-                                                                    for (var b = 0; b < c.feed.entry.length; b++) {
-                                                                        var d = c.feed.entry[b];
-                                                                        titles[titlesNum] = d.title.$t;
-                                                                        for (var a = 0; a < d.link.length; a++) {
-                                                                            if ("thr$total" in d) commentsNum[titlesNum] = d.thr$total.$t + " " + rcomment;
-                                                                            else commentsNum[titlesNum] = rdisable;
-                                                                            if (d.link[a].rel == "alternate") {
-                                                                                                if (d.link[a].href == currently_displayed_article()){
-                                                                                                        ignoreThis[titlesNum] = true;
-                                                                                                } else {
-                                                                                                        ignoreThis[titlesNum] = false;
-                                                                                                }
-
-                                                                                urls[titlesNum] = d.link[a].href;
-                                                                                timeR[titlesNum] = d.published.$t;
-                                                                                                // if postText starts with <img>, find can't find it...
-                                                                                var postText = d.content.$t;
-
-                                                                                                var imgUrlPos = postText.indexOf("<img "); //$(postText).find("img:first").attr("src") // -- this loads all the large images from the other blog, so just use str and regex
-                                                                                                console.log(imgUrlPos);
-                                                                                                var imgUrl;
-                                                                                                if (imgUrlPos > -1) {
-                                                                                                        // get the first href after the position of the img src
-                                                                                                        var postSubText = postText.substring(imgUrlPos);
-                                                                                                        imgUrl = postSubText.match(/http[s]?:\/\/[^"]*\.[jpegnif]{3,4}" /i);
-                                                                                                }
-
-                                                                                if (imgUrl) thumb[titlesNum] = imgUrl[0].substring(0, imgUrl[0].length-2);
-                                                                                else thumb[titlesNum] = "http://lh3.ggpht.com/--Z8SVBQZ4X8/TdDxPVMl_sI/AAAAAAAAAAA/jhAgjCpZtRQ/no-image.png";
-                                                                                titlesNum++;
-                                                                                break;
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-
-                                                                function removeRelatedDuplicates() {
-                                                                    var b = new Array(0);
-                                                                    c = new Array(0);
-                                                                    e = new Array(0);
-                                                                    f = new Array(0);
-                                                                    g = new Array(0);
-                                                                    for (var a = 0; a < urls.length; a++)
-                                                                        if (!contains(b, urls[a])
-                                                                                        && !ignoreThis[a]) {
-                                                                            b.length += 1;
-                                                                            b[b.length - 1] = urls[a];
-                                                                            c.length += 1;
-                                                                            c[c.length - 1] = titles[a];
-                                                                            e.length += 1;
-                                                                            e[e.length - 1] = timeR[a];
-                                                                            f.length += 1;
-                                                                            f[f.length - 1] = thumb[a];
-                                                                            g.length += 1;
-                                                                            g[g.length - 1] = commentsNum[a];
-                                                                        }
-                                                                    urls = b;
-                                                                    titles = c;
-                                                                    timeR = e;
-                                                                    thumb = f;
-                                                                    commentsNum = g;
-                                                                }
-
-                                                                function contains(b, d) {
-                                                                    for (var c = 0; c < b.length; c++)
-                                                                        if (b[c] == d) return true;
-                                                                    return false
-                                                                }
-
-                                                                related_displayed = false;
-
-                                                                function printRelatedLabels(a) {
-                                                                        if (!related_displayed){
-                                                                                var y = a.indexOf("?m=0");
-                                                                                if (y != -1) a = a.replace(/\?m=0/g, "");
-                                                                                for (var b = 0; b < urls.length; b++)
-                                                                                        if (urls[b] == a) {
-                                                                                                urls.splice(b, 1);
-                                                                                                titles.splice(b, 1);
-                                                                                                timeR.splice(b, 1);
-                                                                                                thumb.splice(b, 1);
-                                                                                                commentsNum.splice(b, 1)
-                                                                                        }
-
-                                                                                var b = 0;
-                                                                                var no_of_related = 6
-                                                                                if (titles.length == 0) {
-                                                                                        dw += rn;
-                                                                                } else {
-                                                                                        while (b < titles.length && b < no_of_related) {
-                                                                                                if (y != -1) urls[b] = urls[b] + "?m=0";
-                                                                                                if (commentYN == "yes") comments[b] = " - " + commentsNum[b];
-                                                                                                else comments[b] = "";
-                                                                                                dw += '<div class="mod-entry"><a href="' + urls[b] + '"><div class="post-imgs" style="background: url(\'' + thumb[b] + '\'); background-size: cover; background-position: center top"><span class="text-content"><span>' + titles[b] + '</span></span></div></a></div>'
-                                                                                                b++
-                                                                                        }
-                                                                                }
-                                                                                urls.splice(0, urls.length);
-                                                                                titles.splice(0, titles.length);
-                                                                                document.getElementById("related-posts").innerHTML = dw
-                                                                                related_displayed = true;
-                                                                        };
-                                                                };
-
-                                                                //]]>
-                                                            </script>
-
+                                                        <b:if cond='data:navMessage'>
+                                                            <!-- for labels we want to use the tiles instead of regular post layout, so style  it right here -->
                                                             <section>
                                                                 <div id="wrapper">
-                                                                    <div class='container'>
-                                                                        <b:loop values='data:posts' var='post'>
-                                                                            <meta expr:content='data:post.canonicalUrl' itemprop='url'/>
-                                                                            <a class='timestamp-link' expr:name='data:post.url' rel='bookmark' title='permanent link'>
-
-                                                                            </a>
-
-                                                                            <div class='article-preview'>
-                                                                                <h1><data:post.title/></h1>
-                                                                                <h3><data:post.dateHeader/></h3>
-
-
-                                                                                <data:post.body/>
-                                                                                
-                                                                                <!--cekni aj toto-->
-                                                                                <div class='gdlr-related-post-widget'>
-                                                                                    <div id='related-posts'>
-                                                                                        <!-- http://www.peackapples.com/feeds/posts/default?alt=json-in-script&max-results=7&callback=related_results_labels -->
-                                                                                        <script expr:src='&quot;/feeds/posts/default/?alt=json-in-script&amp;callback=related_results_labels&amp;max-results=7&quot;' type='text/javascript'/>
-
-                                                                                        <script type='text/javascript'>
-                                                                                                removeRelatedDuplicates();printRelatedLabels(document.URL);
-                                                                                        </script>
-                                                                                    </div>
-                                                                                    <div class='clear'/>
+                                                                    <b:loop values='data:posts' var='post'>
+                                                                        <div class='mod-entry'>
+                                                                            <a expr:href='data:post.url'>
+                                                                                <div class='post-imgs' expr:id='&quot;mod-post-&quot; + data:post.id' expr:style='&quot;background: url(&quot; + data:post.firstImageUrl + &quot;); background-size: cover; background-position: center top;&quot;'>
+                                                                                    <span class='text-content'><span><data:post.title/></span></span>
                                                                                 </div>
-                                                                                
-                                                                                
-                                                                                <!-- comments -->
-                                                                                <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
-                                                                                    <b:include data='post' name='comment_picker'/>
-                                                                                </b:if>
-                                                                                <b:if cond='data:blog.pageType == &quot;item&quot;'>
-                                                                                    <b:include data='post' name='comment_picker'/>
-                                                                                </b:if>
-                                                                                <!-- end of comments -->
-                                                                            </div>
-                                                                            
-                                                                        </b:loop>
+                                                                            </a>
+                                                                        </div>
+                                                                    </b:loop>
+                                                                    <div class="row" />
+                                                                    <div class='blog-pager' id='blog-pager'>
+                                                                            <b:if cond='data:newerPageUrl'>
+                                                                              <span id='blog-pager-newer-link'>
+                                                                              <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'><data:newerPageTitle/></a>
+                                                                              </span>
+                                                                            </b:if>
+
+                                                                            <b:if cond='data:olderPageUrl'>
+                                                                              <span id='blog-pager-older-link'>
+                                                                              <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'><data:olderPageTitle/></a>
+                                                                              </span>
+                                                                            </b:if>
                                                                     </div>
                                                                 </div>
+                                                                <div class="row" />
                                                                 <b:include name='sjuloves_mobile_menu' var='post'/>
                                                                 <b:include name='sjuloves_footer' var='post'/>
                                                             </section>
-							</b:if>
+                                                        <b:else/>
+                                                            <!-- for index page, use regular layout for [nonlabel page] posts -->
+                                                            <b:if cond='data:blog.url == data:blog.homepageUrl or data:blog.pageType == "index"'>
+                                                                <section id="index-blog">
+                                                                        <!-- blog index -->
+                                                                            <div id="wrapper">
+                                                                                    <div class="container">
+                                                                                            <b:loop values='data:posts' var='post'>
+                                                                                                <meta expr:content='data:post.canonicalUrl' itemprop='url'/>
+                                                                                                <a class='timestamp-link' expr:name='data:post.url' rel='bookmark' title='permanent link'></a>
+
+                                                                                                    <div class="article-preview">
+                                                                                                            <h1><a expr:href="data:post.url"><data:post.title/></a></h1>
+                                                                                                            <h3><data:post.dateHeader/></h3>
+
+                                                                                                            <img expr:id='data:post.url + &quot;-top-image&quot;' src="" alt="Iceland" />
+                                                                                                            <div class="portrait-left">
+                                                                                                                    <img expr:id='data:post.url + &quot;-left-image&quot;' src="" alt="Island 2" />
+                                                                                                            </div>
+                                                                                                            <div class="portrait-right">
+                                                                                                                    <img expr:id='data:post.url + &quot;-right-image&quot;' src="" alt="Island 3" />
+                                                                                                            </div>
+
+                                                                                                            <div style="display: none;" expr:id='data:post.url + &quot;-hidden-post&quot;'>
+                                                                                                                    <data:post.body/>
+                                                                                                            </div>
+
+                                                                                                            <br class="row" />
+                                                                                                            <div class="before-readmore"></div>
+                                                                                                            <div class="read-more"><a expr:href='data:post.url'>READ MORE</a></div>
+                                                                                                            <div id="after-readmore"></div>
+
+                                                                                                            <script type="text/javascript">
+                                                                                                                    var preview_position = document.URL.indexOf("post-preview")
+                                                                                                                    if (preview_position !== -1){
+                                                                                                                        // this is a preview
+                                                                                                                        var post_body = document.getElementById("<data:post.url/>-hidden-post");
+                                                                                                                        post_body.setAttribute("style", "display: block;")
+                                                                                                                        var article_img_top = document.getElementById("<data:post.url/>-top-image");
+                                                                                                                        var article_img_left = document.getElementById("<data:post.url/>-left-image");
+                                                                                                                        var article_img_right = document.getElementById("<data:post.url/>-right-image");
+                                                                                                                        var read_more = document.getElementsByClassName("read-more");
+                                                                                                                        if (read_more.length > 0) {
+                                                                                                                                read_more[0].setAttribute("style", "display: none;")
+                                                                                                                        }
+                                                                                                                        article_img_top.style.display='none';
+                                                                                                                        article_img_left.style.display='none';
+                                                                                                                        article_img_right.style.display='none';
+                                                                                                                    }
+                                                                                                                    else {
+                                                                                                                        var post_body = document.getElementById("<data:post.url/>-hidden-post");
+                                                                                                                        var article_img_top = document.getElementById("<data:post.url/>-top-image");
+                                                                                                                        var article_img_left = document.getElementById("<data:post.url/>-left-image");
+                                                                                                                        var article_img_right = document.getElementById("<data:post.url/>-right-image");
+
+                                                                                                                        var perex_images = post_body.getElementsByClassName("perex-images");
+                                                                                                                        if (!(perex_images.length > 2)) {
+                                                                                                                                perex_images = post_body.getElementsByTagName('img');
+                                                                                                                        }
+
+                                                                                                                        if (perex_images.length > 2) {
+                                                                                                                                        article_img_left.src = perex_images[1].src;
+                                                                                                                                        article_img_right.src = perex_images[2].src;
+                                                                                                                                        article_img_top.src = perex_images[0].src;
+                                                                                                                        } else {
+                                                                                                                                if (perex_images.length > 0) {
+                                                                                                                                        article_img_top.src = perex_images[0].src;
+                                                                                                                                        article_img_left.style.display='none';
+                                                                                                                                        article_img_right.style.display='none';
+                                                                                                                                } else {
+                                                                                                                                        article_img_top.style.display='none';
+                                                                                                                                        article_img_left.style.display='none';
+                                                                                                                                        article_img_right.style.display='none';
+                                                                                                                                }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                    //<![CDATA[
+                                                                                                                    //]]>
+                                                                                                            </script>
+
+
+                                                                                                    </div>
+                                                                                            </b:loop>
+                                                                                            <div class='blog-pager' id='blog-pager'>
+                                                                                                <div class="blog-pager-inner">
+                                                                                                    <b:if cond='data:newerPageUrl'>
+                                                                                                      <span id='blog-pager-newer-link'>
+                                                                                                      <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'><data:newerPageTitle/></a>
+                                                                                                      </span>
+                                                                                                    </b:if>
+
+                                                                                                    <b:if cond='data:olderPageUrl'>
+                                                                                                      <span id='blog-pager-older-link'>
+                                                                                                      <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'><data:olderPageTitle/></a>
+                                                                                                      </span>
+                                                                                                    </b:if>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                    </div>
+                                                                            </div>
+                                                                            <b:include name='sjuloves_mobile_menu' var='post'/>
+                                                                            <b:include name='sjuloves_footer' var='post'/>
+                                                                    </section>
+                                                            <b:else/>
+                                                                <!-- it must be the individual post, I guess... -->
+                                                                <!-- include individual post css -->
+                                                                <b:include var='post' name='postStyle'/>
+                                                                <b:include var='post' name='seeAlso'/>
+                                                                
+                                                                
+
+                                                                <section>
+                                                                    <div id="wrapper">
+                                                                        <div class='container'>
+                                                                            <b:loop values='data:posts' var='post'>
+                                                                                <meta expr:content='data:post.canonicalUrl' itemprop='url'/>
+                                                                                <a class='timestamp-link' expr:name='data:post.url' rel='bookmark' title='permanent link'>
+
+                                                                                </a>
+
+                                                                                <div class='article-preview'>
+                                                                                    <h1><data:post.title/></h1>
+                                                                                    <h3><data:post.dateHeader/></h3>
+
+
+                                                                                    <data:post.body/>
+
+                                                                                    <!--cekni aj toto-->
+                                                                                    <div class='gdlr-related-post-widget'>
+                                                                                        <div id='related-posts'>
+                                                                                            <!-- http://www.peackapples.com/feeds/posts/default?alt=json-in-script&max-results=7&callback=related_results_labels -->
+                                                                                            <script expr:src='&quot;/feeds/posts/default/?alt=json-in-script&amp;callback=related_results_labels&amp;max-results=7&quot;' type='text/javascript'/>
+
+                                                                                            <script type='text/javascript'>
+                                                                                                    removeRelatedDuplicates();printRelatedLabels(document.URL);
+                                                                                            </script>
+                                                                                        </div>
+                                                                                        <div class='clear'/>
+                                                                                    </div>
+
+
+                                                                                    <!-- comments -->
+                                                                                    <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+                                                                                        <b:include data='post' name='comment_picker'/>
+                                                                                    </b:if>
+                                                                                    <b:if cond='data:blog.pageType == &quot;item&quot;'>
+                                                                                        <b:include data='post' name='comment_picker'/>
+                                                                                    </b:if>
+                                                                                    <!-- end of comments -->
+                                                                                </div>
+
+                                                                            </b:loop>
+                                                                        </div>
+                                                                    </div>
+                                                                    <b:include name='sjuloves_mobile_menu' var='post'/>
+                                                                    <b:include name='sjuloves_footer' var='post'/>
+                                                                </section>
+                                                            </b:if>
+                                                        </b:if>
                                                     </b:if>
-						</b:if>
+                                                </b:if>                  
+                                            </b:if>
+                                                
 					</b:if>
 					
 					
 					
 				</b:includable>
 				<b:includable id='backlinkDeleteIcon' var='backlink'>
-																backlinkDeleteIcon
+				backlinkDeleteIcon
 					<data:top.deleteBacklinkMsg/>
 
 				</b:includable>
 				<b:includable id='backlinks' var='post'>
 					<a name='links'/>
-																Backlinks
+					Backlinks
 					<h4>
 						<data:post.backlinksLabel/>
 					</h4>
@@ -1207,10 +1042,10 @@
  
                             
 				<b:includable id='feedLinks'>
-																Feed links
+				Feed links
 				</b:includable>
 				<b:includable id='feedLinksBody' var='links'>
-																feedLinksBody
+				feedLinksBody
 				</b:includable>
 				<b:includable id='iframe_comments' var='post'>
                                     <b:if cond='data:post.allowIframeComments'>
@@ -1224,22 +1059,22 @@
                                 </b:includable>
 
 				<b:includable id='mobile-index-post' var='post'>
-																mobile-index-post
+				mobile-index-post
 				</b:includable>
 				<b:includable id='mobile-main' var='top'>
-																mobile main
+				mobile main
 					<b:include name='mobile-nextprev'/>
 				</b:includable>
 				<b:includable id='mobile-nextprev'>
-																mobile-nextprev
+				mobile-nextprev
 				</b:includable>
 				<b:includable id='mobile-post' var='post'>
-																mobile-post
+				mobile-post
 
 				</b:includable>
 				<b:includable id='nextprev'>
 					<div class='blog-pager' id='blog-pager'>
-																	nextprev
+					nextprev
 					</div>
 					<div class='clear'/>
 				</b:includable>
@@ -1264,16 +1099,16 @@
 						<div class='post-footer'>
 
 							<div class='post-footer-line post-footer-line-1'>
-																			author: 
+								author: 
 								<data:post.author/>
-																			time: 
+								time: 
 								<data:post.timestamp/>
-																			backlinks:
+								backlinks:
 								<data:top.backlinkLabel/>
 							</div>
 
 							<div class='post-footer-line post-footer-line-2'>
-																			Labels:
+								Labels:
 								<span class='post-labels'>
 									<b:if cond='data:post.labels'>
 										<data:postLabelsLabel/>
@@ -1290,14 +1125,256 @@
 					</div>
 				</b:includable>
 				<b:includable id='postQuickEdit' var='post'>
-																Quick Edit
+                                    Quick Edit
 				</b:includable>
+                                <b:includable id='postStyle' var='post'>
+                                    <style>
+                                        .blog-post {
+                                            background: #fff;
+                                            font-family: 'EB Garamond', serif;
+                                            padding: 2rem 0.5rem;
+                                            margin: 4rem 0px;
+                                            -webkit-font-smoothing: antialiased;
+                                            font-size: 1.6rem;
+                                        }
+
+
+                                        .blog-post h3 {
+                                            font-size: 1.6rem;
+                                            letter-spacing: 1.6px;
+                                            text-align: center;
+                                            margin-bottom: 3rem;
+                                        }
+
+                                        .blog-post h1 {
+                                            text-align: center;
+                                            text-transform: uppercase;
+                                            font-size: 1.9rem;
+                                            line-height: 4rem;
+                                            letter-spacing: 3px;
+                                        }
+
+                                        .blog-post img {
+                                            width: 100%;
+                                        }
+
+                                        #comments img {
+                                            width: auto;
+                                        }
+
+                                        .comment-reply-title {
+                                            text-align: left;
+                                        }
+
+                                        .datetime.secondary-text {
+                                            /*float: right;
+                                            margin-right: 5rem;*/
+                                            display: none;
+                                        }
+
+                                        .item-control.blog-admin {
+                                            /*float: right;*/
+                                            display: none;
+                                        }
+
+                                        .comment li {
+                                            margin-bottom: 20px;
+                                        }
+
+                                        .avatar-image-container {
+                                            float: left;
+                                            margin: 10px;
+                                        }
+
+                                        .comment-block {
+                                            float: left;
+                                            width: 92%;
+                                        }
+                                        li.comment {
+                                            margin-bottom: 3rem;
+                                        }
+
+                                        #comments ol {
+                                            list-style-type: none;
+                                        }
+
+                                        .comment-respond {
+                                            margin-top: 20px;
+                                        }
+
+                                        .comment-replybox-single:after,
+                                        .comment-header:after,
+                                        #related-posts:after{
+                                          content: "";
+                                          display: table;
+                                          clear: both; 
+                                        }
+
+
+                                        #postCommentSubmit {
+                                            background-color: #BEBEBE;
+                                            border: 1px solid #585858;
+                                            color: #fff;
+                                            font-weight: bold;
+                                            margin: 0 8px 6px 0;
+                                        }
+                                        #postCommentSubmit:hover {
+                                            background-color: #E3E3E3;
+                                            background-image: -webkit-gradient(linear,left top,left bottom,from(#CFCFCF),to(#DFDFDF));
+                                            background-image: -webkit-linear-gradient(top,#CFCFCF,#DFDFDF);
+                                            background-image: -moz-linear-gradient(top,#CFCFCF,#DFDFDF);
+                                            background-image: -ms-linear-gradient(top,#CFCFCF,#DFDFDF);
+                                            background-image: -o-linear-gradient(top,#CFCFCF,#DFDFDF);
+                                            background-image: linear-gradient(top,#CFCFCF,#DFDFDF);
+                                            border-color: #A2A2A2;
+                                        }
+                                    </style>
+                                </b:includable>
+                                <b:includable id='seeAlso' var='post'>
+                                    <script type='text/javascript'>
+                                    //<![CDATA[
+                                        function stripTags(s, n) {
+                                            return s.replace(/<.*?>/ig, '').split(/\s+/).slice(0, n - 1).join(' ')
+                                        }
+
+                                        rn = "<h5>No related post available</h5>";
+                                        rcomment = "comments";
+                                        rdisable = "disable comments";
+                                        commentYN = "no";
+                                        var dw = "<h3 class='related-post-title'>Čekni aj toto:</h3>";
+                                        titles = new Array;
+                                        titlesNum = 0;
+                                        urls = new Array;
+                                        timeR = new Array;
+                                        thumb = new Array;
+                                        commentsNum = new Array;
+                                        comments = new Array;
+                                        ignoreThis = new Array;
+
+                                        function currently_displayed_article() {
+                                                // Return one displayed article's URL from its title
+                                                try {
+                                                 return document.getElementsByClassName('timestamp-link')[0].getAttribute('name');
+                                                } catch(err) {
+                                                    return "";
+                                                }
+
+                                        }
+
+                                        function related_results_labels(c) {
+                                            for (var b = 0; b < c.feed.entry.length; b++) {
+                                                var d = c.feed.entry[b];
+                                                titles[titlesNum] = d.title.$t;
+                                                for (var a = 0; a < d.link.length; a++) {
+                                                    if ("thr$total" in d) commentsNum[titlesNum] = d.thr$total.$t + " " + rcomment;
+                                                    else commentsNum[titlesNum] = rdisable;
+                                                    if (d.link[a].rel == "alternate") {
+                                                                        if (d.link[a].href == currently_displayed_article()){
+                                                                                ignoreThis[titlesNum] = true;
+                                                                        } else {
+                                                                                ignoreThis[titlesNum] = false;
+                                                                        }
+
+                                                        urls[titlesNum] = d.link[a].href;
+                                                        timeR[titlesNum] = d.published.$t;
+                                                                        // if postText starts with <img>, find can't find it...
+                                                        var postText = d.content.$t;
+
+                                                                        var imgUrlPos = postText.indexOf("<img "); //$(postText).find("img:first").attr("src") // - this loads all the large images from the other blog, so just use str and regex
+                                                                        console.log(imgUrlPos);
+                                                                        var imgUrl;
+                                                                        if (imgUrlPos > -1) {
+                                                                                // get the first href after the position of the img src
+                                                                                var postSubText = postText.substring(imgUrlPos);
+                                                                                imgUrl = postSubText.match(/http[s]?:\/\/[^"]*\.[jpegnif]{3,4}" /i);
+                                                                        }
+
+                                                        if (imgUrl) thumb[titlesNum] = imgUrl[0].substring(0, imgUrl[0].length-2);
+                                                        else thumb[titlesNum] = "http://lh3.ggpht.com/--Z8SVBQZ4X8/TdDxPVMl_sI/AAAAAAAAAAA/jhAgjCpZtRQ/no-image.png"; //potom tu pridaj druhu -
+                                                        titlesNum++;
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        function removeRelatedDuplicates() {
+                                            var b = new Array(0);
+                                            c = new Array(0);
+                                            e = new Array(0);
+                                            f = new Array(0);
+                                            g = new Array(0);
+                                            for (var a = 0; a < urls.length; a++)
+                                                if (!contains(b, urls[a])
+                                                                && !ignoreThis[a]) {
+                                                    b.length += 1;
+                                                    b[b.length - 1] = urls[a];
+                                                    c.length += 1;
+                                                    c[c.length - 1] = titles[a];
+                                                    e.length += 1;
+                                                    e[e.length - 1] = timeR[a];
+                                                    f.length += 1;
+                                                    f[f.length - 1] = thumb[a];
+                                                    g.length += 1;
+                                                    g[g.length - 1] = commentsNum[a];
+                                                }
+                                            urls = b;
+                                            titles = c;
+                                            timeR = e;
+                                            thumb = f;
+                                            commentsNum = g;
+                                        }
+
+                                        function contains(b, d) {
+                                            for (var c = 0; c < b.length; c++)
+                                                if (b[c] == d) return true;
+                                            return false
+                                        }
+
+                                        related_displayed = false;
+
+                                        function printRelatedLabels(a) {
+                                                if (!related_displayed){
+                                                        var y = a.indexOf("?m=0");
+                                                        if (y != -1) a = a.replace(/\?m=0/g, "");
+                                                        for (var b = 0; b < urls.length; b++)
+                                                                if (urls[b] == a) {
+                                                                        urls.splice(b, 1);
+                                                                        titles.splice(b, 1);
+                                                                        timeR.splice(b, 1);
+                                                                        thumb.splice(b, 1);
+                                                                        commentsNum.splice(b, 1)
+                                                                }
+
+                                                        var b = 0;
+                                                        var no_of_related = 6
+                                                        if (titles.length == 0) {
+                                                                dw += rn;
+                                                        } else {
+                                                                while (b < titles.length && b < no_of_related) {
+                                                                        if (y != -1) urls[b] = urls[b] + "?m=0";
+                                                                        if (commentYN == "yes") comments[b] = " - " + commentsNum[b];
+                                                                        else comments[b] = "";
+                                                                        dw += '<div class="mod-entry"><a href="' + urls[b] + '"><div class="post-imgs" style="background: url(\'' + thumb[b] + '\'); background-size: cover; background-position: center top"><span class="text-content"><span>' + titles[b] + '</span></span></div></a></div>'
+                                                                        b++
+                                                                }
+                                                        }
+                                                        urls.splice(0, urls.length);
+                                                        titles.splice(0, titles.length);
+                                                        document.getElementById("related-posts").innerHTML = dw
+                                                        related_displayed = true;
+                                                };
+                                        };
+
+                                    //]]>
+                                    </script>
+                                </b:includable>
 				<b:includable id='shareButtons' var='post'>
-																Share buttons
+                                    Share buttons
 				</b:includable>
 				<b:includable id='status-message'>
 					<b:if cond='data:navMessage'>
-																	Nav message:
+                                            Nav message:
 						<data:navMessage/>
 
 						<div style='clear: both;'/>
@@ -1563,29 +1640,19 @@
                                                 <div class='row'>
                                                 
                                                 <div class="one-third column">
-                                                    <div class="lang-switch">
-                                                        <ul>
-                                                            Choose language <span class="narrow">//</span>
-                                                        <li><span class='lang_switch_button' onclick="switch_lang('en')">English</span></li>
-                                                        <li><span class='lang_switch_button' onclick="switch_lang('sk')">Slovensky</span></li>
-                                                        </ul>
-                                                    </div>
+                                                    <a href="">About me</a>
                                                 </div>
                                                 
                                                 <div class="one-third column">
-                                                    <ul>
-                                                        About <span class="narrow">//</span>
-                                                        <li class='about-section'><a href="">About me</a></li>
-                                                        <li class='about-section'><a href="">Press</a></li>
-                                                        <li class='about-section'><a href="">Contact</a></li>
-                                                    </ul>
+                                                    <a href="">Press</a>
                                                 </div>
                                                 
                                                 <div class="one-third column">
-                                                    Email newsletter <span class="narrow">//</span>
+                                                    <a href="">Contact</a>
+<!--                                                    Email newsletter <span class="narrow">//</span>
                                                     <div class='widget-content'>
                                                         <div class='follow-by-email-inner'>
-                                                          <form action='https://feedburner.google.com/fb/a/mailverify' expr:onsubmit='&quot;window.open(\&quot;https://feedburner.google.com/fb/a/mailverify?uri=&quot; + data:feedPath + &quot;\&quot;, \&quot;popupwindow\&quot;, \&quot;scrollbars=yes,width=550,height=520\&quot;); return true&quot;' method='post' target='popupwindow'>
+                                                          <form action='https://feedburner.google.com/fb/a/mailverify' onsubmit='window.open(&quot;https://feedburner.google.com/fb/a/mailverify?uri=SjuLoves&quot;, &quot;popupwindow&quot;, &quot;scrollbars=yes,width=550,height=520&quot;); return true' method='post' target='popupwindow'>
                                                             <table width='100%'>
                                                               <tr>
                                                                 <td>
@@ -1596,17 +1663,30 @@
                                                                 </td>
                                                               </tr>
                                                             </table>
-                                                            <input expr:value='data:feedPath' name='uri' type='hidden'/>
+                                                            <input value='SjuLoves' name='uri' type='hidden'/>
                                                             <input name='loc' type='hidden' value='en_US'/>
                                                           </form>
                                                         </div>
-                                                    </div>
+                                                    </div>-->
                                                 </div>
 
-                                                <div class='clear'></div>
+                                                    
+                                                    
+                                                
                                                 
                                                 
                                                     
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="lang-switch">
+                                                        <ul>
+                                                            Choose language <span class="narrow">//</span>
+                                                        <li><span class='lang_switch_button' onclick="switch_lang('en')">English</span></li>
+                                                        <li><span class='lang_switch_button' onclick="switch_lang('sk')">Slovensky</span></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class='clear'></div>
                                                 </div>
 
                                                             <a href="http://instagram.com/peackapples/">@peackapples</a>

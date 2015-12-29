@@ -140,7 +140,7 @@ a:hover {
         line-height: 6.5rem;
         color: #222;
         font-weight: 200;
-        font-size: 1.9rem;
+        font-size: 1.0rem;
         }
     .navbar-link.active {
         color: #33C3F0; }
@@ -390,4 +390,8 @@ transition: opacity 500ms;
     line-height: 10px;
     font-size: 1.4rem;
     
+}
+
+#footer .column {
+    text-align: center;
 }
