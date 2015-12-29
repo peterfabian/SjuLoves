@@ -1544,7 +1544,7 @@
                                     <script type="text/javascript">
                                             $(document).ready(function(){
                                                     jQuery('header nav').meanmenu({
-                                                                            meanScreenWidth: "990"
+                                                                            meanScreenWidth: "1110"
                                                     });
                                             });
                                     </script>
