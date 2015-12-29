@@ -646,6 +646,11 @@
 														<data:post.body/>
 													</div>
 													
+                                                                                                        <br class="row" />
+													<div class="before-readmore"></div>
+													<div class="read-more"><a expr:href='data:post.url'>READ MORE</a></div>
+													<div id="after-readmore"></div>
+                                                                                                        
 													<script type="text/javascript">
                                                                                                                 var preview_position = document.URL.indexOf("post-preview")
                                                                                                                 if (preview_position !== -1){
@@ -655,6 +660,10 @@
                                                                                                                     var article_img_top = document.getElementById("<data:post.url/>-top-image");
                                                                                                                     var article_img_left = document.getElementById("<data:post.url/>-left-image");
                                                                                                                     var article_img_right = document.getElementById("<data:post.url/>-right-image");
+                                                                                                                    var read_more = document.getElementsByClassName("read-more");
+                                                                                                                    if (read_more.length > 0) {
+                                                                                                                            read_more[0].setAttribute("style", "display: none;")
+                                                                                                                    }
                                                                                                                     article_img_top.style.display='none';
                                                                                                                     article_img_left.style.display='none';
                                                                                                                     article_img_right.style.display='none';
@@ -690,11 +699,7 @@
 														//]]>
 													</script>
 													
-													<br class="row" />
-													<div class="before-readmore"></div>
-													<!--div class="read-more" lang="sk"><a expr:href='data:post.url'>VIAC...</a></div-->
-													<div class="read-more"><a expr:href='data:post.url'>READ MORE</a></div>
-													<div id="after-readmore"></div>
+													
 												</div>
 											</b:loop>
 											<div class='blog-pager' id='blog-pager'>
@@ -1582,6 +1587,7 @@
 
                                                 <div class='clear'></div>
                                                 
+                                                
                                                     
                                                 </div>
 
@@ -1671,6 +1677,23 @@
 
 				</b:includable>
 			</b:widget>
+                        <!--b:widget id='Followers1' locked='false' title='' type='Followers'>
+                            <b:includable id='main'>
+                          <b:if cond='data:title != &quot;&quot; and data:codeSnippet != &quot;&quot;'>
+                            <h2 class='title'><data:title/></h2>
+                          </b:if>
+                          <div class='widget-content'>
+                            <div expr:id='data:widget.instanceId + &quot;-wrapper&quot;'>
+                              <b:if cond='data:codeSnippet != &quot;&quot;'>
+                                <div style='margin-right:2px;'>
+                                  <data:codeSnippet/>
+                                </div>
+                              </b:if>
+                            </div>
+                            <b:include name='quickedit'/>
+                          </div>
+                        </b:includable>
+                          </b:widget-->
 		</b:section>
 
 	</body>

@@ -34,6 +34,7 @@ body {
     padding-bottom: 3.5rem;
     padding-right: 1em;
     background: rgb(245,245,245);
+    font-size: 1.5em;
 }
 
 .blog-pager a {
@@ -363,3 +364,31 @@ transition: opacity 500ms;
     color: #bbb;
 }
 
+.lang-switch li {
+    line-height: 15px;
+    font-size: 1.4rem;
+    list-style: none;
+}
+
+#footer {
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    margin-right: 35px;
+    text-decoration: none;
+    line-height: 6.5rem;
+    color: #222;
+    font-weight: 200;
+    font-size: 2.0rem;
+}
+
+#footer li {
+    line-height: 15px;
+    font-size: 1.4rem;
+    list-style: none;
+}
+
+#footer li a {
+    line-height: 10px;
+    font-size: 1.4rem;
+    
+}
