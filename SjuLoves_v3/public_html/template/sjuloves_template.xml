@@ -361,24 +361,22 @@
                                             /*float: left;*/
                                             text-transform: uppercase;
                                             letter-spacing: .2rem;
-                                            margin-right: 35px;
                                             text-decoration: none;
                                             line-height: 6.5rem;
                                             color: #222;
                                             font-weight: 200;
-                                            font-size: 2.0rem;
+                                            font-size: 1.3rem;
                                             text-align: center;
                                         }
                                         
                                         #about-section a {
                                             text-transform: uppercase;
                                             letter-spacing: .2rem;
-                                            margin-right: 35px;
                                             text-decoration: none;
                                             line-height: 6.5rem;
                                             color: #222;
                                             font-weight: 200;
-                                            font-size: 2.0rem;
+                                            font-size: 1.3rem;
                                         }
                                         
                                         #about-section a:hover {
@@ -404,19 +402,22 @@
                                                 margin-bottom: 0;
                                                 margin-top: 1.0rem;
 					}
-					  .article-preview .text {
-						-webkit-column-count: 2; /* Chrome, Safari, Opera */
-						-moz-column-count: 2; /* Firefox */
-						column-count: 2;
-						font-size: 1.6rem;
-					  }
+					  
 
 					  .article-preview {
 						  font-family: 'EB Garamond', serif;
 						  padding: 2rem 0.5rem;
 						  margin: 4rem 0;
 						  background: white;
+                                                  
 					  }
+                                          
+                                          .article-preview .text {
+                                            -webkit-column-count: 2; /* Chrome, Safari, Opera */
+                                            -moz-column-count: 2; /* Firefox */
+                                            column-count: 2;
+                                            font-size: 1.3rem;
+                                          }
 
 					  .article-preview img {
 						  width: 100%;

@@ -140,7 +140,7 @@ a:hover {
         line-height: 6.5rem;
         color: #222;
         font-weight: 200;
-        font-size: 1.0rem;
+        font-size: 1.3rem;
         }
     .navbar-link.active {
         color: #33C3F0; }
@@ -270,7 +270,7 @@ section {
 }
 
 .narrow {
-    letter-spacing: -7px;
+    letter-spacing: -0.25em;
     margin-right: 4px;
 }
 
