@@ -315,6 +315,20 @@
 				.blog-header {
 					display: none;
 				}
+                                
+                                #about-section a {
+                                            text-transform: uppercase;
+                                            letter-spacing: .2rem;
+                                            text-decoration: none;
+                                            line-height: 6.5rem;
+                                            color: #222;
+                                            font-weight: 200;
+                                            font-size: 1.3rem;
+                                }
+
+                                #about-section a:hover {
+                                    color: #BBB;
+                                }
 			</style>
 		<b:else/>
                                 <script>
@@ -473,6 +487,23 @@
                                         }
                                         $('.lang_' + lang_code ).css('display', 'block');
                                     };
+                                    
+                                    // comments switch
+                                    
+                                    var comments_toggle = "none";
+                                    
+                                    var switch_comments = function() {
+                                        if (comments_toggle === "none"){
+                                            comments_toggle = "block";
+                                        } else {
+                                            if (comments_toggle === "block"){
+                                                comments_toggle = "none";
+                                            }
+                                        }
+                                        
+                                        $('.comments-content').css('display', comments_toggle);
+                                        
+                                    };
                                 </script>
 			<!--/b:if-->
 		</b:if>
@@ -573,8 +604,8 @@
                                                 <div class="section-fp fp-auto-height" id="about-section">
                                                     <div class="container" id="footer">
                                                         <div class="row">
-                                                            <div class="one-third column"><a href="">About me</a></div>
-                                                            <div class="one-third column"><a href="">Press</a></div>
+                                                            <div class="one-third column"><a href="/p/about.html">About me</a></div>
+                                                            <div class="one-third column"><a href="/p/press.html">Press</a></div>
                                                             <div class="one-third column"><a href="">Contact</a></div>
                                                         </div>
                                                         
@@ -929,7 +960,7 @@
                                     <div class='comments' id='comments'><div class='comment-respond' id='respond'>
                                       <a name='comments'/>
                                       <b:if cond='data:post.allowComments'>
-                                        <h3 class='comment-reply-title'><data:post.commentLabelFull/>:</h3>
+                                          <h3 class='comment-reply-title' onclick="switch_comments();"><data:post.commentLabelFull/>:</h3>
 
                                         <b:if cond='data:post.commentPagingRequired'>
                                           <span class='paging-control-container'>
@@ -1166,6 +1197,11 @@
 
                                         .comment-reply-title {
                                             text-align: left;
+                                            cursor: pointer;
+                                        }
+                                        
+                                        .comment-reply-title:hover {
+                                            color: #BBB;
                                         }
 
                                         .datetime.secondary-text {
@@ -1186,12 +1222,23 @@
                                         .avatar-image-container {
                                             float: left;
                                             margin: 10px;
+                                            display: none;
                                         }
 
                                         .comment-block {
                                             float: left;
                                             width: 92%;
+                                            margin-left: 15px;
                                         }
+                                        
+                                        .thread-expanded .comment-block {
+                                            margin-top: 30px;
+                                        }
+                                        
+                                        .thread-chrome.thread-collapsed {
+                                            display: none;
+                                        }
+                                        
                                         li.comment {
                                             margin-bottom: 3rem;
                                         }
@@ -1211,25 +1258,12 @@
                                           display: table;
                                           clear: both; 
                                         }
-
-
-                                        #postCommentSubmit {
-                                            background-color: #BEBEBE;
-                                            border: 1px solid #585858;
-                                            color: #fff;
+                                        
+                                        .comment-header{
                                             font-weight: bold;
-                                            margin: 0 8px 6px 0;
                                         }
-                                        #postCommentSubmit:hover {
-                                            background-color: #E3E3E3;
-                                            background-image: -webkit-gradient(linear,left top,left bottom,from(#CFCFCF),to(#DFDFDF));
-                                            background-image: -webkit-linear-gradient(top,#CFCFCF,#DFDFDF);
-                                            background-image: -moz-linear-gradient(top,#CFCFCF,#DFDFDF);
-                                            background-image: -ms-linear-gradient(top,#CFCFCF,#DFDFDF);
-                                            background-image: -o-linear-gradient(top,#CFCFCF,#DFDFDF);
-                                            background-image: linear-gradient(top,#CFCFCF,#DFDFDF);
-                                            border-color: #A2A2A2;
-                                        }
+
+                                        
                                     </style>
                                 </b:includable>
                                 <b:includable id='seeAlso' var='post'>
@@ -1587,7 +1621,7 @@
                                       <b:includable id='threaded_comments' var='post'>
                                     <div class='comments' id='comments'><div class='comment-respond' id='respond'>
                                       <a name='comments'/>
-                                      <h3 class='comment-reply-title'><data:post.commentLabelFull/>:</h3>
+                                      <h3 class='comment-reply-title' onclick="switch_comments();"><data:post.commentLabelFull/></h3>
 
                                       <div class='comments-content'>
                                         <b:if cond='data:post.embedCommentForm'>
@@ -1630,6 +1664,7 @@
                                                     jQuery('header nav').meanmenu({
                                                                             meanScreenWidth: "1110"
                                                     });
+                                                    $('.comments-content').css('display', "none");
                                             });
                                     </script>
                                 </b:includable>
