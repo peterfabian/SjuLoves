@@ -405,6 +405,7 @@
                                         }
                                         .lang_switch_button:hover {
                                             cursor: pointer;
+                                            color: #BBB;
                                         }
 
 					.article-preview h1 {
@@ -472,8 +473,64 @@
                                               display: table;
                                               clear: both; 
                                           }
-
-
+                                          
+                                          
+                                          
+                                          @media (min-width: 100px){
+                                         /* temporary tryouts*/
+                                          .mod-entry {
+                                            width: 98%;
+                                            float: left;
+                                            padding: 0px;
+                                            margin: 2% 2% 0% 0%;
+                                            background: white;
+                                            height: 200px;
+                                        }
+                                        .post-imgs {
+                                            height: 200px;
+                                        }
+                                        #wrapper-inner {
+                                              padding: 0 0% 2% 2%;
+                                          }
+                                          }
+                                        
+                                          @media (min-width: 768px){
+                                              .mod-entry {
+                                                    width: 49%;
+                                                    margin: 1% 1% 0% 0%;
+                                                    height: 250px;
+                                                }
+                                                .post-imgs {
+                                                    height: 250px;
+                                                }
+                                                #wrapper-inner {
+                                                    padding: 0 0% 1% 1%;
+                                                }
+                                                
+                                          }
+                                          
+                                          @media (min-width: 1000px){
+                                              .mod-entry {
+                                                   width: 24%;
+                                                   margin: 1% 1% 0% 0%;
+                                                   height: 300px;
+                                                }
+                                                .post-imgs {
+                                                    height: 300px;
+                                                }
+                                                #wrapper-inner {
+                                                    padding: 0 0% 1% 1%;
+                                                }
+                                                
+                                          }
+                                          
+                                          .perex-images {
+                                              display: none;
+                                          }
+                                          
+                                          
+                                          
+                                          
 				  </style>
 				  <script>
                                     cookieChoices = {};
@@ -606,7 +663,7 @@
                                                         <div class="row">
                                                             <div class="one-third column"><a href="/p/about.html">About me</a></div>
                                                             <div class="one-third column"><a href="/p/press.html">Press</a></div>
-                                                            <div class="one-third column"><a href="">Contact</a></div>
+                                                            <div class="one-third column"><a href="/p/contact.html">Contact</a></div>
                                                         </div>
                                                         
                                                         <div class="row">
@@ -690,28 +747,30 @@
                                                             <!-- for labels we want to use the tiles instead of regular post layout, so style  it right here -->
                                                             <section>
                                                                 <div id="wrapper">
-                                                                    <b:loop values='data:posts' var='post'>
-                                                                        <div class='mod-entry'>
-                                                                            <a expr:href='data:post.url'>
-                                                                                <div class='post-imgs' expr:id='&quot;mod-post-&quot; + data:post.id' expr:style='&quot;background: url(&quot; + data:post.firstImageUrl + &quot;); background-size: cover; background-position: center top;&quot;'>
-                                                                                    <span class='text-content'><span><data:post.title/></span></span>
-                                                                                </div>
-                                                                            </a>
-                                                                        </div>
-                                                                    </b:loop>
-                                                                    <div class="row" />
-                                                                    <div class='blog-pager' id='blog-pager'>
-                                                                            <b:if cond='data:newerPageUrl'>
-                                                                              <span id='blog-pager-newer-link'>
-                                                                              <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'><data:newerPageTitle/></a>
-                                                                              </span>
-                                                                            </b:if>
+                                                                    <div id="wrapper-inner">
+                                                                        <b:loop values='data:posts' var='post'>
+                                                                            <div class='mod-entry'>
+                                                                                <a expr:href='data:post.url'>
+                                                                                    <div class='post-imgs' expr:id='&quot;mod-post-&quot; + data:post.id' expr:style='&quot;background: url(&quot; + data:post.firstImageUrl + &quot;); background-size: cover; background-position: center top;&quot;'>
+                                                                                        <span class='text-content'><span><data:post.title/></span></span>
+                                                                                    </div>
+                                                                                </a>
+                                                                            </div>
+                                                                        </b:loop>
+                                                                        <div class="row" />
+                                                                        <div class='blog-pager' id='blog-pager'>
+                                                                                <b:if cond='data:newerPageUrl'>
+                                                                                  <span id='blog-pager-newer-link'>
+                                                                                  <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'><data:newerPageTitle/></a>
+                                                                                  </span>
+                                                                                </b:if>
 
-                                                                            <b:if cond='data:olderPageUrl'>
-                                                                              <span id='blog-pager-older-link'>
-                                                                              <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'><data:olderPageTitle/></a>
-                                                                              </span>
-                                                                            </b:if>
+                                                                                <b:if cond='data:olderPageUrl'>
+                                                                                  <span id='blog-pager-older-link'>
+                                                                                  <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'><data:olderPageTitle/></a>
+                                                                                  </span>
+                                                                                </b:if>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row" />
@@ -1664,7 +1723,17 @@
                                                     jQuery('header nav').meanmenu({
                                                                             meanScreenWidth: "1110"
                                                     });
+                                                    // hide comments by default
                                                     $('.comments-content').css('display', "none");
+                                                    // handle scrolling to top when the language is changed
+                                                    $("a[href='#en']").click(function() {
+                                                        $("html, body").animate({ scrollTop: 0 }, "slow");
+                                                        return false;
+                                                      });
+                                                    $("a[href='#sk']").click(function() {
+                                                        $("html, body").animate({ scrollTop: 0 }, "slow");
+                                                        return false;
+                                                      });
                                             });
                                     </script>
                                 </b:includable>
@@ -1677,15 +1746,15 @@
                                                 <div class='row'>
                                                 
                                                 <div class="one-third column">
-                                                    <a href="">About me</a>
+                                                    <a href="/p/about.html">About me</a>
                                                 </div>
                                                 
                                                 <div class="one-third column">
-                                                    <a href="">Press</a>
+                                                    <a href="/p/press.html">Press</a>
                                                 </div>
                                                 
                                                 <div class="one-third column">
-                                                    <a href="">Contact</a>
+                                                    <a href="/p/contact.html">Contact</a>
 <!--                                                    Email newsletter <span class="narrow">//</span>
                                                     <div class='widget-content'>
                                                         <div class='follow-by-email-inner'>
@@ -1718,8 +1787,8 @@
                                                 <div class="row">
                                                     <div class="lang-switch">
 
-                                                        <span class='lang_switch_button' onclick="switch_lang('en')">English</span> <span class="narrow">//</span>
-                                                        <span class='lang_switch_button' onclick="switch_lang('sk')">Slovensky</span>
+                                                        <a href="#en"><span class='lang_switch_button' onclick="switch_lang('en')">English</span></a> <span class="narrow">//</span>
+                                                        <a href="#sk"><span class='lang_switch_button' onclick="switch_lang('sk')">Slovensky</span></a>
 
                                                     </div>
                                                     <div class='clear'></div>
