@@ -86,7 +86,7 @@
 					verticalCentered: true,
 					resize : false,
 					sectionsColor : ['#ccc', '#fff'],
-					paddingTop: '3em',
+					paddingTop: '0em',
 					paddingBottom: '10px',
 					fixedElements: '#header, .footer',
 					responsiveWidth: 0,
@@ -720,7 +720,7 @@
                                                                         , 1000);
                                                                 </script>
                                                         </div>
-                                                        <div style="height: 3em;"></div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>

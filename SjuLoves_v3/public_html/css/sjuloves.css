@@ -406,6 +406,7 @@ transition: opacity 500ms;
 
 #xx-big-image {
     display: none;
+    width: 100%;
 }
 
 /* social icons */
