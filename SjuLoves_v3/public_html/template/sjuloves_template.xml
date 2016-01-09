@@ -667,6 +667,47 @@
                                                             <div class="one-third column"><a href="/p/contact.html">Contact</a></div>
                                                         </div>
                                                         
+                                                        <div id="social_networks">
+                                                            <ul id="soc_net_ul">
+                                                                    <br />        
+                                                                    <li id="facebook">
+                                                                            <a href="https://www.facebook.com/Peackapples/" target="_newtab">
+                                                                                    <span>facebook</span>
+                                                                            </a>
+                                                                    </li>
+                                                                    <br />
+
+                                                                    <li id="email">
+                                                                            <a href="mailto:hi@sjuloves.com" target="_newtab">
+                                                                                    <span>email</span>
+                                                                            </a>
+                                                                    </li>
+                                                                    <br />        
+
+                                                                    <li id="bloglovin">
+                                                                            <a href="https://www.bloglovin.com/blog/10555805" target="_newtab">
+                                                                                    <span>bloglovin</span>
+                                                                            </a>
+                                                                    </li>
+                                                                    <br />      
+
+                                                                    <li id="instagram">
+                                                                            <a href="http://instagram.com/peackapples" target="_newtab">
+                                                                                    <span>instapeackapples</span>
+                                                                            </a>
+                                                                    </li>
+                                                                    <br /> 
+
+                                                                    <li id="twitter">
+                                                                            <a href="https://twitter.com/PeepingSis" target="_newtab">
+                                                                                    <span>twitter</span>
+                                                                            </a>
+                                                                    </li>
+                                                                    <br />
+                                                            </ul>
+                                                            <br />
+                                                        </div>
+                                                        
                                                         <div class="row">
                                                                 <a href="http://instagram.com/peackapples/">@peackapples</a>
                                                                 <!-- INSTANSIVE WIDGET --><script src="//instansive.com/widget/js/instansive.js"></script><iframe src="//instansive.com/widgets/a90e40eb834c58223fab4160e9d69ec2b6f73afa.html" id="instansive_a90e40eb83" name="instansive_a90e40eb83"  scrolling="no" allowtransparency="true" class="instansive-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
@@ -1821,7 +1862,6 @@
                                                 </div>
                                                 
                                                 <div id="social_networks">
-                                                    <br />
                                                     <ul id="soc_net_ul">
                                                             <br />        
                                                             <li id="facebook">
