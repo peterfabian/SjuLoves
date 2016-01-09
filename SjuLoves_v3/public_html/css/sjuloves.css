@@ -11,7 +11,8 @@ body {
     color: #E1E1E1;
     }
 #footer {/* This is for some reason needed bc of skeleton I think... */
-    padding-bottom: 60px;
+    /* is it still needed? */
+    /*padding-bottom: 60px;*/
     background: #fff;
     }
 .gallery-container {
@@ -402,3 +403,74 @@ transition: opacity 500ms;
 #footer .column {
     text-align: center;
 }
+
+#xx-big-image {
+    display: none;
+}
+
+/* social icons */
+#social_networks {
+  height: 55px;
+}
+#soc_net_ul {
+  width:231px;
+  height:55px;
+  padding:0;
+  margin:0;
+  position:relative;
+}
+#soc_net_ul li {
+  list-style:none; 
+  margin:0; 
+  padding:0; 
+  display:block; 
+  position:absolute;
+}
+#soc_net_ul a {
+  display: block;
+}
+#soc_net_ul span {
+  display:none;
+  font-size: 2rem;
+}
+
+#facebook, #facebook a {
+  width:45px; 
+  height:55px; 
+  top:0px; 
+  left:0px; 
+  background:url(https://googledrive.com/host/0B7sQ2oI9VJiqUHRZMGIxazdfR1U/social_icons_selection_small.png) 0px 0px}
+#facebook a:hover {background:url(https://googledrive.com/host/0B7sQ2oI9VJiqUHRZMGIxazdfR1U/social_icons_selection_small.png) -0px -57px}
+
+
+#email, #email a {
+  width:45px; 
+  height:55px; 
+  top:0px; 
+  left:55px; 
+  background:url(https://googledrive.com/host/0B7sQ2oI9VJiqUHRZMGIxazdfR1U/social_icons_selection_small.png) -47px -0px}
+#email a:hover {
+  background:url(https://googledrive.com/host/0B7sQ2oI9VJiqUHRZMGIxazdfR1U/social_icons_selection_small.png) -47px -57px}
+  
+#bloglovin, #bloglovin a {
+  width:47px; 
+  height:55px; 
+  top:0px; 
+  left:110px; background:url(https://googledrive.com/host/0B7sQ2oI9VJiqUHRZMGIxazdfR1U/social_icons_selection_small.png) -91px -0px}
+#bloglovin a:hover {background:url(https://googledrive.com/host/0B7sQ2oI9VJiqUHRZMGIxazdfR1U/social_icons_selection_small.png) -91px -57px}
+
+#instagram, #instagram a {
+  width:47px; 
+  height:55px; 
+  top:0px; 
+  left:165px; 
+  background:url(https://googledrive.com/host/0B7sQ2oI9VJiqUHRZMGIxazdfR1U/social_icons_selection_small.png) -136px -0px}
+#instagram a:hover {background:url(https://googledrive.com/host/0B7sQ2oI9VJiqUHRZMGIxazdfR1U/social_icons_selection_small.png) -136px -57px}
+
+#twitter, #twitter a {
+  width:47px; 
+  height:55px; 
+  top:0px; 
+  left:220px; 
+  background:url(https://googledrive.com/host/0B7sQ2oI9VJiqUHRZMGIxazdfR1U/social_icons_selection_small.png) -183px -0px}
+#twitter a:hover {background:url(https://googledrive.com/host/0B7sQ2oI9VJiqUHRZMGIxazdfR1U/social_icons_selection_small.png) -183px -57px}

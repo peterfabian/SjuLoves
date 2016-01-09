@@ -133,12 +133,13 @@
 					background: #fff;
 					color: #222;
 				}
-
+                                /*
+                                Is this still needed?
 				#footer {
-					/* This is for some reason needed bc of skeleton I think...:/ */
+					
 					padding-bottom: 60px;
 				}
-
+                                */
 				.page-anchor {
 						  width: 100%;
 						  /*background: rgba(250,250,250,0.5);*/
@@ -435,7 +436,7 @@
                                           }
 
 					  .article-preview img {
-						  width: 100%;
+						  max-width: 100%;
 					  }
 
 					  div.portrait-left {
@@ -890,6 +891,7 @@
 
                                                                 <section>
                                                                     <div id="wrapper">
+                                                                        <img src="" alt="big_image" id="xx-big-image"></img>
                                                                         <div class='container'>
                                                                             <b:loop values='data:posts' var='post'>
                                                                                 <meta expr:content='data:post.canonicalUrl' itemprop='url'/>
@@ -912,6 +914,17 @@
 
                                                                                             <script type='text/javascript'>
                                                                                                     removeRelatedDuplicates();printRelatedLabels(document.URL);
+                                                                                                    var top_big_img = $('#xx-big-image');
+
+                                                                                                    var big_imgs = $('.big-img');
+                                                                                                    if (big_imgs.length > 0) {
+                                                                                                        var big_img = big_imgs[0];
+                                                                                                        var img_src = big_img.src;
+                                                                                                        top_big_img[0].src = img_src;
+                                                                                                        top_big_img.css('display', 'block');
+                                                                                                        big_imgs.css('display', 'none');
+
+                                                                                                    }
                                                                                             </script>
                                                                                         </div>
                                                                                         <div class='clear'/>
@@ -1726,14 +1739,27 @@
                                                     // hide comments by default
                                                     $('.comments-content').css('display', "none");
                                                     // handle scrolling to top when the language is changed
-                                                    $("a[href='#en']").click(function() {
+                                                    $("a[href='#lang=en']").click(function() {
                                                         $("html, body").animate({ scrollTop: 0 }, "slow");
-                                                        return false;
+                                                        //return false;
                                                       });
-                                                    $("a[href='#sk']").click(function() {
+                                                    $("a[href='#lang=sk']").click(function() {
                                                         $("html, body").animate({ scrollTop: 0 }, "slow");
-                                                        return false;
+                                                        //return false;
                                                       });
+                                                    var default_lang = "sk";
+                                                    var url_lang = "";
+                                                    var url_hash = window.location.hash;
+                                                    if (url_hash.indexOf('lang=') > -1){
+                                                            // lang present in the hash
+                                                            var start_pos = url_hash.indexOf('lang=') + 'lang='.length
+                                                            url_lang = url_hash.substr(start_pos,2)
+                                                    }
+                                                    if (url_lang != ""){
+                                                        switch_lang(url_lang);
+                                                    } else {
+                                                        switch_lang(default_lang);
+                                                    }
                                             });
                                     </script>
                                 </b:includable>
@@ -1787,12 +1813,55 @@
                                                 <div class="row">
                                                     <div class="lang-switch">
 
-                                                        <a href="#en"><span class='lang_switch_button' onclick="switch_lang('en')">English</span></a> <span class="narrow">//</span>
-                                                        <a href="#sk"><span class='lang_switch_button' onclick="switch_lang('sk')">Slovensky</span></a>
+                                                        <a href="#lang=en"><span class='lang_switch_button' onclick="switch_lang('en')">English</span></a> <span class="narrow">//</span>
+                                                        <a href="#lang=sk"><span class='lang_switch_button' onclick="switch_lang('sk')">Slovensky</span></a>
 
                                                     </div>
                                                     <div class='clear'></div>
                                                 </div>
+                                                
+                                                <div id="social_networks">
+                                                    <br />
+                                                    <ul id="soc_net_ul">
+                                                            <br />        
+                                                            <li id="facebook">
+                                                                    <a href="https://www.facebook.com/Peackapples/" target="_newtab">
+                                                                            <span>facebook</span>
+                                                                    </a>
+                                                            </li>
+                                                            <br />
+
+                                                            <li id="email">
+                                                                    <a href="mailto:hi@sjuloves.com" target="_newtab">
+                                                                            <span>email</span>
+                                                                    </a>
+                                                            </li>
+                                                            <br />        
+
+                                                            <li id="bloglovin">
+                                                                    <a href="https://www.bloglovin.com/blog/10555805" target="_newtab">
+                                                                            <span>bloglovin</span>
+                                                                    </a>
+                                                            </li>
+                                                            <br />      
+
+                                                            <li id="instagram">
+                                                                    <a href="http://instagram.com/peackapples" target="_newtab">
+                                                                            <span>instapeackapples</span>
+                                                                    </a>
+                                                            </li>
+                                                            <br /> 
+
+                                                            <li id="twitter">
+                                                                    <a href="https://twitter.com/PeepingSis" target="_newtab">
+                                                                            <span>twitter</span>
+                                                                    </a>
+                                                            </li>
+                                                            <br />
+                                                    </ul>
+                                                    <br />
+                                                </div>
+                                                
 
                                                             <a href="http://instagram.com/peackapples/">@peackapples</a>
                                                             <!-- INSTANSIVE WIDGET --><script src="//instansive.com/widget/js/instansive.js"></script><iframe src="//instansive.com/widgets/a90e40eb834c58223fab4160e9d69ec2b6f73afa.html" id="instansive_a90e40eb83" name="instansive_a90e40eb83"  scrolling="no" allowtransparency="true" class="instansive-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
