@@ -741,6 +741,7 @@
                                                         </div>
                                                     </div>
                                                     <b:include name='sjuloves_footer' var='post'/>
+                                                    <b:include name='sjuloves_mobile_menu' var='post'/>
                                                 </section>
                                             <b:else/>
                                                 <!-- it looks like blogger can only handle certain length of condition -->
@@ -758,6 +759,7 @@
                                                             </div>
                                                         </div>
                                                         <b:include name='sjuloves_footer' var='post'/>
+                                                        <b:include name='sjuloves_mobile_menu' var='post'/>
                                                     </section>
                                                 <b:else/>
                                                     <!-- static pages which are not gallery pages -->
@@ -782,6 +784,7 @@
                                                             </div>
                                                         
                                                             <b:include name='sjuloves_footer' var='post'/>
+                                                            <b:include name='sjuloves_mobile_menu' var='post'/>
                                                         </section>
                                                     <b:else/>
 
@@ -1775,7 +1778,7 @@
                                     <script type="text/javascript">
                                             $(document).ready(function(){
                                                     jQuery('header nav').meanmenu({
-                                                                            meanScreenWidth: "1110"
+                                                                            meanScreenWidth: "1109"
                                                     });
                                                     // hide comments by default
                                                     $('.comments-content').css('display', "none");

@@ -242,7 +242,8 @@ a:hover {
 }
 
 .mean-container .mean-nav ul {
-    margin-left: 30px;
+    padding-left: 30px;
+    width: 90%;
 }
 
 /* to make the menu-sliding work correctly for narrow screens */
