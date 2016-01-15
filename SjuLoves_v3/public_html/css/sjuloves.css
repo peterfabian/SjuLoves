@@ -30,6 +30,10 @@ body {
     float: right;
 }
 
+#Header1 {
+    display: none;
+}
+
 .blog-pager {
     font-weight: 200;
     /*padding-bottom: 3.5rem;*/
@@ -107,6 +111,9 @@ a:hover {
     #wrapper {
         padding-top: 6.7rem;
         
+    }
+    #Header1 {
+        display: block;
     }
     section {
     }
