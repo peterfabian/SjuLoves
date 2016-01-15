@@ -1,29 +1,13 @@
 var album_element_mapping = {};
 var max_img_enlarge = 1.0;
 
-function getScrollBarWidth () {
-    var $outer = $('<div>').css({visibility: 'hidden', width: 100, overflow: 'scroll'}).appendTo('body'),
-        widthWithScroll = $('<div>').css({width: '100%'}).appendTo($outer).outerWidth();
-    $outer.remove();
-    return 100 - widthWithScroll;
-};
 
 var artificialResponsiveness = function(e){
     for(var key in album_element_mapping){
         var destination_id = album_element_mapping[key].element_;
-        var album_div = document.getElementById(destination_id.replace("#", ""));
-        var new_width = 0;
-        if (album_element_mapping[key].last_width === 0) {
-            // init in the beginning: the client width does not know yet 
-            // that we will need a scrollbar
-            new_width = Math.ceil(album_div.parentNode.clientWidth - getScrollBarWidth());
-        }
-        else {
-            // when resizing after the init, the scrollbar is already excluded
-            new_width = Math.ceil(album_div.parentNode.clientWidth );
-        }
         // hm, that is strange, now the scrollbar subtraction is not needed?
-        new_width = Math.ceil(album_div.parentNode.clientWidth );
+        var jDest = $(destination_id)
+        var new_width = Math.ceil(jDest.parent().width());
         var flickr_data = album_element_mapping[key].data_st;
         if (new_width !== album_element_mapping[key].last_width) {
             $(destination_id).css("width", new_width);
