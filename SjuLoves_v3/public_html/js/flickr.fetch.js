@@ -7,7 +7,7 @@ var artificialResponsiveness = function(e){
         var destination_id = album_element_mapping[key].element_;
         // hm, that is strange, now the scrollbar subtraction is not needed?
         var jDest = $(destination_id)
-        var new_width = Math.ceil(jDest.parent().width());
+        var new_width = Math.ceil(jDest.width());
         var flickr_data = album_element_mapping[key].data_st;
         if (new_width !== album_element_mapping[key].last_width) {
             $(destination_id).css("width", new_width);
